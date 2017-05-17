@@ -1,0 +1,25 @@
+﻿<Page x:Class="Nursing_home_manager.Pages.PatientsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Nursing_home_manager.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="PatientsPage">
+
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Left" Foreground="#FF5B5757" Text="Patients List" Margin=" 30 5 10 10" FontSize="37" FontFamily="Arial Black"/>
+        <ListView Margin="10" Name="patientsList">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Age" Width="70" DisplayMemberBinding="{Binding Age}" />
+                    <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                </GridView>
+            </ListView.View>
+            <ListViewItem Content="Tea" ></ListViewItem>
+        </ListView>
+        <Button HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}" />
+    </StackPanel>
+</Page>
