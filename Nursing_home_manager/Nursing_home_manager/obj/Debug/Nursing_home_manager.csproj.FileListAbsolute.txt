@@ -20,3 +20,5 @@ c:\users\rute\documents\visual studio 2015\Projects\Nursing_home_manager\Nursing
 c:\users\rute\documents\visual studio 2015\Projects\Nursing_home_manager\Nursing_home_manager\obj\Debug\GeneratedInternalTypeHelper.g.cs
 c:\users\rute\documents\visual studio 2015\Projects\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\PatientsPage.baml
 C:\Users\Rute\Documents\Visual Studio 2015\Projects\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.csprojResolveAssemblyReference.cache
+C:\Users\Rute\Documents\Visual Studio 2015\Projects\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\HumanResourcesPage.g.cs
+C:\Users\Rute\Documents\Visual Studio 2015\Projects\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\HumanResourcesPage.baml

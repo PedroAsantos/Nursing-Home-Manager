@@ -21,11 +21,11 @@
             <ColumnDefinition Width="3.5*" />
         </Grid.ColumnDefinitions>
         <StackPanel>
-            <Border BorderBrush="#FF2C2C2C" BorderThickness="6">
+            <Border Margin="0 10 0 0" BorderBrush="#FF2C2C2C" BorderThickness="6">
                 <TextBlock Text="Nursing Home Manager" HorizontalAlignment="Center" FontFamily="Impact" FontSize="30"  />
             </Border>
-            <Button Content="Patients" Margin="5 15 5 5"/>
-            <Button Content="Human Resources" Margin="5" />
+            <Button Content="Patients" Margin="5 15 5 5" Click="Button_Patients_Click"/>
+            <Button Content="Human Resources" Margin="5" Click="Button_Human_Resources_Click" />
             <Button Content="Appointments" Margin="5" />
             <Button Content="Visits" Margin="5" />
         </StackPanel>

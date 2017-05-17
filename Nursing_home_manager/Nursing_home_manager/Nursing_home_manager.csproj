@@ -70,6 +70,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="Pages\HumanResourcesPage.xaml.cs">
+      <DependentUpon>HumanResourcesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PatientsPage.xaml.cs">
       <DependentUpon>PatientsPage.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\HumanResourcesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PatientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

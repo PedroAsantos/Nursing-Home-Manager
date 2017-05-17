@@ -18,8 +18,8 @@ namespace Nursing_home_manager
             {
                 case ApplicationPage.PatientsPage:
                     return new PatientsPage();
-               // case ApplicationPage.StartPage:
-               //    return new StartPage();
+                case ApplicationPage.HumanResourcesPage:
+                    return new HumanResourcesPage();
                 default:
                     Debugger.Break();
                     return null;

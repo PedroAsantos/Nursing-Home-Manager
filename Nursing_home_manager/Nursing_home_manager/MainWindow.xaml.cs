@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nursing_home_manager.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,18 @@ namespace Nursing_home_manager
         {
             InitializeComponent();
             this.DataContext = new WindowViewModel(this);
+        }
+
+        private void Button_Patients_Click(object sender, RoutedEventArgs e)
+        {
+            PatientsPage patientsPage = new PatientsPage();
+            MainFrame.Content = patientsPage;
+        }
+
+        private void Button_Human_Resources_Click(object sender, RoutedEventArgs e)
+        {
+            HumanResourcesPage humanResourcesPage= new HumanResourcesPage();
+            MainFrame.Content = humanResourcesPage; 
         }
     }
 }
