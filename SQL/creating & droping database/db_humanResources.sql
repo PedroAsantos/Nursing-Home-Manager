@@ -4,15 +4,15 @@
 
 
 CREATE TABLE exemplo1.Type(
-	ID			INT 		NOT NULL,
-	Designation	VARCHAR(30),
+	ID			INT 		NOT NULL	IDENTITY(1, 1),
+	Designation	VARCHAR(30)		UNIQUE,
 	PRIMARY KEY (ID)
 );
 
 CREATE TABLE exemplo1.HumanResources(
 	NIF			INT 		NOT NULL,
 	Name		VARCHAR(30),
-	Phone		INT,
+	Phone		INT		UNIQUE,
 	Address		VARCHAR(30),
 	Salary		INT,
 	StartDate	DATE,
@@ -22,7 +22,7 @@ CREATE TABLE exemplo1.HumanResources(
 );
 
 CREATE TABLE exemplo1.Shift(
-	ID					INT 		NOT NULL,
+	ID					INT 		NOT NULL	IDENTITY(1, 1),
 	Day					VARCHAR(30),
 	BeginOfWorkShift	TIME,
 	EndOfWorkShift		TIME,
@@ -30,7 +30,7 @@ CREATE TABLE exemplo1.Shift(
 );
 
 CREATE TABLE exemplo1.ShiftInstance(
-	ID					INT 		NOT NULL,
+	ID					INT 		NOT NULL IDENTITY(1, 1),
 	InicialDate			TIME,
 	FinalDate			TIME,
 	E_NIF				INT 		NOT NULL,
