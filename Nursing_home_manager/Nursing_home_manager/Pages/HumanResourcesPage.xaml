@@ -41,7 +41,7 @@
             </ListView>
         </StackPanel>
 
-        <Button Margin="0 0 20 0" Grid.Row="1" ToolTip="Add Patient" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}" >
+        <Button Margin="0 0 20 0" Grid.Row="1" ToolTip="Add Patient" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}">
             <Canvas Width="24" Height="24">
                 <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
             </Canvas>

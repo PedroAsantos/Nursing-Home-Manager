@@ -33,6 +33,8 @@ CREATE TABLE exemplo1.PATIENT(
 	E_BedNumber	INT,
 	Entry_Date	DATE,
 	Exit_Date	DATE,
+	CHECK(Check_in < Check_out),
+	CHECK(Entry_Date < Exit_Date),
 	CONSTRAINT PKPATIENT PRIMARY KEY (NIF),
 	CONSTRAINT FKPATIENT2 FOREIGN KEY (E_BedNumber) REFERENCES exemplo1.BED(BedNumber)
 );
@@ -55,6 +57,7 @@ CREATE TABLE exemplo1.EXITS(
 	ID			INT		NOT NULL	IDENTITY(1, 1),
 	Check_in	DATE,
 	Check_out	DATE,
+	CHECK(Check_in < Check_out),
 	CONSTRAINT PKEXITS PRIMARY KEY (ID)
 );
 

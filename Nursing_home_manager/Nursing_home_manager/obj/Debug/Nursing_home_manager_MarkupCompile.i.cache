@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\App.xaml
-3-1988695881
+41175942034
 
-17-503391857
+191971931117
 16-1452158903
-MainWindow.xaml;Pages\HumanResourcesPage.xaml;Pages\PatientsPage.xaml;
+MainWindow.xaml;Pages\DialogAddPatient.xaml;Pages\HumanResourcesPage.xaml;Pages\PatientsPage.xaml;
 
 True
 

@@ -1,0 +1,107 @@
+﻿<Window x:Class="Nursing_home_manager.Pages.DialogAddPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nursing_home_manager.Pages"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Nursing Home Manager" Height="840" Width="500">
+    <StackPanel Margin="20">
+        <TextBlock Text="Add Patient"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
+        <!--MAIN PATIENT DATA-->
+        <TextBlock Text="Main Patient Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Foreground="#FF464343" Text="Name:" Margin="0 15 5 0"/>
+            <TextBox Foreground="#FF464343" Width="415"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock  Foreground="#FF464343" Text="NIF:" Margin="0 15 15 0"/>
+            <TextBox x:Name="tb_NIF"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="415"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Age:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Authorization to leave: "  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <CheckBox Margin="0 13 0 0"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" >
+            <RadioButton Content="Male"  Foreground="#FF464343" Margin="0 15 10 0" />
+            <RadioButton Content="Female"   Foreground="#FF464343"  Margin="10 15 10 10"/>
+        </StackPanel>
+        <!--ROOM INFORMATION-->
+        <TextBlock Text="Room Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Room Number: "  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Bed Number: "  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
+        </StackPanel>
+        <!--DISEASES DATA-->
+        <TextBlock Text="Patient diseases" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+        <ListView x:Name="listView" Height="100">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Disease" Width="260" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Severity" Width="120" DisplayMemberBinding="{Binding Severity}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="Disease Name:" Margin="0 10 7 0" Foreground="#FF464343"/>
+            <TextBox  x:Name="tb_disease" Foreground="#FF464343" Width="100" Margin="0 0 10 0"/>
+            <TextBlock Text="Severity:" Margin="00 10 7 0" Foreground="#FF464343"/>
+            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="tb_severity" Width="25" Margin="0 0 10 0"/>
+            <Button ToolTip="Add Disease" Content="Add" Click="Button_Click_AddDisease"/>
+        </StackPanel>
+        
+
+        <!-- DEPENDENTE DATA-->
+        <TextBlock Text="Dependente Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Name:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox Width="415" Foreground="#FF464343"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="CC:"  PreviewTextInput="NumberValidationTextBox" Foreground="#FF464343" Margin="0 15 18 0"/>
+            <TextBox Width="415"  Foreground="#FF464343"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Address:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox Width="415"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Kinship Degree:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox Width="415"/>
+        </StackPanel>
+
+
+        <!--EXIT BUTTONS-->
+        <StackPanel Margin="0 20 10 0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button ToolTip="Add Patient" HorizontalAlignment="Right" Margin="0 0 20 0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"  Click="Button_Add">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
+                </Canvas>
+            </Button>
+            <Button ToolTip="Cancel" HorizontalAlignment="Right" Margin="0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"  Click="Button_Add" IsCancel="True">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,13.85 4.63,15.55 5.68,16.91L16.91,5.68C15.55,4.63 13.85,4 12,4M12,20A8,8 0 0,0 20,12C20,10.15 19.37,8.45 18.32,7.09L7.09,18.32C8.45,19.37 10.15,20 12,20Z" Fill="Black" />
+                </Canvas>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

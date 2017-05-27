@@ -1,6 +1,6 @@
 
--- CREATE DATABASE exemplo1;
--- CREATE SCHEMA exemplo1;
+--CREATE DATABASE exemplo1;
+CREATE SCHEMA exemplo1;
 
 
 CREATE TABLE exemplo1.Type(

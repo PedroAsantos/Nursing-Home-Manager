@@ -24,5 +24,6 @@ namespace Nursing_home_manager.Pages
         {
             InitializeComponent();
         }
+      
     }
 }

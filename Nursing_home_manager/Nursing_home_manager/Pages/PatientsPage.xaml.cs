@@ -24,5 +24,14 @@ namespace Nursing_home_manager.Pages
         {
             InitializeComponent();
         }
+
+        private void Button_AddPatient(object sender, RoutedEventArgs e)
+        {
+            DialogAddPatient dialogAddPatient = new DialogAddPatient();
+            if (dialogAddPatient.ShowDialog() == true)
+            {
+                Console.WriteLine("qwe");
+            }
+        }
     }
 }
