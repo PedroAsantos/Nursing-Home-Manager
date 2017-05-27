@@ -46,13 +46,15 @@ namespace Nursing_home_manager.Pages
 
         private void Button_Click_AddDisease(object sender, RoutedEventArgs e)
         {
-            addDisease(tb_disease.Text,1);
+            int x = 0;
+            Int32.Parse(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString());
+            addDisease(tb_disease.Text, Convert.ToInt32(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString()));
             listView.ItemsSource = null;
             listView.Items.Clear();
 
             ListViewItem item = new ListViewItem();
             listView.ItemsSource = listDisease;
-            tb_severity.Text = "";
+            cb_severity.SelectedItem = ((ComboBoxItem)cb_severity.Items[0]);
             tb_disease.Text = "";
 
         }

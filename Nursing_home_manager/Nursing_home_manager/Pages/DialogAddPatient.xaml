@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Nursing Home Manager" Height="840" Width="500">
+        Title="Nursing Home Manager" Height="855" Width="500">
     <StackPanel Margin="20">
         <TextBlock Text="Add Patient"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
         <!--MAIN PATIENT DATA-->
@@ -58,11 +58,24 @@
             </ListView.View>
         </ListView>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock Text="Disease Name:" Margin="0 10 7 0" Foreground="#FF464343"/>
+            <TextBlock Text="Disease Name:" Margin="0 30 7 0" Foreground="#FF464343"/>
             <TextBox  x:Name="tb_disease" Foreground="#FF464343" Width="100" Margin="0 0 10 0"/>
-            <TextBlock Text="Severity:" Margin="00 10 7 0" Foreground="#FF464343"/>
-            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="tb_severity" Width="25" Margin="0 0 10 0"/>
-            <Button ToolTip="Add Disease" Content="Add" Click="Button_Click_AddDisease"/>
+            <TextBlock Text="Severity:" Margin="0 30 7 0" Foreground="#FF464343"/>
+            <StackPanel Margin="15 20 25 0">
+                <ComboBox Width="30" x:Name="cb_severity">
+                    <ComboBoxItem IsSelected="True"></ComboBoxItem>
+                    <ComboBoxItem >1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>7</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>9</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <Button ToolTip="Add Disease" Margin="4 10 0 0 " Content="Add" Click="Button_Click_AddDisease"/>
         </StackPanel>
         
 
