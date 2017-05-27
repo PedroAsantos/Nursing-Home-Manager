@@ -58,5 +58,25 @@ namespace Nursing_home_manager.Pages
             tb_disease.Text = "";
 
         }
+        private void Button_DeleteDisease(object sender, RoutedEventArgs e)
+        {
+            if (listView.Items.Count > 0)
+                if (listView.SelectedItem == null)
+                {
+                    MessageBox.Show("You must select diseases to delete them.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    
+                    var itemToRemove = listDisease.Single(r => r.Name ==listView.SelectedItems[0].ToString() );
+                    listView.ItemsSource = null;
+                    listDisease.Remove(itemToRemove);
+                    listView.ItemsSource = listDisease;
+                }
+            else
+            {
+                MessageBox.Show("You have no diseases added.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
     }
 }

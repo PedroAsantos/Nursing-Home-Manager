@@ -7,18 +7,18 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Nursing Home Manager" Height="855" Width="500">
+        Title="Nursing Home Manager" Height="855" Width="520">
     <StackPanel Margin="20">
         <TextBlock Text="Add Patient"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
         <!--MAIN PATIENT DATA-->
         <TextBlock Text="Main Patient Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Foreground="#FF464343" Text="Name:" Margin="0 15 5 0"/>
-            <TextBox Foreground="#FF464343" Width="415"/>
+            <TextBox Foreground="#FF464343" Width="433"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock  Foreground="#FF464343" Text="NIF:" Margin="0 15 15 0"/>
-            <TextBox x:Name="tb_NIF"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="415"/>
+            <TextBox x:Name="tb_NIF"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="433"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
@@ -48,7 +48,7 @@
             <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
         </StackPanel>
         <!--DISEASES DATA-->
-        <TextBlock Text="Patient diseases" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+        <TextBlock Text="Patient Diseases" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <ListView x:Name="listView" Height="100">
             <ListView.View>
                 <GridView>
@@ -76,6 +76,7 @@
                 </ComboBox>
             </StackPanel>
             <Button ToolTip="Add Disease" Margin="4 10 0 0 " Content="Add" Click="Button_Click_AddDisease"/>
+            <Button Content="Delete" Click="Button_DeleteDisease" ToolTip="Delete Selected Disease" Margin="4 10 0 0 " />
         </StackPanel>
         
 
@@ -83,11 +84,11 @@
         <TextBlock Text="Dependente Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Name:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="415" Foreground="#FF464343"/>
+            <TextBox Width="433" Foreground="#FF464343"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="CC:"  PreviewTextInput="NumberValidationTextBox" Foreground="#FF464343" Margin="0 15 18 0"/>
-            <TextBox Width="415"  Foreground="#FF464343"/>
+            <TextBox Width="437"  Foreground="#FF464343"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
@@ -95,7 +96,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Address:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="415"/>
+            <TextBox Width="430"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Kinship Degree:"  Foreground="#FF464343" Margin="0 15 5 0"/>

@@ -11,5 +11,9 @@ namespace Nursing_home_manager.Classes
 
         public string Name { get; set; }
         public int Severity { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
