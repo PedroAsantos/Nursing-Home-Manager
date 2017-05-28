@@ -1,6 +1,8 @@
 ﻿using Nursing_home_manager.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -26,10 +28,69 @@ namespace Nursing_home_manager.Pages
         public DialogAddPatient()
         {
             InitializeComponent();
+            putRooms();
         }
 
+        private void putRooms()
+        {
+            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+            con.conOpen();//method to open the connection.
+
+            //you should test if the connection is open or not
+            if (con != null)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            {
+                //make your query
+
+                SqlDataAdapter category_data = new SqlDataAdapter("SELECT RoomNumber FROM exemplo1.BEDROOM", con.Con);
+                DataSet ds = new DataSet();
+                category_data.Fill(ds, "t");
+                cb_roomNumber.ItemsSource = ds.Tables["t"].DefaultView;
+                cb_roomNumber.DisplayMemberPath = "RoomNumber";
+                con.conClose();//close your connection
+            }
+            else
+            {
+                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//close the event
+            }
+
+        }
         private void Button_Add(object sender, RoutedEventArgs e)
         {
+            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+            con.conOpen();//method to open the connection.
+            
+            //you should test if the connection is open or not
+            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            {
+                //make your query
+                SqlCommand cmd = new SqlCommand("sp_insertPATIENT", con.Con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
+                cmd.Parameters.AddWithValue("@Name", tb_name.Text);
+                cmd.Parameters.AddWithValue("@Sex", "f"); //TEMPORARIO
+                cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
+                cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));  //TEMPORARIO mudar para ano
+                DateTime myDateTime = DateTime.Now;
+                cmd.Parameters.AddWithValue("@Check_in", myDateTime);
+                DateTime myDateTime2 = DateTime.Now;
+                cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); //TEMPORARIO
+                cmd.Parameters.AddWithValue("@Authorization_to_leave",true ); //TEMPORARIO
+                cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString()));
+                cmd.Parameters.AddWithValue("@Entry_Date", myDateTime);
+                Console.WriteLine(myDateTime.ToString());
+                DateTime myDateTime3 = DateTime.Now;
+                cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
+                cmd.ExecuteNonQuery();
+                con.conClose();//close your connection
+            }
+            else
+            {
+                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//close the event
+            }
+
+
             this.DialogResult = true;
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

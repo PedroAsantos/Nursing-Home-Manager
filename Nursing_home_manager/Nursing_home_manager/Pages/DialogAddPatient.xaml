@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Nursing Home Manager" Height="855" Width="520">
+        Title="Nursing Home Manager" Height="865" Width="520">
     <StackPanel Margin="20">
         <TextBlock Text="Add Patient"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
         <!--MAIN PATIENT DATA-->
         <TextBlock Text="Main Patient Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Foreground="#FF464343" Text="Name:" Margin="0 15 5 0"/>
-            <TextBox Foreground="#FF464343" Width="433"/>
+            <TextBox x:Name="tb_name" Foreground="#FF464343" Width="433"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock  Foreground="#FF464343" Text="NIF:" Margin="0 15 15 0"/>
@@ -22,11 +22,11 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
+            <TextBox x:Name="tb_phone"  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Age:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
+            <TextBox x:Name="tb_age" PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Authorization to leave: "  Foreground="#FF464343" Margin="0 15 5 0"/>
@@ -41,11 +41,15 @@
         <TextBlock Text="Room Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Room Number: "  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
+            <StackPanel Margin="15 8 25 0">
+                <ComboBox Width="30" x:Name="cb_roomNumber" ItemsSource="{Binding}" />
+            </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Bed Number: "  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="25"/>
+            <StackPanel Margin="25 8 25 0">
+                <ComboBox Width="30" x:Name="cb_bedNumber"/>
+            </StackPanel>
         </StackPanel>
         <!--DISEASES DATA-->
         <TextBlock Text="Patient Diseases" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
