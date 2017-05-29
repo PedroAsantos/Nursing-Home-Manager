@@ -70,6 +70,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Disease.cs" />
+    <Compile Include="Classes\Patient.cs" />
     <Compile Include="Classes\Sqlconnect.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Pages\DialogAddPatient.xaml.cs">

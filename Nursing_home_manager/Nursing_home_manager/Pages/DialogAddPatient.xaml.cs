@@ -30,8 +30,30 @@ namespace Nursing_home_manager.Pages
             InitializeComponent();
             putRooms();
         }
-
         private void putRooms()
+        {
+            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+            con.conOpen();//method to open the connection.
+
+            //you should test if the connection is open or not
+            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            {
+                //make your query
+                SqlDataAdapter category_data = new SqlDataAdapter("SELECT * from dbo.getFreeRoomsAndBeds()", con.Con);
+                DataSet ds = new DataSet();
+                category_data.Fill(ds, "t");
+                cb_roomNumber.ItemsSource = ds.Tables["t"].DefaultView;
+                cb_roomNumber.DisplayMemberPath = "RoomNumber";
+                con.conClose();//close your connection
+
+            }
+            else
+            {
+                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//close the event
+            }
+        }
+        private void putRooms1()
         {
             Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
             con.conOpen();//method to open the connection.
@@ -55,6 +77,31 @@ namespace Nursing_home_manager.Pages
             }
 
         }
+        private void cb_roomNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+            con.conOpen();//method to open the connection.
+
+            //you should test if the connection is open or not
+            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            {
+                //make your query
+                SqlDataAdapter category_data = new SqlDataAdapter("SELECT * from dbo.getFreeBeds(" + Convert.ToInt32(((DataRowView)cb_roomNumber.SelectedItem)["RoomNumber"].ToString()) + ")", con.Con);
+                DataSet ds = new DataSet();
+                category_data.Fill(ds, "t");
+                cb_bedNumber.ItemsSource = ds.Tables["t"].DefaultView;
+                cb_bedNumber.DisplayMemberPath = "BedNumber";
+                con.conClose();//close your connection
+
+            }
+            else
+            {
+                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//close the event
+            }
+        }
+
         private void Button_Add(object sender, RoutedEventArgs e)
         {
             Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
@@ -76,7 +123,7 @@ namespace Nursing_home_manager.Pages
                 DateTime myDateTime2 = DateTime.Now;
                 cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); //TEMPORARIO
                 cmd.Parameters.AddWithValue("@Authorization_to_leave",true ); //TEMPORARIO
-                cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString()));
+                cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
                 cmd.Parameters.AddWithValue("@Entry_Date", myDateTime);
                 Console.WriteLine(myDateTime.ToString());
                 DateTime myDateTime3 = DateTime.Now;
@@ -139,5 +186,7 @@ namespace Nursing_home_manager.Pages
                 MessageBox.Show("You have no diseases added.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
+
+      
     }
 }
