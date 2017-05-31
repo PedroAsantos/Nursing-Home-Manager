@@ -26,3 +26,7 @@ C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.csprojResolveAssemblyReference.cache
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogEditPatient.g.cs
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogEditPatient.baml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogPatientMainPage.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogPatientMedicinesPage.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogPatientMainPage.baml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogPatientMedicinesPage.baml
