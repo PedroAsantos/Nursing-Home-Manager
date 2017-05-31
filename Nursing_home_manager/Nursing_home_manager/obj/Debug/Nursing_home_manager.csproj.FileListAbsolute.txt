@@ -5,8 +5,8 @@ C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.csprojResolveAssemblyReference.cache
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\MainWindow.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogAddPatient.g.cs
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\HumanResourcesPage.g.cs
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\PatientsPage.g.cs
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\App.g.cs
@@ -15,6 +15,7 @@ C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager_MarkupCompile.lref
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\App.baml
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\MainWindow.baml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogAddPatient.baml
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\HumanResourcesPage.baml
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\PatientsPage.baml
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.g.resources
@@ -22,5 +23,6 @@ C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.csproj.GenerateResource.Cache
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.exe
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.pdb
-C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogAddPatient.g.cs
-C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogAddPatient.baml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.csprojResolveAssemblyReference.cache
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogEditPatient.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\DialogEditPatient.baml

@@ -40,30 +40,57 @@ namespace Nursing_home_manager.Pages
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT Nif,Name,sex,Phone,Age,Check_in,Check_out,Authorization_to_leave,Entry_Date,BedNumber  from exemplo1.patient JOIN exemplo1.BED on exemplo1.patient.E_BedNumber = exemplo1.bed.BedNumber", con.Con);
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients()", con.Con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 patientsList.Items.Clear();
                 listPatients = new List<Patient>();
                 while (reader.Read())
                 {
                     Patient patient = new Patient();
-                    patient.Nif = reader["NIF"].ToString();
-                    patient.Name = reader["Name"].ToString();
-                    patient.Sex = reader["sex"].ToString();
-                    patient.Phone = reader.GetInt32(3);
-                    patient.Age = reader.GetInt32(4);
-                    patient.Check_in = reader.GetDateTime(5);
-                    patient.Check_out = reader.GetDateTime(6);
-                    patient.Authorization_to_leave = reader.GetBoolean(7);
-                    patient.Entry_Date = reader.GetDateTime(9);
-                    patient.Exit_Date = reader.GetDateTime(10);
-                    patient.BedNumber = reader.GetInt32(8);
-                    patient.RoomNumber = reader.GetInt32(11);
-                    patientsList.Items.Add(patient);
-                 //   listPatients.Add(patient); a lista não é precisa?
+                    if (reader["NIF"] != DBNull.Value)
+                        patient.Nif = reader["NIF"].ToString();
+                    if (reader["Name"] != DBNull.Value)
+                        patient.Name = reader["Name"].ToString();
+                    if (reader["sex"] != DBNull.Value)
+                    {
+                        patient.Sex = reader["sex"].ToString();
+                        if (String.Compare(patient.Sex, "m") == 0)
+                        {
+                            patient.isMale = true;
+                        }else
+                        {
+                            patient.isFemale = true;
+                        }
+                           
+                    }
+                      
+                    if (reader["Phone"] != DBNull.Value)
+                        patient.Phone = reader.GetInt32(3);
+                    if (reader["Age"] != DBNull.Value)
+                        patient.Age = reader.GetInt32(4);
+                    if(reader["Check_in"] != DBNull.Value)
+                        patient.Check_in = reader.GetDateTime(5);
+                    if (reader["Check_out"] != DBNull.Value)
+                    {
+                        var sad = reader.GetDateTime(2);
+                        patient.Check_out = new DateTime(sad.Year, sad.Month, sad.Day);
+                        Console.WriteLine(patient.Check_out);
+                    }
+                    if (reader["Authorization_to_leave"] != DBNull.Value)
+                        patient.Authorization_to_leave = reader.GetBoolean(7);
+                    if (reader["Entry_Date"] != DBNull.Value)
+                        patient.Entry_Date = reader.GetDateTime(9);
+                    if (reader["Exit_Date"] != DBNull.Value)
+                        patient.Exit_Date = reader.GetDateTime(10);
+                    if (reader["E_BedNumber"] != DBNull.Value)
+                        patient.BedNumber = reader.GetInt32(8);
+                    if (reader["RoomNumber"] != DBNull.Value)
+                        patient.RoomNumber = reader.GetInt32(11);
+                    //patientsList.Items.Add(patient);
+                    listPatients.Add(patient); 
                 }
                 //make your query
-
+                patientsList.ItemsSource = listPatients;
                 con.conClose();//close your connection
 
             }
@@ -73,13 +100,25 @@ namespace Nursing_home_manager.Pages
                 return;//close the event
             }
         }
+        private void listView_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem;
+            if (item != null)
+            {
+                DialogEditPatient dialogEditPatient = new DialogEditPatient((Patient)item);
+               
+                if(dialogEditPatient.ShowDialog() == true)
+                {
 
+                }
+            }
+        }
         private void Button_AddPatient(object sender, RoutedEventArgs e)
         {
             DialogAddPatient dialogAddPatient = new DialogAddPatient();
             if (dialogAddPatient.ShowDialog() == true)
             {
-                Console.WriteLine("qwe");
+               InitializePatientList();
             }
         }
     }

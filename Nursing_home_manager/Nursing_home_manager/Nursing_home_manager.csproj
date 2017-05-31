@@ -76,6 +76,9 @@
     <Compile Include="Pages\DialogAddPatient.xaml.cs">
       <DependentUpon>DialogAddPatient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DialogEditPatient.xaml.cs">
+      <DependentUpon>DialogEditPatient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HumanResourcesPage.xaml.cs">
       <DependentUpon>HumanResourcesPage.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\DialogAddPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DialogEditPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

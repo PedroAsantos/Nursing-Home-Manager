@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Nursing_home_manager.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="800" d:DesignWidth="1800"
       Title="PatientsPage">
 
 
@@ -29,12 +29,22 @@
                     </Canvas>
                 </Button>
             </Grid>
-            <ListView Margin="10" Name="patientsList">
+            <ListView Margin="10" Name="patientsList" PreviewMouseLeftButtonUp="listView_Click">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Nif" Width="150" DisplayMemberBinding="{Binding Nif}" />
+                        <GridViewColumn Header="Phone" Width="150" DisplayMemberBinding="{Binding Phone}" />
                         <GridViewColumn Header="Age" Width="70" DisplayMemberBinding="{Binding Age}" />
-                        <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                        <GridViewColumn Header="Sex" Width="70" DisplayMemberBinding="{Binding Sex}" />
+                        <GridViewColumn Header="Authorization_to_leave" Width="50" DisplayMemberBinding="{Binding Authorization_to_leave}" />
+                        <GridViewColumn Header="BedNumber" Width="120" DisplayMemberBinding="{Binding BedNumber}" />
+                        <GridViewColumn Header="RoomNumber" Width="120" DisplayMemberBinding="{Binding RoomNumber}" />
+                        <GridViewColumn Header="Check_in" Width="100" DisplayMemberBinding="{Binding Check_in}" />
+                        <GridViewColumn Header="Check_out" Width="100" DisplayMemberBinding="{Binding Check_out}" />
+                        <GridViewColumn Header="Entry_Date" Width="150" DisplayMemberBinding="{Binding Entry_Date}" />
+                        <GridViewColumn Header="Exit_Date" Width="150" DisplayMemberBinding="{Binding Exit_Date}" />
+
                     </GridView>
                 </ListView.View>
                 <ListViewItem Content="Tea" ></ListViewItem>

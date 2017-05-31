@@ -53,30 +53,7 @@ namespace Nursing_home_manager.Pages
                 return;//close the event
             }
         }
-        private void putRooms1()
-        {
-            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
-            con.conOpen();//method to open the connection.
-
-            //you should test if the connection is open or not
-            if (con != null)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
-            {
-                //make your query
-
-                SqlDataAdapter category_data = new SqlDataAdapter("SELECT RoomNumber FROM exemplo1.BEDROOM", con.Con);
-                DataSet ds = new DataSet();
-                category_data.Fill(ds, "t");
-                cb_roomNumber.ItemsSource = ds.Tables["t"].DefaultView;
-                cb_roomNumber.DisplayMemberPath = "RoomNumber";
-                con.conClose();//close your connection
-            }
-            else
-            {
-                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//close the event
-            }
-
-        }
+ 
         private void cb_roomNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -115,20 +92,29 @@ namespace Nursing_home_manager.Pages
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
                 cmd.Parameters.AddWithValue("@Name", tb_name.Text);
-                cmd.Parameters.AddWithValue("@Sex", "f"); //TEMPORARIO
+                if(radioButton_Male.IsChecked == true)
+                {
+                    cmd.Parameters.AddWithValue("@Sex", "m");
+                }else
+                {
+                    cmd.Parameters.AddWithValue("@Sex", "f");
+                }
                 cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
                 cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));  //TEMPORARIO mudar para ano
                 DateTime myDateTime = DateTime.Now;
                 cmd.Parameters.AddWithValue("@Check_in", myDateTime);
-                DateTime myDateTime2 = DateTime.Now;
                 cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); //TEMPORARIO
-                cmd.Parameters.AddWithValue("@Authorization_to_leave",true ); //TEMPORARIO
+                cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
                 cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
                 cmd.Parameters.AddWithValue("@Entry_Date", myDateTime);
                 Console.WriteLine(myDateTime.ToString());
                 DateTime myDateTime3 = DateTime.Now;
                 cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
                 cmd.ExecuteNonQuery();
+
+
+
+
                 con.conClose();//close your connection
             }
             else
@@ -154,7 +140,7 @@ namespace Nursing_home_manager.Pages
 
         private void Button_Click_AddDisease(object sender, RoutedEventArgs e)
         {
-            int x = 0;
+           
             Int32.Parse(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString());
             addDisease(tb_disease.Text, Convert.ToInt32(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString()));
             listView.ItemsSource = null;

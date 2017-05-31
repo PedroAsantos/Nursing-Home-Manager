@@ -30,12 +30,12 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Authorization to leave: "  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <CheckBox Margin="0 13 0 0"/>
+            <CheckBox x:Name="checkBox_AuthorizationToLeave" Margin="0 13 0 0"/>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" >
-            <RadioButton Content="Male"  Foreground="#FF464343" Margin="0 15 10 0" />
-            <RadioButton Content="Female"   Foreground="#FF464343"  Margin="10 15 10 10"/>
+            <RadioButton x:Name="radioButton_Male" Content="Male"  Foreground="#FF464343" Margin="0 15 10 0" />
+            <RadioButton x:Name="radioButton_Female" Content="Female"   Foreground="#FF464343"  Margin="10 15 10 10"/>
         </StackPanel>
         <!--ROOM INFORMATION-->
         <TextBlock Text="Room Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
