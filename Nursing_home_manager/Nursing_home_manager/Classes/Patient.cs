@@ -22,8 +22,9 @@ namespace Nursing_home_manager.Classes
         private DateTime _Exit_Date;
         private int _BedNumber;
         private int _RoomNumber;
+        private List<Disease> _DiseaseList;
 
-        public Patient(string Nif, string name, string sex, int phone, int age, DateTime check_in, DateTime check_out, bool authorization_to_leave, DateTime Entry_Date, DateTime Exit_Date, int BedNumber, int RoomNumber)
+        public Patient(string Nif, string name, string sex, int phone, int age, DateTime check_in, DateTime check_out, bool authorization_to_leave, DateTime Entry_Date, DateTime Exit_Date, int BedNumber, int RoomNumber,List<Disease> diseaseList)
         {
             this._Nif = Nif;
             this._Name = name;
@@ -37,6 +38,7 @@ namespace Nursing_home_manager.Classes
             this._Exit_Date = Exit_Date;
             this._BedNumber = BedNumber;
             this._RoomNumber = RoomNumber;
+            this._DiseaseList = diseaseList;
         }
         public Patient() 
 	    {
@@ -112,5 +114,11 @@ namespace Nursing_home_manager.Classes
             get { return _RoomNumber; }
             set { _RoomNumber = value; }
         }
+        public List<Disease> DiseaseList
+        {
+            get { return _DiseaseList; }
+            set { _DiseaseList = value; }
+        }
+
     }
 }

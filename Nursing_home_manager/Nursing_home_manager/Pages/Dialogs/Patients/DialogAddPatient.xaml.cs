@@ -83,39 +83,62 @@ namespace Nursing_home_manager.Pages
         {
             Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
             con.conOpen();//method to open the connection.
-            
+            SqlTransaction tran = con.Con.BeginTransaction();
             //you should test if the connection is open or not
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
-                //make your query
-                SqlCommand cmd = new SqlCommand("sp_insertPATIENT", con.Con);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
-                cmd.Parameters.AddWithValue("@Name", tb_name.Text);
-                if(radioButton_Male.IsChecked == true)
+
+                try
                 {
-                    cmd.Parameters.AddWithValue("@Sex", "m");
-                }else
-                {
-                    cmd.Parameters.AddWithValue("@Sex", "f");
+                    SqlCommand cmd = new SqlCommand("sp_insertPATIENT", con.Con,tran);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
+                    cmd.Parameters.AddWithValue("@Name", tb_name.Text);
+                    if (radioButton_Male.IsChecked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@Sex", "m");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sex", "f");
+                    }
+                    cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
+                    cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));  //TEMPORARIO mudar para ano
+                    DateTime myDateTime = DateTime.Now;
+                    cmd.Parameters.AddWithValue("@Check_in", myDateTime);
+                    cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); //TEMPORARIO
+                    cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
+                    cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
+                    cmd.Parameters.AddWithValue("@Entry_Date", myDateTime);
+                    Console.WriteLine(myDateTime.ToString());
+                    DateTime myDateTime3 = DateTime.Now;
+                    cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
+                    cmd.ExecuteNonQuery();
+                    List<Disease> tempList = (List<Disease>)listView.ItemsSource;
+                    foreach (Disease dis in tempList)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = "dbo.newDiagnosed";
+                        cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
+                        cmd.Parameters.AddWithValue("@E_Name", dis.Name);
+                        cmd.Parameters.AddWithValue("@Seriousness", dis.Severity);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    tran.Commit();
+
+
                 }
-                cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
-                cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));  //TEMPORARIO mudar para ano
-                DateTime myDateTime = DateTime.Now;
-                cmd.Parameters.AddWithValue("@Check_in", myDateTime);
-                cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); //TEMPORARIO
-                cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
-                cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
-                cmd.Parameters.AddWithValue("@Entry_Date", myDateTime);
-                Console.WriteLine(myDateTime.ToString());
-                DateTime myDateTime3 = DateTime.Now;
-                cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
-                cmd.ExecuteNonQuery();
-
-
-
-
-                con.conClose();//close your connection
+                catch(SqlException ex)
+                {
+                    tran.Rollback();
+                }
+                finally
+                {
+                    con.conClose();//close connection
+                }
+                //make your query
+               
             }
             else
             {
@@ -140,16 +163,19 @@ namespace Nursing_home_manager.Pages
 
         private void Button_Click_AddDisease(object sender, RoutedEventArgs e)
         {
-           
-            Int32.Parse(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString());
-            addDisease(tb_disease.Text, Convert.ToInt32(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString()));
-            listView.ItemsSource = null;
-            listView.Items.Clear();
+            if (((ComboBoxItem)cb_severity.SelectedItem).Content != null && ((ComboBoxItem)cb_severity.SelectedItem).Content!=null)
+            {
+                Int32.Parse(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString());
+                addDisease(tb_disease.Text, Convert.ToInt32(((ComboBoxItem)cb_severity.SelectedItem).Content.ToString()));
+                listView.ItemsSource = null;
+                listView.Items.Clear();
 
-            ListViewItem item = new ListViewItem();
-            listView.ItemsSource = listDisease;
-            cb_severity.SelectedItem = ((ComboBoxItem)cb_severity.Items[0]);
-            tb_disease.Text = "";
+                ListViewItem item = new ListViewItem();
+                listView.ItemsSource = listDisease;
+                cb_severity.SelectedItem = ((ComboBoxItem)cb_severity.Items[0]);
+                tb_disease.Text = "";
+            }
+              
 
         }
         private void Button_DeleteDisease(object sender, RoutedEventArgs e)

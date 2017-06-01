@@ -1,6 +1,7 @@
 ﻿using Nursing_home_manager.Classes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Nursing_home_manager.Pages
     public partial class PatientsPage : Page
     {
 
-        private List<Patient> listPatients;
+        private ObservableCollection<Patient> listPatients;
         public PatientsPage()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace Nursing_home_manager.Pages
                 SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients()", con.Con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 patientsList.Items.Clear();
-                listPatients = new List<Patient>();
+                listPatients = new ObservableCollection<Patient>();
                 while (reader.Read())
                 {
                     Patient patient = new Patient();
@@ -86,6 +87,28 @@ namespace Nursing_home_manager.Pages
                         patient.BedNumber = reader.GetInt32(8);
                     if (reader["RoomNumber"] != DBNull.Value)
                         patient.RoomNumber = reader.GetInt32(11);
+                    /*
+                    SqlCommand cmd1 = new SqlCommand("SELECT * from dbo.getPatientDiseases(" + patient.Nif + ")", con.Con);
+                        SqlDataReader reader1 = cmd1.ExecuteReader();
+
+                        // reader = cmd.ExecuteReader();
+                        List<Disease> listDiseases = new List<Disease>();
+                        while (reader1.Read())
+                        {
+                            Disease disease = new Disease();
+                            if (reader1["Name"] != DBNull.Value)
+                                disease.Name = reader1.GetString(0);
+                            if (reader1["Severity"] != DBNull.Value)
+                                disease.Severity = reader1.GetInt32(1);
+                            listDiseases.Add(disease);
+                        }
+                        patient.DiseaseList = listDiseases;
+                        //patientsList.Items.Add(patient);
+                        listPatients.Add(patient);
+                        //make your query
+                        patientsList.ItemsSource = listPatients;
+                        con.conClose();//close your connection  //so quando entro no edit é que ele adiciona as doenças
+                    */
                     //patientsList.Items.Add(patient);
                     listPatients.Add(patient); 
                 }

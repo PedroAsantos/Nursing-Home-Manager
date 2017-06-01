@@ -53,7 +53,7 @@
         </StackPanel>
         <!--DISEASES DATA-->
         <TextBlock Text="Patient Diseases" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
-        <ListView x:Name="listView" Height="100">
+        <ListView x:Name="listView" Height="100" ItemsSource="{Binding DiseaseList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Disease" Width="260" DisplayMemberBinding="{Binding Name}" />
