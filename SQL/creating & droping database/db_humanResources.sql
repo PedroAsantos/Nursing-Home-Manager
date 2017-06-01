@@ -1,6 +1,6 @@
 
 --CREATE DATABASE exemplo1;
-CREATE SCHEMA exemplo1;
+--CREATE SCHEMA exemplo1;
 
 
 CREATE TABLE exemplo1.Type(
@@ -10,7 +10,7 @@ CREATE TABLE exemplo1.Type(
 );
 
 CREATE TABLE exemplo1.HumanResources(
-	NIF			INT 		NOT NULL,
+	NIF			varchar(9) 		NOT NULL,
 	Name		VARCHAR(30),
 	Phone		INT		UNIQUE,
 	Address		VARCHAR(30),
@@ -33,7 +33,7 @@ CREATE TABLE exemplo1.ShiftInstance(
 	ID					INT 		NOT NULL IDENTITY(1, 1),
 	InicialDate			TIME,
 	FinalDate			TIME,
-	E_NIF				INT 		NOT NULL,
+	E_NIF				varchar(9)  		NOT NULL,
 	E_IDShift			INT 		NOT NULL,
 	PRIMARY KEY (ID),
 	FOREIGN KEY (E_NIF) REFERENCES exemplo1.HumanResources(NIF),

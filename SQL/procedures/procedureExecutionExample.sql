@@ -6,7 +6,14 @@ Exec dbo.newDiagnosed @E_name = 'bbbbb', @E_NIF ='25547895Z', @Seriousness = 3, 
 
 
 select * from exemplo1.DIAGNOSED
-Delete FROM EXEMPLO1.DIAGNOSED WHERE E_Name = 'dasdsa' and E_NIF ='25547895Z'
+
+'25547895Z'
+
+
 
 
 update exemplo1.Diagnosed set Disable = 0
+
+exec dbo.deleteDisease @E_Name = 'bbbbb' , @E_NIF= '25547895Z'
+
+
