@@ -117,6 +117,10 @@ namespace Nursing_home_manager.Pages
                     List<Disease> tempList = (List<Disease>)listView.ItemsSource;
                     foreach (Disease dis in tempList)
                     {
+                        Console.WriteLine(dis.Name);
+                    }
+                    foreach (Disease dis in tempList)
+                    {
                         cmd.Parameters.Clear();
                         cmd.CommandText = "dbo.newDiagnosed";
                         cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
@@ -131,6 +135,7 @@ namespace Nursing_home_manager.Pages
                 }
                 catch(SqlException ex)
                 {
+                    MessageBox.Show("Error."+ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
                     tran.Rollback();
                 }
                 finally

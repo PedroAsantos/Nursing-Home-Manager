@@ -157,7 +157,8 @@ namespace Nursing_home_manager.Pages
                 catch(SqlException ex)
                 {
                     tran.Rollback();
-                    
+                    MessageBox.Show("Error: "+ ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+
                 }
                 finally
                 {
