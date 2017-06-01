@@ -43,7 +43,8 @@ namespace Nursing_home_manager.Pages
 
                 SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients()", con.Con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                patientsList.Items.Clear();
+                //patientsList.Items.Clear();
+                //patientsList.ItemsSource =
                 listPatients = new ObservableCollection<Patient>();
                 while (reader.Read())
                 {
@@ -113,7 +114,7 @@ namespace Nursing_home_manager.Pages
                     listPatients.Add(patient); 
                 }
                 //make your query
-                patientsList.ItemsSource = listPatients;
+                 patientsList.ItemsSource = listPatients;
                 con.conClose();//close your connection
 
             }
@@ -124,17 +125,46 @@ namespace Nursing_home_manager.Pages
             }
         }
         private void listView_Click(object sender, RoutedEventArgs e)
-        {
-            var item = (sender as ListView).SelectedItem;
-            if (item != null)
-            {
-                DialogEditPatient dialogEditPatient = new DialogEditPatient((Patient)item);
-               
-                if(dialogEditPatient.ShowDialog() == true)
-                {
+        {   
+            Patient  patient = (Patient)(sender as ListView).SelectedItem;
+            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+            con.conOpen();//method to open the connection.
 
+            //you should test if the connection is open or not
+            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            {
+
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatientDiseases(" + patient.Nif + ")", con.Con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<Disease> listDiseases = new List<Disease>();
+                while (reader.Read())
+                {
+                    Disease disease = new Disease();
+                    if (reader["E_name"] != DBNull.Value)
+                        disease.Name = reader.GetString(0);
+                    if (reader["Seriousness"] != DBNull.Value)
+                        disease.Severity = reader.GetInt32(1);
+                    listDiseases.Add(disease);
                 }
+                patient.DiseaseList = listDiseases;
+                con.conClose();//close your connection
+
             }
+            else
+            {
+                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//close the event
+            }
+
+                if (patient != null)
+                {
+                    DialogEditPatient dialogEditPatient = new DialogEditPatient(patient);
+               
+                    if(dialogEditPatient.ShowDialog() == true)
+                    {
+
+                    }
+                }
         }
         private void Button_AddPatient(object sender, RoutedEventArgs e)
         {

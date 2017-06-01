@@ -47,7 +47,7 @@
 
                     </GridView>
                 </ListView.View>
-                <ListViewItem Content="Tea" ></ListViewItem>
+                
             </ListView>
         </StackPanel>
 
