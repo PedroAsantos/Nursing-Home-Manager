@@ -1,4 +1,4 @@
-CREATE PROCEDURE dbo.newDiagnosed (@E_Name varchar(30), @E_NIF varchar(9), @Seriousness int)
+CREATE PROCEDURE dbo.newDiagnosed (@E_Name varchar(30), @E_NIF varchar(9), @Seriousness int, @Disable BIT)
 as
 begin
 
@@ -10,9 +10,9 @@ begin
 			INSERT INTO exemplo1.DIAGNOSED values(
 					@E_Name,
 					@E_NIF,
-					@Seriousness
+					@Seriousness,
+					@Disable
 			)
 		RETURN
 END
 GO
-
