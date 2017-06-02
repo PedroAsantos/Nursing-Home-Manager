@@ -15,12 +15,19 @@ namespace Nursing_home_manager.Classes
         {
             return Name;
         }
-        public int compareTo(Disease dis)
+        public int compareName(Disease dis)
         {
             if (String.Compare(dis.Name, this.Name, true) == 0 && this.Severity == dis.Severity)
                 return 1;
             return 0;
             
+        }
+        public int compareSeverity(Disease dis)
+        {
+            if (this.Severity == dis.Severity)
+                return 1;
+            return 0;
+
         }
     }
 }

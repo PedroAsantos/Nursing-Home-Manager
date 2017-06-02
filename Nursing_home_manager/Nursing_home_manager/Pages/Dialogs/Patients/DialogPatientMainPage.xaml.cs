@@ -26,10 +26,12 @@ namespace Nursing_home_manager.Pages
     {
 
         private List<Disease> listDisease = new List<Disease>();
+        private List<Disease> inicialDiseaseList = new List<Disease>();
         private Patient patient;
         public DialogPatientMainPage(Patient patient)
         {
             this.patient = patient;
+            this.inicialDiseaseList = patient.DiseaseList;
             this.DataContext = patient;
             InitializeComponent();
             putRooms();
@@ -142,6 +144,31 @@ namespace Nursing_home_manager.Pages
                     cmd.Parameters.AddWithValue("@Entry_Date", patient.Entry_Date);
                     cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
                     cmd.ExecuteNonQuery();
+                    List<Disease> finalDiseaseList = (List<Disease>)listView.ItemsSource;
+                    int found = 0;
+                    foreach (Disease inicialDis in inicialDiseaseList)
+                    {
+                        found = 0;
+                        foreach(Disease finalDis in finalDiseaseList)
+                        {
+                            if (finalDis.compareName(finalDis)==1)
+                            {
+                                found = 1;
+                                if (finalDis.compareSeverity(inicialDis) == 0)
+                                {
+                                    //fazer update
+                                    break;
+                                }else
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        if (found == 0)
+                        {
+                            //delete disease
+                        }
+                    }
                 /*    List<Disease> tempList = (List<Disease>) listView.ItemsSource;
                     foreach (Disease dis in tempList)
                     {
