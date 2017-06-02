@@ -24,12 +24,12 @@ namespace Nursing_home_manager.Classes
         private int _RoomNumber;
         private List<Disease> _DiseaseList;
         private string _DependentName;
-        private int _DependentCC;
+        private string _DependentCC;
         private int _DependentPhone;
         private string _DependentAddress;
         private string _DependentKinship;
 
-        public Patient(string Nif, string name, string sex, int phone, int age, DateTime check_in, DateTime check_out, bool authorization_to_leave, DateTime Entry_Date, DateTime Exit_Date, int BedNumber, int RoomNumber,List<Disease> diseaseList)
+        public Patient(string Nif, string name, string sex, int phone, int age, DateTime check_in, DateTime check_out, bool authorization_to_leave, DateTime Entry_Date, DateTime Exit_Date, int BedNumber, int RoomNumber,List<Disease> diseaseList, string DependentName, string DependentCC, int DependentPhone, string DependentAddress, string DependentKinship)
         {
             this._Nif = Nif;
             this._Name = name;
@@ -44,7 +44,12 @@ namespace Nursing_home_manager.Classes
             this._BedNumber = BedNumber;
             this._RoomNumber = RoomNumber;
             this._DiseaseList = diseaseList;
-        }
+            this._DependentName = DependentName;
+            this._DependentCC = DependentCC;
+            this._DependentPhone = DependentPhone;
+            this._DependentAddress = DependentAddress;
+            this._DependentKinship = DependentKinship;
+    }
         public Patient() 
 	    {
         }
@@ -130,7 +135,7 @@ namespace Nursing_home_manager.Classes
             get { return _DependentName; }
             set { _DependentName = value; }
         }
-        public int DependentCC
+        public string DependentCC
         {
             get { return _DependentCC; }
             set { _DependentCC = value; }

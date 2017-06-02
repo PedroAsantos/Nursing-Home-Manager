@@ -86,12 +86,17 @@ namespace Nursing_home_manager.Pages
                         patient.Exit_Date = reader.GetDateTime(10);
                     if (reader["E_BedNumber"] != DBNull.Value)
                         patient.BedNumber = reader.GetInt32(8);
-                    if (reader["RoomNumber"] != DBNull.Value)
-                        patient.RoomNumber = reader.GetInt32(11);
-                    if (reader["RoomNumber"] != DBNull.Value)
-                        patient.RoomNumber = reader.GetInt32(11);
-                    if (reader["RoomNumber"] != DBNull.Value)
-                        patient.RoomNumber = reader.GetInt32(11);
+                    if (reader["DependentName"] != DBNull.Value)
+                        patient.DependentName = reader["NIF"].ToString();
+                    if (reader["DependentCC"] != DBNull.Value)
+                        patient.DependentCC = reader["DependentCC"].ToString();
+                    if (reader["DependentAddress"] != DBNull.Value)
+                        patient.DependentAddress = reader["DependentAddress"].ToString();
+                    if (reader["DependentPhone"] != DBNull.Value)
+                        patient.DependentPhone = reader.GetInt32(15);
+                    if (reader["KinShip"] != DBNull.Value)
+                        patient.DependentKinship = reader["KinShip"].ToString();
+
                     /*
                     SqlCommand cmd1 = new SqlCommand("SELECT * from dbo.getPatientDiseases(" + patient.Nif + ")", con.Con);
                         SqlDataReader reader1 = cmd1.ExecuteReader();
