@@ -115,10 +115,7 @@ namespace Nursing_home_manager.Pages
                     cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
                     cmd.ExecuteNonQuery();
                     List<Disease> tempList = (List<Disease>)listView.ItemsSource;
-                    foreach (Disease dis in tempList)
-                    {
-                        Console.WriteLine(dis.Name);
-                    }
+                
                     foreach (Disease dis in tempList)
                     {
                         cmd.Parameters.Clear();
@@ -126,9 +123,10 @@ namespace Nursing_home_manager.Pages
                         cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
                         cmd.Parameters.AddWithValue("@E_Name", dis.Name);
                         cmd.Parameters.AddWithValue("@Seriousness", dis.Severity);
+                        cmd.Parameters.AddWithValue("@Disable", false);
                         cmd.ExecuteNonQuery();
                     }
-
+                  
                     tran.Commit();
 
 

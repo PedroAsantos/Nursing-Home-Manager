@@ -17,6 +17,7 @@ namespace Nursing_home_manager.Classes
         }
         public int compareName(Disease dis)
         {
+           
             if (String.Compare(dis.Name, this.Name, true) == 0 && this.Severity == dis.Severity)
                 return 1;
             return 0;

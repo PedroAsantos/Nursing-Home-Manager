@@ -48,7 +48,7 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Bed Number: "  Foreground="#FF464343" Margin="0 15 5 0"/>
             <StackPanel Margin="25 8 25 0">
-                <ComboBox Width="30" x:Name="cb_bedNumber"/>
+                <ComboBox Width="30" x:Name="cb_bedNumber" />
             </StackPanel>
         </StackPanel>
         <!--DISEASES DATA-->

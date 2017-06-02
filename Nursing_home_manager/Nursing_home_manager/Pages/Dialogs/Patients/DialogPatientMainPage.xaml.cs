@@ -31,7 +31,10 @@ namespace Nursing_home_manager.Pages
         public DialogPatientMainPage(Patient patient)
         {
             this.patient = patient;
-            this.inicialDiseaseList = patient.DiseaseList;
+            patient.DiseaseList.ForEach((item) =>
+            {
+                inicialDiseaseList.Add(item);
+            });
             this.DataContext = patient;
             InitializeComponent();
             putRooms();
@@ -58,10 +61,10 @@ namespace Nursing_home_manager.Pages
                                  {
                                      Console.WriteLine(item.Row["RoomNumber"]);
                                  }*/
-                if (cb_roomNumber.Items.Count > 0)
-                {
-                    cb_roomNumber.SelectedIndex = cb_roomNumber.Items.Count - 1;
-                }
+          //      if (cb_roomNumber.Items.Count > 0)
+            //    {
+             //       cb_roomNumber.SelectedItem = patient.RoomNumber;
+              //  }
 
 
             }
@@ -149,14 +152,22 @@ namespace Nursing_home_manager.Pages
                     foreach (Disease inicialDis in inicialDiseaseList)
                     {
                         found = 0;
-                        foreach(Disease finalDis in finalDiseaseList)
+                        Console.WriteLine(inicialDis.Name + "," + inicialDis.Severity);
+                        foreach (Disease finalDis in finalDiseaseList)
                         {
-                            if (finalDis.compareName(finalDis)==1)
+                            if (inicialDis.compareName(finalDis) == 1)
                             {
                                 found = 1;
-                                if (finalDis.compareSeverity(inicialDis) == 0)
+                                Console.WriteLine(inicialDis.Name+","+inicialDis.Severity+" -- "+ finalDis.Name+""+finalDis.Severity);
+                                if (inicialDis.compareSeverity(finalDis) == 0)
                                 {
-                                    //fazer update
+                                    Console.WriteLine("update");
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = " dbo.updateSeriousnes";
+                                    cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
+                                    cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
+                                    cmd.Parameters.AddWithValue("@seirybesdsdf", finalDis.Severity);
+                                    cmd.ExecuteNonQuery();
                                     break;
                                 }else
                                 {
@@ -166,20 +177,53 @@ namespace Nursing_home_manager.Pages
                         }
                         if (found == 0)
                         {
+                            Console.WriteLine("delete");
                             //delete disease
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = "dbo.deleteDisease";
+                            cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
+                            cmd.Parameters.AddWithValue("@E_Name", inicialDis.Name);
+                            cmd.ExecuteNonQuery();
                         }
                     }
-                /*    List<Disease> tempList = (List<Disease>) listView.ItemsSource;
-                    foreach (Disease dis in tempList)
+
+                    found = 0;
+                    foreach (Disease finalDis in finalDiseaseList)
                     {
-                        cmd.Parameters.Clear();
-                        cmd.CommandText = "dbo.newDiagnosed";
-                        cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_phone.Text));
-                        cmd.Parameters.AddWithValue("@E_Name", dis.Name);
-                        cmd.Parameters.AddWithValue("@Seriousness",dis.Severity);
-                    }*/
-                  
-                    tran.Commit();
+                        found = 0;
+                        foreach (Disease inicialDis in inicialDiseaseList)
+                        {
+                            if (finalDis.compareName(inicialDis) == 1)
+                            {
+                                found = 1;
+                                break;
+                            }
+                        }
+                        if (found == 0)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = "dbo.newDiagnosed";
+                            cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
+                            cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
+                            cmd.Parameters.AddWithValue("@Seriousness", finalDis.Severity);
+                            cmd.Parameters.AddWithValue("@Disable", false);
+                            cmd.ExecuteNonQuery();
+                        }
+                        found = 0;
+                    }
+
+
+                            /*    List<Disease> tempList = (List<Disease>) listView.ItemsSource;
+                                foreach (Disease dis in tempList)
+                                {
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = "dbo.newDiagnosed";
+                                    cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_phone.Text));
+                                    cmd.Parameters.AddWithValue("@E_Name", dis.Name);
+                                    cmd.Parameters.AddWithValue("@Seriousness",dis.Severity);
+                                }*/
+
+                            tran.Commit();
                 }
                 catch(SqlException ex)
                 {
@@ -210,7 +254,7 @@ namespace Nursing_home_manager.Pages
                 listView.Items.Clear();
 
                 ListViewItem item = new ListViewItem();
-                listView.ItemsSource = listDisease;
+                listView.ItemsSource = patient.DiseaseList;
                 cb_severity.SelectedItem = ((ComboBoxItem)cb_severity.Items[0]);
                 tb_disease.Text = "";
             }
@@ -220,7 +264,7 @@ namespace Nursing_home_manager.Pages
         }
         private void addDisease(string name, int severity)
         {
-            listDisease.Add(new Disease() { Name = name, Severity = severity });
+            patient.DiseaseList.Add(new Disease() { Name = name, Severity = severity });
         }
         private void Button_DeleteDisease(object sender, RoutedEventArgs e)
         {
@@ -232,10 +276,10 @@ namespace Nursing_home_manager.Pages
                 else
                 {
 
-                    var itemToRemove = listDisease.Single(r => r.Name == listView.SelectedItems[0].ToString());
+                    var itemToRemove = patient.DiseaseList.Single(r => r.Name == listView.SelectedItems[0].ToString());
                     listView.ItemsSource = null;
-                    listDisease.Remove(itemToRemove);
-                    listView.ItemsSource = listDisease;
+                    patient.DiseaseList.Remove(itemToRemove);
+                    listView.ItemsSource = patient.DiseaseList;
                 }
             else
             {
