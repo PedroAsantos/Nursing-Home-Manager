@@ -37,7 +37,6 @@
                         <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
                     </GridView>
                 </ListView.View>
-                <ListViewItem Content="Tea" ></ListViewItem>
             </ListView>
         </StackPanel>
 

@@ -88,6 +88,10 @@ namespace Nursing_home_manager.Pages
                         patient.BedNumber = reader.GetInt32(8);
                     if (reader["RoomNumber"] != DBNull.Value)
                         patient.RoomNumber = reader.GetInt32(11);
+                    if (reader["RoomNumber"] != DBNull.Value)
+                        patient.RoomNumber = reader.GetInt32(11);
+                    if (reader["RoomNumber"] != DBNull.Value)
+                        patient.RoomNumber = reader.GetInt32(11);
                     /*
                     SqlCommand cmd1 = new SqlCommand("SELECT * from dbo.getPatientDiseases(" + patient.Nif + ")", con.Con);
                         SqlDataReader reader1 = cmd1.ExecuteReader();

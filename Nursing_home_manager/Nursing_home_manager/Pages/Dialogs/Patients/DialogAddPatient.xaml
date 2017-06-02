@@ -88,23 +88,23 @@
         <TextBlock Text="Dependente Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Name:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="433" Foreground="#FF464343"/>
+            <TextBox  x:Name="tb_dependentName" Width="433" Foreground="#FF464343"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="CC:"  PreviewTextInput="NumberValidationTextBox" Foreground="#FF464343" Margin="0 15 18 0"/>
-            <TextBox Width="437"  Foreground="#FF464343"/>
+            <TextBox x:Name="tb_dependentCC"  Width="437"  Foreground="#FF464343"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
+            <TextBox x:Name="tb_dependentPhone"  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Address:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="430"/>
+            <TextBox x:Name="tb_dependentAddress"  Width="430"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Kinship Degree:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="415"/>
+            <TextBox x:Name="tb_dependentKinship"  Width="415"/>
         </StackPanel>
 
 

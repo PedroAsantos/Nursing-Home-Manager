@@ -115,18 +115,30 @@ namespace Nursing_home_manager.Pages
                     cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
                     cmd.ExecuteNonQuery();
                     List<Disease> tempList = (List<Disease>)listView.ItemsSource;
-                
-                    foreach (Disease dis in tempList)
+                    if(tempList != null)
                     {
-                        cmd.Parameters.Clear();
-                        cmd.CommandText = "dbo.newDiagnosed";
-                        cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
-                        cmd.Parameters.AddWithValue("@E_Name", dis.Name);
-                        cmd.Parameters.AddWithValue("@Seriousness", dis.Severity);
-                        cmd.Parameters.AddWithValue("@Disable", false);
-                        cmd.ExecuteNonQuery();
+                        foreach (Disease dis in tempList)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = "dbo.newDiagnosed";
+                            cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
+                            cmd.Parameters.AddWithValue("@E_Name", dis.Name);
+                            cmd.Parameters.AddWithValue("@Seriousness", dis.Severity);
+                            cmd.Parameters.AddWithValue("@Disable", false);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
-                  
+                      
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "dbo.newDependent";
+                    cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
+                    cmd.Parameters.AddWithValue("@Name", tb_dependentName.Text);
+                    cmd.Parameters.AddWithValue("@CC ", Int32.Parse(tb_dependentCC.Text));
+                    cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_dependentPhone.Text));
+                    cmd.Parameters.AddWithValue("@Address", tb_dependentAddress.Text);
+                    cmd.Parameters.AddWithValue("@Relationship", tb_dependentAddress.Text);
+                    cmd.ExecuteNonQuery();
+
                     tran.Commit();
 
 

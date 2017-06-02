@@ -23,6 +23,11 @@ namespace Nursing_home_manager.Classes
         private int _BedNumber;
         private int _RoomNumber;
         private List<Disease> _DiseaseList;
+        private string _DependentName;
+        private int _DependentCC;
+        private int _DependentPhone;
+        private string _DependentAddress;
+        private string _DependentKinship;
 
         public Patient(string Nif, string name, string sex, int phone, int age, DateTime check_in, DateTime check_out, bool authorization_to_leave, DateTime Entry_Date, DateTime Exit_Date, int BedNumber, int RoomNumber,List<Disease> diseaseList)
         {
@@ -118,6 +123,32 @@ namespace Nursing_home_manager.Classes
         {
             get { return _DiseaseList; }
             set { _DiseaseList = value; }
+        }
+
+        public string DependentName
+        {
+            get { return _DependentName; }
+            set { _DependentName = value; }
+        }
+        public int DependentCC
+        {
+            get { return _DependentCC; }
+            set { _DependentCC = value; }
+        }
+        public int DependentPhone
+        {
+            get { return _DependentPhone; }
+            set { _DependentPhone = value; }
+        }
+        public string DependentAddress
+        {
+            get { return _DependentAddress; }
+            set { _DependentAddress = value; }
+        }
+        public string DependentKinship
+        {
+            get { return _DependentKinship; }
+            set { _DependentKinship = value; }
         }
 
     }
