@@ -136,7 +136,7 @@ namespace Nursing_home_manager.Pages
                     cmd.Parameters.AddWithValue("@CC ", Int32.Parse(tb_dependentCC.Text));
                     cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_dependentPhone.Text));
                     cmd.Parameters.AddWithValue("@Address", tb_dependentAddress.Text);
-                    cmd.Parameters.AddWithValue("@Relationship", tb_dependentAddress.Text);
+                    cmd.Parameters.AddWithValue("@Relationship", tb_dependentKinship.Text);
                     cmd.ExecuteNonQuery();
 
                     tran.Commit();
@@ -152,7 +152,7 @@ namespace Nursing_home_manager.Pages
                 {
                     con.conClose();//close connection
                 }
-                //make your query
+              
                
             }
             else

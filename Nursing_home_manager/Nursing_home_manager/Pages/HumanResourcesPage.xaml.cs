@@ -1,4 +1,5 @@
 ﻿using Nursing_home_manager.Classes;
+using Nursing_home_manager.Pages.Dialogs.HumanResource;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -96,6 +97,14 @@ namespace Nursing_home_manager.Pages
             {
                 MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//close the event
+            }
+        }
+        private void Button_AddHumanResource(object sender, RoutedEventArgs e)
+        {
+            DialogAddHumanResource dialogAddHumanResource = new DialogAddHumanResource();
+            if (dialogAddHumanResource.ShowDialog() == true)
+            {
+                InitializeHumanResourceList();
             }
         }
     }

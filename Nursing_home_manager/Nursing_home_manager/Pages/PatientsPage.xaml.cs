@@ -94,8 +94,8 @@ namespace Nursing_home_manager.Pages
                         patient.DependentAddress = reader["DependentAddress"].ToString();
                     if (reader["DependentPhone"] != DBNull.Value)
                         patient.DependentPhone = reader.GetInt32(15);
-                    if (reader["KinShip"] != DBNull.Value)
-                        patient.DependentKinship = reader["KinShip"].ToString();
+                    if (reader["Relationship"] != DBNull.Value)
+                        patient.DependentKinship = reader["Relationship"].ToString();
 
                     /*
                     SqlCommand cmd1 = new SqlCommand("SELECT * from dbo.getPatientDiseases(" + patient.Nif + ")", con.Con);
