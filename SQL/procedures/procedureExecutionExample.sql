@@ -10,10 +10,15 @@ select * from exemplo1.DIAGNOSED
 '25547895Z'
 
 
-
+exec dbo.sp_insertHumanResources @NIF ='25588895Z', @Name = 'tiago', @Phone = 967788991, @Address = 'rua de nao sei que', @Salary = 530, @Start_Date = '1992-10-10', @E_IDType = 1
 
 update exemplo1.Diagnosed set Disable = 0
 
 exec dbo.deleteDisease @E_Name = 'bbbbb' , @E_NIF= '25547895Z'
 
 
+insert into exemplo1.Type values ('Enfermeiro')
+
+select * from exemplo1.HumanResources
+
+select * from dbo.getHumanResources()

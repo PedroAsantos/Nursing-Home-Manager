@@ -14,7 +14,7 @@ CREATE PROCEDURE [dbo].[sp_insertPATIENT]
 AS
 BEGIN
 		if  (Exists(Select NIF from exemplo1.PATIENT where NIF=@NIF ))
-					return
+			RAISERROR('O Patient ja existe!',16,1);
 		else
 			 INSERT INTO exemplo1.PATIENT values (
 					@NIF,
