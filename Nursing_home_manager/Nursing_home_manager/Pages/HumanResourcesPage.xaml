@@ -32,10 +32,10 @@
             <ListView Margin="10" Name="humanResourcesList">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
                         <GridViewColumn Header="Nif" Width="150" DisplayMemberBinding="{Binding Nif}" />
-                        <GridViewColumn Header="Phone" Width="70" DisplayMemberBinding="{Binding PhoneNumber}" />
-                        <GridViewColumn Header="Address" Width="150" DisplayMemberBinding="{Binding Address}" />
+                        <GridViewColumn Header="Phone" Width="150" DisplayMemberBinding="{Binding PhoneNumber}" />
+                        <GridViewColumn Header="Address" Width="250" DisplayMemberBinding="{Binding Address}" />
                         <GridViewColumn Header="StartDate" Width="150" DisplayMemberBinding="{Binding StartDate}" />
                         <GridViewColumn Header="Salary" Width="150" DisplayMemberBinding="{Binding Salary}" />
                         <GridViewColumn Header="Type" Width="150" DisplayMemberBinding="{Binding Type}" />
