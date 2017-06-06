@@ -1,4 +1,4 @@
-DROP FUNCTION dbo.getPatientMedicines(@NIF Varchar(9))
+CREATE FUNCTION dbo.getPatientMedicines(@NIF Varchar(9))
 RETURNS TABLE
 AS
 	RETURN(

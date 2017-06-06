@@ -144,25 +144,22 @@ namespace Nursing_home_manager.Pages
 
             if (((ComboBoxItem)cb_hour.SelectedItem).Content != null && ((ComboBoxItem)cb_day.SelectedItem).Content != null && ((ComboBoxItem)cb_periodo.SelectedItem).Content != null && ((ComboBoxItem)cb_minute.SelectedItem).Content != null)
             {
-                Medicine med;
-                if (String.Compare(((ComboBoxItem)cb_periodo.SelectedItem).Content.ToString(), "AM") == 0)
-                {
-                        med = new Medicine() { Name = tb_medicineName.Text, Time = new TimeSpan(Convert.ToInt32(((ComboBoxItem)cb_hour.SelectedItem).Content.ToString()), Convert.ToInt32(((ComboBoxItem)cb_minute.SelectedItem).Content.ToString()), 0),
-                        Periodo = ((ComboBoxItem)cb_periodo.SelectedItem).Content.ToString(),  
-                        Day = ((ComboBoxItem)cb_day.SelectedItem).Content.ToString(), Dose = Convert.ToInt32(tb_dose.Text) };
-                }
-                else
-                {
+                TimeSpan time;
+                DateTime dt;
+                string timeString = ((ComboBoxItem)cb_hour.SelectedItem).Content.ToString()+":"+((ComboBoxItem)cb_minute.SelectedItem).Content.ToString() 
+                    +" "+ ((ComboBoxItem)cb_periodo.SelectedItem).Content.ToString();
+                bool res = DateTime.TryParse(timeString, out dt);
+                time = dt.TimeOfDay;
 
-                    med = new Medicine()
+                Medicine med = new Medicine()
                     {
                         Name = tb_medicineName.Text,
-                        Time = new TimeSpan(Convert.ToInt32(((ComboBoxItem)cb_hour.SelectedItem).Content.ToString())+12, Convert.ToInt32(((ComboBoxItem)cb_minute.SelectedItem).Content.ToString()),0),
+                        Time = time,
                         Periodo = ((ComboBoxItem)cb_periodo.SelectedItem).Content.ToString(),
                         Day = ((ComboBoxItem)cb_day.SelectedItem).Content.ToString(),
                         Dose = Convert.ToInt32(tb_dose.Text)
-                    };
-                }
+                };
+                
                 addMedicinetToDb(med);
                 listView.ItemsSource = null;
                 listView.Items.Clear();

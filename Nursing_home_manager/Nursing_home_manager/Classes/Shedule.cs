@@ -11,8 +11,7 @@ namespace Nursing_home_manager.Classes
         private string _Day;
         private TimeSpan _EntryHour;
         private TimeSpan _ExitHour;
- 
-
+        private int _ID;
         public Shedule()
         {
 
@@ -27,6 +26,11 @@ namespace Nursing_home_manager.Classes
         {
             get { return _EntryHour; }
             set { _EntryHour = value; }
+        }
+        public int ID
+        {
+            get { return _ID; }
+            set { _ID = value; }
         }
         public TimeSpan ExitHour
         {
