@@ -3,12 +3,117 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                            xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+
       xmlns:local="clr-namespace:Nursing_home_manager.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+    xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"                      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      d:DesignHeight="865" d:DesignWidth="520"
       Title="DialogPatientMedicinesPage">
 
-    <Grid>
+    <StackPanel Margin="20">
         
-    </Grid>
+        <TextBlock Text="Medicine of Patient"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
+        <ListView x:Name="listView" Height="300" ItemsSource="{Binding DiseaseList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Medicine" Width="140" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Day" Width="140" DisplayMemberBinding="{Binding Day}" />
+                    <GridViewColumn Header="Hour" Width="95" DisplayMemberBinding="{Binding Time}" />
+                    <GridViewColumn Header="Dose" Width="85" DisplayMemberBinding="{Binding Dose}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="bt_deleteButton" Click="Click_deleteMedicineButton" Content="Delete Selected Item"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Medicine Name:" Margin="0 10 10 0" />
+            <TextBox x:Name="tb_medicineName" Width="160" Margin="0 0 20 0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Dose:" Margin="0 15 10 0" />
+            <TextBox x:Name="tb_dose" Width="30" PreviewTextInput="NumberValidationTextBox"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+            <TextBlock Text="Day:" Margin="0 10 10 0" />
+            <ComboBox Width="100" x:Name="cb_day">
+                <ComboBoxItem IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem >Monday</ComboBoxItem>
+                <ComboBoxItem>Tuesday</ComboBoxItem>
+                <ComboBoxItem>Wednesday</ComboBoxItem>
+                <ComboBoxItem>Thrusday</ComboBoxItem>
+                <ComboBoxItem>Friday</ComboBoxItem>
+                <ComboBoxItem>Saturday</ComboBoxItem>
+                <ComboBoxItem>Sunday</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+            <TextBlock Text="Hour:" Margin="0 10 10 0" />
+            <ComboBox Width="100" x:Name="cb_hour" Margin="0 0 20 0">
+                <ComboBoxItem IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem IsSelected="True">00</ComboBoxItem>
+                <ComboBoxItem>01</ComboBoxItem>
+                <ComboBoxItem>02</ComboBoxItem>
+                <ComboBoxItem>03</ComboBoxItem>
+                <ComboBoxItem>04</ComboBoxItem>
+                <ComboBoxItem>05</ComboBoxItem>
+                <ComboBoxItem>06</ComboBoxItem>
+                <ComboBoxItem>04</ComboBoxItem>
+                <ComboBoxItem>05</ComboBoxItem>
+                <ComboBoxItem>06</ComboBoxItem>
+                <ComboBoxItem>07</ComboBoxItem>
+                <ComboBoxItem>08</ComboBoxItem>
+                <ComboBoxItem>09</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>11</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+            <TextBlock Text="Minutes:" Margin="0 10 15 0" />
+            <ComboBox Width="100" x:Name="cb_minute" Margin="0 0 20 0">
+                <ComboBoxItem IsSelected="True">00</ComboBoxItem>
+                <ComboBoxItem>05</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>15</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>25</ComboBoxItem>
+                <ComboBoxItem>30</ComboBoxItem>
+                <ComboBoxItem>35</ComboBoxItem>
+                <ComboBoxItem>40</ComboBoxItem>
+                <ComboBoxItem>45</ComboBoxItem>
+                <ComboBoxItem>50</ComboBoxItem>
+                <ComboBoxItem>55</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+            <TextBlock Text="Minutes:" Margin="0 10 15 0" />
+            <ComboBox Width="100" x:Name="cb_periodo">
+                <ComboBoxItem IsSelected="True">AM</ComboBoxItem>
+                <ComboBoxItem>PM</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <Button Width="120" Margin="0 20 0 0" HorizontalAlignment="Left" Content="Add medicine" Click="Button_Click_Add_Medicine" />
+        <StackPanel Margin="0 20 10 0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button ToolTip="Add Patient" IsCancel="True" HorizontalAlignment="Right" Margin="0 0 20 0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
+                </Canvas>
+            </Button>
+            <Button ToolTip="Cancel" HorizontalAlignment="Right" Margin="0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" IsCancel="True">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,13.85 4.63,15.55 5.68,16.91L16.91,5.68C15.55,4.63 13.85,4 12,4M12,20A8,8 0 0,0 20,12C20,10.15 19.37,8.45 18.32,7.09L7.09,18.32C8.45,19.37 10.15,20 12,20Z" Fill="Black" />
+                </Canvas>
+            </Button>
+        </StackPanel>
+    </StackPanel>
 </Page>

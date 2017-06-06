@@ -40,7 +40,7 @@ namespace Nursing_home_manager.Pages
         }
         private void Click_toMedicines(object sender, RoutedEventArgs e)
         {
-            DialogPatientMedicinesPage dialogPatientMedicinesPage = new DialogPatientMedicinesPage();
+            DialogPatientMedicinesPage dialogPatientMedicinesPage = new DialogPatientMedicinesPage(patient);
             Frame.Content = dialogPatientMedicinesPage;
              
         }

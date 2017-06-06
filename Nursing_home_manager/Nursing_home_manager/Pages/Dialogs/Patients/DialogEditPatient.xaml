@@ -16,6 +16,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Nursing Home Manager" Height="900" Width="520">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

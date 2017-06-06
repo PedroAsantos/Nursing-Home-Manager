@@ -56,15 +56,26 @@ namespace Nursing_home_manager.Pages
                 d.PrimaryKey = new DataColumn[] { d.Columns["RoomNumber"] };
                 cb_roomNumber.ItemsSource = d.DefaultView;
                 cb_roomNumber.DisplayMemberPath = "RoomNumber";
-                con.conClose();//close your connection
-                               /*  foreach (DataRowView item in cb_roomNumber.Items)
-                                 {
-                                     Console.WriteLine(item.Row["RoomNumber"]);
-                                 }*/
-          //      if (cb_roomNumber.Items.Count > 0)
-            //    {
-             //       cb_roomNumber.SelectedItem = patient.RoomNumber;
-              //  }
+                con.conClose();
+                int c = -1;
+                foreach (DataRowView item in cb_roomNumber.Items)
+                {
+                    c += 1;
+                    if(patient.RoomNumber == (int)item["RoomNumber"])
+                    {
+                        cb_roomNumber.SelectedIndex = c;
+                        break;
+                    }
+                }
+                //close your connection
+                /*  foreach (DataRowView item in cb_roomNumber.Items)
+                  {
+                      Console.WriteLine(item.Row["RoomNumber"]);
+                  }*/
+                //      if (cb_roomNumber.Items.Count > 0)
+                //    {
+                //       cb_roomNumber.SelectedItem = patient.RoomNumber;
+                //  }
 
 
             }

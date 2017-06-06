@@ -80,6 +80,8 @@ namespace Nursing_home_manager.Pages
                     }
                     if (reader["Authorization_to_leave"] != DBNull.Value)
                         patient.Authorization_to_leave = reader.GetBoolean(7);
+                    if (reader["RoomNumber"] != DBNull.Value)
+                        patient.RoomNumber = reader.GetInt32(11);
                     if (reader["Entry_Date"] != DBNull.Value)
                         patient.Entry_Date = reader.GetDateTime(9);
                     if (reader["Exit_Date"] != DBNull.Value)
