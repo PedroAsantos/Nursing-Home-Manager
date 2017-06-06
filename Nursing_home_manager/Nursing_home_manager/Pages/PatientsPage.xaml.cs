@@ -89,7 +89,7 @@ namespace Nursing_home_manager.Pages
                     if (reader["E_BedNumber"] != DBNull.Value)
                         patient.BedNumber = reader.GetInt32(8);
                     if (reader["DependentName"] != DBNull.Value)
-                        patient.DependentName = reader["NIF"].ToString();
+                        patient.DependentName = reader["DependentName"].ToString();
                     if (reader["DependentCC"] != DBNull.Value)
                         patient.DependentCC = reader["DependentCC"].ToString();
                     if (reader["DependentAddress"] != DBNull.Value)

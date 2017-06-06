@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\App.xaml
-81979364378
+11-484695967
 
-23-1397784100
+281536149877
 19-1331966628
-MainWindow.xaml;Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml;Pages\Dialogs\Patients\DialogAddPatient.xaml;Pages\Dialogs\Patients\DialogEditPatient.xaml;Pages\Dialogs\Patients\DialogPatientMainPage.xaml;Pages\Dialogs\Patients\DialogPatientMedicinesPage.xaml;Pages\HumanResourcesPage.xaml;Pages\PatientsPage.xaml;
+MainWindow.xaml;Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml;Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.xaml;Pages\Dialogs\Patients\DialogAddPatient.xaml;Pages\Dialogs\Patients\DialogEditPatient.xaml;Pages\Dialogs\Patients\DialogPatientMainPage.xaml;Pages\Dialogs\Patients\DialogPatientMedicinesPage.xaml;Pages\HumanResourcesPage.xaml;Pages\PatientsPage.xaml;
 
 False
 

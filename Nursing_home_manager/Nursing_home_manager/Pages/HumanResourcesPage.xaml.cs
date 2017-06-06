@@ -26,7 +26,7 @@ namespace Nursing_home_manager.Pages
     public partial class HumanResourcesPage : Page
     {
 
-        private ObservableCollection<HumanResource> listHumanResources;
+        private ObservableCollection<HumanResourceClass> listHumanResources;
         public HumanResourcesPage()
         {
             InitializeComponent();
@@ -45,10 +45,10 @@ namespace Nursing_home_manager.Pages
                 SqlDataReader reader = cmd.ExecuteReader();
                 //patientsList.Items.Clear();
                 //patientsList.ItemsSource =
-                listHumanResources = new ObservableCollection<HumanResource>();
+                listHumanResources = new ObservableCollection<HumanResourceClass>();
                 while (reader.Read())
                 {
-                    HumanResource humanResource = new HumanResource();
+                    HumanResourceClass humanResource = new HumanResourceClass();
                     if (reader["NIF"] != DBNull.Value)
                         humanResource.Nif = reader["NIF"].ToString();
                     if (reader["Name"] != DBNull.Value)
@@ -105,6 +105,48 @@ namespace Nursing_home_manager.Pages
             if (dialogAddHumanResource.ShowDialog() == true)
             {
                 InitializeHumanResourceList();
+            }
+        }
+        private void listView_Click(object sender, RoutedEventArgs e)
+        {
+            HumanResourceClass HumanResource = (HumanResourceClass)(sender as ListView).SelectedItem;
+            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+            con.conOpen();//method to open the connection.
+
+            //you should test if the connection is open or not
+         /*   if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            {
+
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatientDiseases(" + HumanResource.Nif + ")", con.Con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<Disease> listDiseases = new List<Disease>();
+                while (reader.Read())
+                {
+                    Disease disease = new Disease();
+                    if (reader["E_name"] != DBNull.Value)
+                        disease.Name = reader.GetString(0);
+                    if (reader["Seriousness"] != DBNull.Value)
+                        disease.Severity = reader.GetInt32(1);
+                    listDiseases.Add(disease);
+                }
+                patient.DiseaseList = listDiseases;
+                con.conClose();//close your connection
+
+            }
+            else
+            {
+                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//close the event
+            }*/
+
+            if (HumanResource != null)
+            {
+                DialogEditHumanResources dialogEditHumanResources = new DialogEditHumanResources(HumanResource);
+
+                if (dialogEditHumanResources.ShowDialog() == true)
+                {
+
+                }
             }
         }
     }

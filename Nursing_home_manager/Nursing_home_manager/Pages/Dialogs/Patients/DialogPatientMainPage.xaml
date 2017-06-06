@@ -5,6 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Nursing_home_manager.Pages"
       mc:Ignorable="d" 
+      xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"                      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
       d:DesignHeight="865" d:DesignWidth="520"
       Title="DialogPatientMainPage">
 
@@ -18,7 +27,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock  Foreground="#FF464343" Text="NIF:" Margin="0 15 15 0"/>
-            <TextBox x:Name="tb_NIF" Text="{Binding Nif}"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="433"/>
+            <TextBox IsEnabled="False" x:Name="tb_NIF" Text="{Binding Nif}"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="433"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>

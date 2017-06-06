@@ -31,8 +31,8 @@ CREATE TABLE exemplo1.Shift(
 
 CREATE TABLE exemplo1.ShiftInstance(
 	ID					INT 		NOT NULL IDENTITY(1, 1),
-	InicialDate			TIME,
-	FinalDate			TIME,
+	InicialDate			DATE,
+	FinalDate			DATE,
 	E_NIF				varchar(9)  		NOT NULL,
 	E_IDShift			INT 		NOT NULL,
 	PRIMARY KEY (ID),
@@ -41,7 +41,7 @@ CREATE TABLE exemplo1.ShiftInstance(
 );
 
 CREATE TABLE exemplo1.Faults(
-	Date		TIME,
+	Date		DATE,
 	E_ID		INT		NOT NULL,
 	FOREIGN KEY (E_ID) REFERENCES exemplo1.ShiftInstance(ID),
 	PRIMARY KEY (Date, E_ID)

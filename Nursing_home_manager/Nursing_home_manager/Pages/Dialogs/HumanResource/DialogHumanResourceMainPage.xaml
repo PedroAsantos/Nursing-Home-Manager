@@ -1,0 +1,69 @@
+﻿<Page x:Class="Nursing_home_manager.Pages.Dialogs.HumanResource.DialogHumanResourceMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Nursing_home_manager.Pages.Dialogs.HumanResource"
+      mc:Ignorable="d" 
+      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"                      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      d:DesignHeight="865" d:DesignWidth="520"
+      Title="DialogHumanResourceMainPage">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Edit Human Resource"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
+        <!--MAIN Human Resource DATA-->
+        <TextBlock Text="Main Human Resource Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Foreground="#FF464343" Text="Name:" Margin="0 15 5 0"/>
+            <TextBox Text="{Binding Name}" x:Name="tb_name" Foreground="#FF464343" Width="445"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock  Foreground="#FF464343" Text="NIF:" Margin="0 15 15 0"/>
+            <TextBox IsEnabled="False" Text="{Binding Nif}" x:Name="tb_NIF"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="443"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox Text="{Binding PhoneNumber}" x:Name="tb_phone"  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Address:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox Text="{Binding Address}" x:Name="tb_address"  Foreground="#FF464343" Width="435"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Salary:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox Text="{Binding Salary}" x:Name="tb_salary"  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="435"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Type: "  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <StackPanel Margin="15 8 25 0">
+                <ComboBox Width="150" x:Name="cb_designation" ItemsSource="{Binding}" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="StartDate: "  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox IsEnabled="False" Text="{Binding StartDate}" x:Name="tb_editsalary"  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="435"/>
+        </StackPanel>
+        <!--EXIT BUTTONS-->
+        <StackPanel Margin="0 20 10 0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button ToolTip="Add Patient" IsCancel="True" HorizontalAlignment="Right" Margin="0 0 20 0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"  Click="Button_Add">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
+                </Canvas>
+            </Button>
+            <Button ToolTip="Cancel" HorizontalAlignment="Right" Margin="0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" IsCancel="True">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,13.85 4.63,15.55 5.68,16.91L16.91,5.68C15.55,4.63 13.85,4 12,4M12,20A8,8 0 0,0 20,12C20,10.15 19.37,8.45 18.32,7.09L7.09,18.32C8.45,19.37 10.15,20 12,20Z" Fill="Black" />
+                </Canvas>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Page>

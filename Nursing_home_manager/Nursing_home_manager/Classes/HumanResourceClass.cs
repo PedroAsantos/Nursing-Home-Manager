@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nursing_home_manager.Classes
 {
-    public class HumanResource
+    public class HumanResourceClass
     {
         private string _Name;
         private string _Address;
@@ -15,7 +15,7 @@ namespace Nursing_home_manager.Classes
         private int _Salary;
         private DateTime _StartDate;
         private string _Type;
-        public HumanResource()
+        public HumanResourceClass()
         {
 
         }

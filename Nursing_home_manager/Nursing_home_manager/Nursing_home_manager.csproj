@@ -82,14 +82,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Disease.cs" />
-    <Compile Include="Classes\HumanResource.cs" />
+    <Compile Include="Classes\HumanResourceClass.cs" />
     <Compile Include="Classes\Medicine.cs" />
     <Compile Include="Classes\Patient.cs" />
+    <Compile Include="Classes\Shedule.cs" />
     <Compile Include="Classes\Sqlconnect.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml.cs">
       <DependentUpon>DialogAddHumanResource.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml.cs">
+      <DependentUpon>DialogEditHumanResources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml.cs">
+      <DependentUpon>DialogHumanResourceMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.xaml.cs">
+      <DependentUpon>DialogHumanResourceSchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\HumanResource\Schedule.cs" />
     <Compile Include="Pages\Dialogs\Patients\DialogAddPatient.xaml.cs">
       <DependentUpon>DialogAddPatient.xaml</DependentUpon>
     </Compile>
@@ -126,6 +137,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

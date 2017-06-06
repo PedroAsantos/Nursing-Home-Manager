@@ -29,7 +29,7 @@
                     </Canvas>
                 </Button>
             </Grid>
-            <ListView Margin="10" Name="humanResourcesList">
+            <ListView Margin="10" Name="humanResourcesList" MouseDoubleClick="listView_Click">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />

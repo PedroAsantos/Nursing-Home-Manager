@@ -4,7 +4,7 @@ CREATE PROCEDURE [dbo].[sp_insertHumanResources]
 	@Phone	INT,
 	@Address varchar(30),
 	@Salary	INT,
-	@Start_Date	DATE,
+	@Start_Date	DATE = null,
 	@E_IDType INT
  
 AS

@@ -70,3 +70,9 @@ C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\bin\Debug\MahApps.Metro.pdb
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\bin\Debug\MahApps.Metro.xml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogEditHumanResources.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogEditHumanResources.baml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.baml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.baml
