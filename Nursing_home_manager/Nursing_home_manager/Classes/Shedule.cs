@@ -12,6 +12,8 @@ namespace Nursing_home_manager.Classes
         private TimeSpan _EntryHour;
         private TimeSpan _ExitHour;
         private int _ID;
+        private int _NumberOfFaults;
+        private bool _FinalDate;
         public Shedule()
         {
 
@@ -22,6 +24,11 @@ namespace Nursing_home_manager.Classes
             get { return _Day; }
             set { _Day = value; }
         }
+        public bool FinalDate
+        {
+            get { return _FinalDate; }
+            set { _FinalDate = value; }
+        }
         public TimeSpan EntryHour
         {
             get { return _EntryHour; }
@@ -31,6 +38,11 @@ namespace Nursing_home_manager.Classes
         {
             get { return _ID; }
             set { _ID = value; }
+        }
+        public int NumberOfFaults
+        {
+            get { return _NumberOfFaults; }
+            set { _NumberOfFaults = value; }
         }
         public TimeSpan ExitHour
         {

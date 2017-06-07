@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\App.xaml
-11-484695967
+121462604040
 
-281536149877
+29-1684353002
 19-1331966628
-MainWindow.xaml;Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml;Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.xaml;Pages\Dialogs\Patients\DialogAddPatient.xaml;Pages\Dialogs\Patients\DialogEditPatient.xaml;Pages\Dialogs\Patients\DialogPatientMainPage.xaml;Pages\Dialogs\Patients\DialogPatientMedicinesPage.xaml;Pages\HumanResourcesPage.xaml;Pages\PatientsPage.xaml;
+MainWindow.xaml;Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml;Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceFaultsPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.xaml;Pages\Dialogs\Patients\DialogAddPatient.xaml;Pages\Dialogs\Patients\DialogEditPatient.xaml;Pages\Dialogs\Patients\DialogPatientMainPage.xaml;Pages\Dialogs\Patients\DialogPatientMedicinesPage.xaml;Pages\HumanResourcesPage.xaml;Pages\PatientsPage.xaml;
 
 False
 

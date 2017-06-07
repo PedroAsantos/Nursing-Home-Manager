@@ -21,7 +21,9 @@ namespace Nursing_home_manager.Pages.Dialogs.HumanResource
     public partial class DialogEditHumanResources : Window
     {
         private HumanResourceClass HumanResource;
-        DialogHumanResourceMainPage dialogHumanResourceMainPage;
+        private DialogHumanResourceMainPage dialogHumanResourceMainPage;
+        private DialogHumanResourceSchedulePage dialogPatientMedicinesPage;
+        private DialogHumanResourceFaultsPage dialogHumanResourceFaultsPage;
         public DialogEditHumanResources(HumanResourceClass HumanResource)
         {
             this.HumanResource = HumanResource;
@@ -37,9 +39,14 @@ namespace Nursing_home_manager.Pages.Dialogs.HumanResource
         }
         private void Click_toSchedule(object sender, RoutedEventArgs e)
         {
-            DialogHumanResourceSchedulePage dialogPatientMedicinesPage = new DialogHumanResourceSchedulePage(HumanResource);
+            dialogPatientMedicinesPage = new DialogHumanResourceSchedulePage(HumanResource);
             Frame.Content = dialogPatientMedicinesPage;
 
+        }
+        private void Click_toFatuls(object sender, RoutedEventArgs e)
+        {
+            dialogHumanResourceFaultsPage = new DialogHumanResourceFaultsPage(HumanResource);
+            Frame.Content = dialogHumanResourceFaultsPage;
         }
         private void myFrame_ContentRendered(object sender, EventArgs e)
         {
@@ -49,11 +56,18 @@ namespace Nursing_home_manager.Pages.Dialogs.HumanResource
             {
                 Button_HumanResourse.Background = (Brush)bc.ConvertFrom("#854DEE");
                 Button_Schedule.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_Faults.Background = (Brush)bc.ConvertFrom("#512DA8");
             }
-            else
+            else if(Frame.Content == dialogPatientMedicinesPage)
             {
                 Button_Schedule.Background = (Brush)bc.ConvertFrom("#854DEE");
                 Button_HumanResourse.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_Faults.Background = (Brush)bc.ConvertFrom("#512DA8");
+            }else
+            {
+                Button_Schedule.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_HumanResourse.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_Faults.Background = (Brush)bc.ConvertFrom("#854DEE");
             }
         }
     }

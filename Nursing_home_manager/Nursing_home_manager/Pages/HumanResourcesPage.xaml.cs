@@ -58,7 +58,7 @@ namespace Nursing_home_manager.Pages
                     if (reader["Phone"] != DBNull.Value)
                         humanResource.PhoneNumber = reader.GetInt32(2);
                     if (reader["StartDate"] != DBNull.Value)
-                        humanResource.StartDate = reader.GetDateTime(5);
+                        humanResource.StartDate = reader.GetDateTime(5).ToShortDateString();
                     if (reader["Salary"] != DBNull.Value)
                         humanResource.Salary = reader.GetInt32(4);
                     if (reader["Designation"] != DBNull.Value)

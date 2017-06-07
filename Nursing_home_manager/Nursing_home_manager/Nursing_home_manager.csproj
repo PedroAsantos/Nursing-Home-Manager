@@ -94,6 +94,9 @@
     <Compile Include="Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml.cs">
       <DependentUpon>DialogEditHumanResources.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dialogs\HumanResource\DialogHumanResourceFaultsPage.xaml.cs">
+      <DependentUpon>DialogHumanResourceFaultsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml.cs">
       <DependentUpon>DialogHumanResourceMainPage.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\HumanResource\DialogHumanResourceFaultsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

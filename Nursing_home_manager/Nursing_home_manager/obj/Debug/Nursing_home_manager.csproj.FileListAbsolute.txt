@@ -76,3 +76,5 @@ C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogEditHumanResources.baml
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.baml
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.baml
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceFaultsPage.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\Dialogs\HumanResource\DialogHumanResourceFaultsPage.baml

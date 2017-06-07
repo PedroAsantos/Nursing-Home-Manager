@@ -26,9 +26,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Click="Click_to_MainPage" x:Name="Button_HumanResourse" Content="Worker Data" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Margin="1 0 0 0"/>
             <Button Grid.Column="1" x:Name="Button_Schedule" Click="Click_toSchedule" Content="Schedule" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Margin="4 0 0 0"/>
+            <Button Grid.Column="2" x:Name="Button_Faults" Click="Click_toFatuls" Content="Faults" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Margin="4 0 0 0"/>
         </Grid>
         <Frame Grid.Row="1" x:Name="Frame"  ContentRendered="myFrame_ContentRendered"/>
 

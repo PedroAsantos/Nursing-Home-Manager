@@ -13,7 +13,7 @@ namespace Nursing_home_manager.Classes
         private int _PhoneNUmber;
         private string _NIF;
         private int _Salary;
-        private DateTime _StartDate;
+        private string _StartDate;
         private string _Type;
         public HumanResourceClass()
         {
@@ -45,7 +45,7 @@ namespace Nursing_home_manager.Classes
             get { return _Salary; }
             set { _Salary = value; }
         }
-        public DateTime StartDate
+        public string StartDate
         {
             get { return _StartDate; }
             set { _StartDate = value; }
