@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Nursing Home Manager" Height="900" Width="520">
+        Title="Nursing Home Manager" Height="900" Width="540">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -27,9 +27,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Click="Click_to_MainPage" x:Name="Button_Patient" Content="Patient Data" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Margin="1 0 0 0"/>
-            <Button Grid.Column="1" x:Name="Button_MedicineData" Click="Click_toMedicines" Content="Medicine Patient Data" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Margin="4 0 0 0"/>
+            <Button Grid.Column="1" x:Name="Button_MedicineData" Click="Click_toMedicines" Content="Medicine Data" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Margin="4 0 0 0"/>
+            <Button Grid.Column="2" x:Name="Button_Appointments" Click="Click_toAppointments" Content="Appointments" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Margin="4 0 0 0"/>
         </Grid>
         <Frame Grid.Row="1" x:Name="Frame"  ContentRendered="myFrame_ContentRendered"/>
 

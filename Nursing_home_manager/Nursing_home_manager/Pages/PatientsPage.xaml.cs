@@ -71,21 +71,20 @@ namespace Nursing_home_manager.Pages
                     if (reader["Age"] != DBNull.Value)
                         patient.Age = reader.GetInt32(4);
                     if(reader["Check_in"] != DBNull.Value)
-                        patient.Check_in = reader.GetDateTime(5);
+                        patient.Check_in = reader.GetDateTime(5).ToShortDateString();
                     if (reader["Check_out"] != DBNull.Value)
                     {
                         var sad = reader.GetDateTime(2);
-                        patient.Check_out = new DateTime(sad.Year, sad.Month, sad.Day);
-                        Console.WriteLine(patient.Check_out);
+                        patient.Check_out = new DateTime(sad.Year, sad.Month, sad.Day).ToShortDateString();
                     }
                     if (reader["Authorization_to_leave"] != DBNull.Value)
                         patient.Authorization_to_leave = reader.GetBoolean(7);
                     if (reader["RoomNumber"] != DBNull.Value)
                         patient.RoomNumber = reader.GetInt32(11);
                     if (reader["Entry_Date"] != DBNull.Value)
-                        patient.Entry_Date = reader.GetDateTime(9);
+                        patient.Entry_Date = reader.GetDateTime(9).ToShortDateString();
                     if (reader["Exit_Date"] != DBNull.Value)
-                        patient.Exit_Date = reader.GetDateTime(10);
+                        patient.Exit_Date = reader.GetDateTime(10).ToShortDateString();
                     if (reader["E_BedNumber"] != DBNull.Value)
                         patient.BedNumber = reader.GetInt32(8);
                     if (reader["DependentName"] != DBNull.Value)

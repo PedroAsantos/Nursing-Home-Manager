@@ -15,11 +15,11 @@ namespace Nursing_home_manager.Classes
         private bool _isFemale;
         private int _Phone;
         private int _Age;
-        private DateTime _Check_in;
-        private DateTime _Check_out;
+        private string _Check_in;
+        private string _Check_out;
         private bool _Authorization_to_leave;
-        private DateTime _Entry_Date;
-        private DateTime _Exit_Date;
+        private string _Entry_Date;
+        private string _Exit_Date;
         private int _BedNumber;
         private int _RoomNumber;
         private List<Disease> _DiseaseList;
@@ -29,7 +29,7 @@ namespace Nursing_home_manager.Classes
         private string _DependentAddress;
         private string _DependentKinship;
 
-        public Patient(string Nif, string name, string sex, int phone, int age, DateTime check_in, DateTime check_out, bool authorization_to_leave, DateTime Entry_Date, DateTime Exit_Date, int BedNumber, int RoomNumber,List<Disease> diseaseList, string DependentName, string DependentCC, int DependentPhone, string DependentAddress, string DependentKinship)
+        public Patient(string Nif, string name, string sex, int phone, int age, string check_in, string check_out, bool authorization_to_leave, string Entry_Date, string Exit_Date, int BedNumber, int RoomNumber,List<Disease> diseaseList, string DependentName, string DependentCC, int DependentPhone, string DependentAddress, string DependentKinship)
         {
             this._Nif = Nif;
             this._Name = name;
@@ -59,12 +59,12 @@ namespace Nursing_home_manager.Classes
             get { return _Nif; }
             set { _Nif = value; }
         }
-        public String Name
+        public string Name
         {
             get { return _Name; }
             set { _Name = value; }
         }
-        public String Sex
+        public string Sex
         {
             get { return _sex; }
             set { _sex = value; }
@@ -89,12 +89,12 @@ namespace Nursing_home_manager.Classes
             get { return _Age; }
             set { _Age = value; }
         }
-        public DateTime Check_in
+        public string Check_in
         {
             get { return _Check_in; }
             set { _Check_in = value; }
         }
-        public DateTime Check_out
+        public string Check_out
         {
             get { return _Check_out; }
             set { _Check_out = value; }
@@ -104,12 +104,12 @@ namespace Nursing_home_manager.Classes
             get { return _Authorization_to_leave; }
             set { _Authorization_to_leave = value; }
         }
-        public DateTime Entry_Date
+        public string Entry_Date
         {
             get { return _Entry_Date; }
             set { _Entry_Date = value; }
         }
-        public DateTime Exit_Date
+        public string Exit_Date
         {
             get { return _Exit_Date; }
             set { _Exit_Date = value; }

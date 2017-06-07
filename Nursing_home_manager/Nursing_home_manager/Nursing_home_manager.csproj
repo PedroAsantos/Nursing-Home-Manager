@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Appointment.cs" />
     <Compile Include="Classes\Disease.cs" />
     <Compile Include="Classes\HumanResourceClass.cs" />
     <Compile Include="Classes\Medicine.cs" />
@@ -104,11 +105,17 @@
       <DependentUpon>DialogHumanResourceSchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Dialogs\HumanResource\Schedule.cs" />
+    <Compile Include="Pages\Dialogs\Patients\DialogAddDoctor.xaml.cs">
+      <DependentUpon>DialogAddDoctor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\Patients\DialogAddPatient.xaml.cs">
       <DependentUpon>DialogAddPatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Dialogs\Patients\DialogEditPatient.xaml.cs">
       <DependentUpon>DialogEditPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\Patients\DialogPatientAppointmentPage.xaml.cs">
+      <DependentUpon>DialogPatientAppointmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Dialogs\Patients\DialogPatientMainPage.xaml.cs">
       <DependentUpon>DialogPatientMainPage.xaml</DependentUpon>
@@ -159,11 +166,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Dialogs\Patients\DialogAddDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Dialogs\Patients\DialogAddPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Dialogs\Patients\DialogEditPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\Patients\DialogPatientAppointmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -21,7 +21,7 @@
     <StackPanel Margin="15">
         
         <TextBlock Text="Schedule"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
-        <ListView x:Name="listView" Height="280" ItemsSource="{Binding DiseaseList}">
+        <ListView x:Name="listView" Height="280" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Day" Width="140" DisplayMemberBinding="{Binding Day}" />

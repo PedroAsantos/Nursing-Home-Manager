@@ -14,7 +14,7 @@
       TextOptions.TextRenderingMode="Auto"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}"
-      d:DesignHeight="865" d:DesignWidth="520"
+      d:DesignHeight="865" d:DesignWidth="540"
       Title="DialogPatientMainPage">
 
     <StackPanel Margin="20">
@@ -23,11 +23,11 @@
         <TextBlock Text="Main Patient Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Foreground="#FF464343" Text="Name:" Margin="0 15 5 0"/>
-            <TextBox x:Name="tb_name" Text="{Binding Name}"  Foreground="#FF464343" Width="433"/>
+            <TextBox x:Name="tb_name" Text="{Binding Name}"  Foreground="#FF464343" Width="463"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock  Foreground="#FF464343" Text="NIF:" Margin="0 15 15 0"/>
-            <TextBox IsEnabled="False" x:Name="tb_NIF" Text="{Binding Nif}"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="433"/>
+            <TextBox IsEnabled="False" x:Name="tb_NIF" Text="{Binding Nif}"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="463"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
@@ -97,11 +97,11 @@
         <TextBlock Text="Dependente Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Name:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="433" Foreground="#FF464343" Text="{Binding DependentName}"/>
+            <TextBox Width="463" Foreground="#FF464343" Text="{Binding DependentName}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="CC:"  PreviewTextInput="NumberValidationTextBox" Foreground="#FF464343" Margin="0 15 18 0"/>
-            <TextBox Width="437"  Foreground="#FF464343" Text="{Binding DependentCC}" />
+            <TextBox Width="467"  Foreground="#FF464343" Text="{Binding DependentCC}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
@@ -109,7 +109,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Address:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="430" Text="{Binding DependentAddress}"/>
+            <TextBox Width="450" Text="{Binding DependentAddress}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Kinship Degree:"  Foreground="#FF464343" Margin="0 15 5 0"/>

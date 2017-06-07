@@ -1,4 +1,5 @@
 ﻿using Nursing_home_manager.Classes;
+using Nursing_home_manager.Pages.Dialogs.Patients;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,8 @@ namespace Nursing_home_manager.Pages
     {
         private Patient patient;
         DialogPatientMainPage dialogPatientMainPage;
+        DialogPatientAppointmentPage dialogPatientAppointmentPage;
+        DialogPatientMedicinesPage dialogPatientMedicinesPage;
         public DialogEditPatient(Patient patient)
         {
             this.patient = patient;
@@ -40,9 +43,14 @@ namespace Nursing_home_manager.Pages
         }
         private void Click_toMedicines(object sender, RoutedEventArgs e)
         {
-            DialogPatientMedicinesPage dialogPatientMedicinesPage = new DialogPatientMedicinesPage(patient);
+            dialogPatientMedicinesPage = new DialogPatientMedicinesPage(patient);
             Frame.Content = dialogPatientMedicinesPage;
              
+        }
+        private void Click_toAppointments(object sender, RoutedEventArgs e)
+        {
+            dialogPatientAppointmentPage = new DialogPatientAppointmentPage(patient);
+            Frame.Content = dialogPatientAppointmentPage;
         }
         private void myFrame_ContentRendered(object sender, EventArgs e)
         {
@@ -51,11 +59,18 @@ namespace Nursing_home_manager.Pages
             if (Frame.Content == dialogPatientMainPage) {
                 Button_Patient.Background = (Brush)bc.ConvertFrom("#854DEE");
                 Button_MedicineData.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_Appointments.Background = (Brush)bc.ConvertFrom("#512DA8");
             }
-            else
+            else if(Frame.Content == dialogPatientMedicinesPage)
             {
                 Button_MedicineData.Background = (Brush)bc.ConvertFrom("#854DEE");
-                Button_Patient.Background = (Brush)bc.ConvertFrom("#512DA8"); 
+                Button_Patient.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_Appointments.Background = (Brush)bc.ConvertFrom("#512DA8");
+            }else
+            {
+                Button_MedicineData.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_Patient.Background = (Brush)bc.ConvertFrom("#512DA8");
+                Button_Appointments.Background = (Brush)bc.ConvertFrom("#854DEE");
             }
         }
     }
