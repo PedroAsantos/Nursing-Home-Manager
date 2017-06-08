@@ -11,24 +11,80 @@
 
     <Grid Margin="20 10 0 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="7.9*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.35*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
+        
+        
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" Foreground="#FF5B5757" Text="Patients List" Margin="15 0 10 10" FontSize="37" FontFamily="Arial Black"/>
+            <Button Background="{DynamicResource PrimaryHueMidForegroundBrush}" Grid.Column="1" Margin="0 0 20 0"  ToolTip="Search Patient" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}" >
+                <Canvas Width="24" Height="24">
+                    <Path Data="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.43,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.43C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,14C11.11,14 12.5,13.15 13.32,11.88C12.5,10.75 11.11,10 9.5,10C7.89,10 6.5,10.75 5.68,11.88C6.5,13.15 7.89,14 9.5,14M9.5,5A1.75,1.75 0 0,0 7.75,6.75A1.75,1.75 0 0,0 9.5,8.5A1.75,1.75 0 0,0 11.25,6.75A1.75,1.75 0 0,0 9.5,5Z" Fill="Black" />
+                </Canvas>
+            </Button>
+        </Grid>
 
 
-        <StackPanel Grid.Row="0">
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Left" Foreground="#FF5B5757" Text="Patients List" Margin="15 0 10 10" FontSize="37" FontFamily="Arial Black"/>
-                <Button Background="{DynamicResource PrimaryHueMidForegroundBrush}" Grid.Column="1" Margin="0 0 20 0"  ToolTip="Search Patient" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}" >
-                    <Canvas Width="24" Height="24">
-                        <Path Data="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.43,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.43C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,14C11.11,14 12.5,13.15 13.32,11.88C12.5,10.75 11.11,10 9.5,10C7.89,10 6.5,10.75 5.68,11.88C6.5,13.15 7.89,14 9.5,14M9.5,5A1.75,1.75 0 0,0 7.75,6.75A1.75,1.75 0 0,0 9.5,8.5A1.75,1.75 0 0,0 11.25,6.75A1.75,1.75 0 0,0 9.5,5Z" Fill="Black" />
-                    </Canvas>
-                </Button>
-            </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="20 0 0 0">
+                <TextBlock Text="Search Options:" FontSize="14" Margin="0 7 10 0" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Patient Name:" Margin="0 5 10 0" />
+                    <TextBox x:Name="tb_patientName"  KeyUp="InitializePatientList" Width="100" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Patient Nif:" Margin="0 5 10 0" />
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_patientNif"   KeyUp="InitializePatientList" Width="130" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Patient Phone:" Margin="0 5 10 0" />
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_patientPhone"   KeyUp="InitializePatientList" Width="130" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0 20 0 0" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Patient Room:" Margin="0 5 10 0" />
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_patientRoom"   KeyUp="InitializePatientList" Width="130" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Authorization to leave:" Margin="0 5 20 0" />
+                    <TextBlock Text="Yes:" Margin="0 5 10 0" />
+                    <CheckBox Margin="0 0 11 0" x:Name="cb_authorizationYes" IsChecked="False" Click="CheckBox_Click" />
+                    <TextBlock Text="No:" Margin="0 5 10 0" />
+                    <CheckBox x:Name="cb_authorizationNo" IsChecked="False" Click="CheckBox_Click" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="sex:" Margin="0 5 10 0" />
+                    <TextBlock Text="f" Margin="5 5 10 0" />
+                    <CheckBox x:Name="cb_female" Margin="0 0 10 0" IsChecked="False" Click="CheckBox_Click" />
+                    <TextBlock Text="m" Margin="0 5 10 0" />
+                    <CheckBox x:Name="cb_male"  IsChecked="False" Click="CheckBox_Click" />
+                    <TextBlock Margin="550 5 10 0" Text="Show Only Patients with no Checkout:" FontSize="14" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+                    <CheckBox x:Name="cb_checkout"  IsChecked="True" Click="CheckBox_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+
+
+
+
+
+
+        <StackPanel Grid.Row="2">
             <ListView Margin="10" Name="patientsList" MouseDoubleClick="listView_Click">
                 <ListView.View>
                     <GridView>
@@ -51,13 +107,16 @@
             </ListView>
         </StackPanel>
 
-        <Button Margin="0 0 20 0" Grid.Row="1" ToolTip="Add Patient" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}" Click="Button_AddPatient">
+        <Button Margin="0 0 20 0" Grid.Row="4" ToolTip="Add Patient" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}" Click="Button_AddPatient">
             <Canvas Width="24" Height="24">
                 <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
             </Canvas>
         </Button>
-
-
+        <StackPanel Margin="0 0 70 0" Grid.Row="4" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="bt_beforePage" Click="Button_BeforePage" Grid.Row="1" Width="100">Back</Button>
+            <Button x:Name="bt_nextPage" Grid.Row="1" Margin="10 0 0 0" Width="100" Click="Button_NextPage">Next</Button>
+        </StackPanel>
+        
     </Grid>
    
 </Page>

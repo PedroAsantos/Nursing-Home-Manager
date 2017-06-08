@@ -13,6 +13,7 @@
             <RowDefinition Height="0.35*" />
             <RowDefinition Height="0.67*" />
             <RowDefinition Height="4*" />
+            <RowDefinition Height="0.3*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -32,22 +33,22 @@
                 <TextBlock Text="Search Options:" FontSize="14" Margin="0 7 10 0" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Doctor Name:" Margin="0 5 10 0" />
-                    <TextBox x:Name="tb_doctorName" KeyUp="TextBox_KeyUp" Width="100" />
+                    <TextBox x:Name="tb_doctorName" KeyUp="loadAppointmentsList" Width="100" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Doctor Nif:" Margin="0 5 10 0" />
-                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_doctorNif"  KeyUp="TextBox_KeyUp" Width="115" />
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_doctorNif"  KeyUp="loadAppointmentsList" Width="115" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Patient Name:" Margin="0 5 10 0" />
-                    <TextBox x:Name="tb_patientName"  KeyUp="TextBox_KeyUp" Width="100" />
+                    <TextBox x:Name="tb_patientName"  KeyUp="loadAppointmentsList" Width="100" />
                 </StackPanel>
 
             </StackPanel>
             <StackPanel Margin="0 20 0 0" Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Patient Nif:" Margin="0 5 10 0" />
-                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_patientNif"   KeyUp="TextBox_KeyUp" Width="130" />
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_patientNif"   KeyUp="loadAppointmentsList" Width="130" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Speciality:" Margin="0 5 10 0" />
@@ -87,7 +88,10 @@
                 </ListView.View>
             </ListView>
         </StackPanel>
-
+        <StackPanel Margin="0 0 70 0" Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="bt_beforePage" Click="Button_BeforePage" Grid.Row="1" Width="100">Back</Button>
+            <Button x:Name="bt_nextPage" Grid.Row="1" Margin="10 0 0 0" Width="100" Click="Button_NextPage">Next</Button>
+        </StackPanel>
     </Grid>
 
 </Page>

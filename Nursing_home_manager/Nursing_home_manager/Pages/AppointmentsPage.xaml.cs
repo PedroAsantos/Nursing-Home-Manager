@@ -25,71 +25,18 @@ namespace Nursing_home_manager.Pages
     /// </summary>
     public partial class AppointmentsPage : Page
     {
+
+        private int numberPage = 1;
         public AppointmentsPage()
         {
             InitializeComponent();
-            initializeList();
+            loadAppointmentsList(null,null);
             cb_Speciality.SelectionChanged += dp_datepicker_SelectedDateChanged;
+            bt_beforePage.Opacity = 0;
+            bt_beforePage.IsEnabled = false;
         }
 
-        private void initializeList()
-        {
-            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
-            con.conOpen();//method to open the connection.
-
-            //you should test if the connection is open or not
-            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
-            {
-
-                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getAppointments()", con.Con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                //patientsList.Items.Clear();
-                //patientsList.ItemsSource =
-                ObservableCollection<Appointment> listAppointments = new ObservableCollection<Appointment>();
-                while (reader.Read())
-                {
-                    Appointment appointment = new Appointment();
-                    if (reader["DoctorNIF"] != DBNull.Value)
-                        appointment.DoctorNif = reader["DoctorNIF"].ToString();
-                    if (reader["DoctorName"] != DBNull.Value)
-                        appointment.DoctorName = reader["DoctorName"].ToString();
-                    if (reader["PatientNIF"] != DBNull.Value)
-                        appointment.PatientNif = reader["PatientNIF"].ToString();
-                    if (reader["PatientName"] != DBNull.Value)
-                        appointment.PatientName = reader.GetString(3);
-                    if (reader["Date"] != DBNull.Value)
-                        appointment.Date = reader.GetDateTime(4);
-                    if (reader["Speciality"] != DBNull.Value)
-                        appointment.Speciality = reader.GetString(5);
-
-                    if (DateTime.Compare(appointment.Date, DateTime.Now) < 0)
-                    {
-                        appointment.Occurred = true;
-                        if (checkBox.IsChecked.Value == false)
-                        {
-                            listAppointments.Add(appointment);
-                        }
-                    }
-                    else
-                    {
-                        appointment.Occurred = false;
-                        listAppointments.Add(appointment);
-                    }
-
-                }
-                //make your query
-                appointmentList.ItemsSource = null;
-                appointmentList.Items.Clear();
-                appointmentList.ItemsSource = listAppointments;
-                con.conClose();//close your connection
-
-            }
-            else
-            {
-                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//close the event
-            }
-        }
+      
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -98,10 +45,10 @@ namespace Nursing_home_manager.Pages
         }
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
-            TextBox_KeyUp(null, null);
+            loadAppointmentsList(null, null);
         }
 
-        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        private void loadAppointmentsList(object sender, KeyEventArgs e)
         {
             Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
             con.conOpen();//method to open the connection.
@@ -110,8 +57,10 @@ namespace Nursing_home_manager.Pages
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT * from dbo.searchAppointments(@DoctorNif,@PatientNif,@DoctorName,@PatientName,@Date,@Speciality)", con.Con);
-                if(tb_doctorNif.Text != "")
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.searchAppointments(@DoctorNif,@PatientNif,@DoctorName,@PatientName,@Date,@Speciality,@PageNumber,@RowsNumber)", con.Con);
+                cmd.Parameters.AddWithValue("@PageNumber", numberPage);
+                cmd.Parameters.AddWithValue("@RowsNumber", 22);
+                if (tb_doctorNif.Text != "")
                     cmd.Parameters.AddWithValue("@DoctorNif", tb_doctorNif.Text);
                 else
                     cmd.Parameters.AddWithValue("@DoctorNif", DBNull.Value);
@@ -178,6 +127,16 @@ namespace Nursing_home_manager.Pages
                 appointmentList.ItemsSource = null;
                 appointmentList.Items.Clear();
                 appointmentList.ItemsSource = listAppointments;
+                if (listAppointments.Count < 22)
+                {
+                    bt_nextPage.Opacity = 0;
+                    bt_nextPage.IsEnabled = false;
+                }
+                else
+                {
+                    bt_nextPage.Opacity = 1;
+                    bt_nextPage.IsEnabled = true;
+                }
                 con.conClose();
             }
         }
@@ -188,11 +147,32 @@ namespace Nursing_home_manager.Pages
         }
         private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TextBox_KeyUp(null, null);
+            loadAppointmentsList(null, null);
         }
         private void dp_datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            TextBox_KeyUp(null, null);
+            loadAppointmentsList(null, null);
+        }
+        private void Button_NextPage(object sender, RoutedEventArgs e)
+        {
+            numberPage += 1;
+            if (numberPage > 1)
+            {
+                bt_beforePage.Opacity = 1;
+                bt_beforePage.IsEnabled = true;
+            }
+            loadAppointmentsList(null,null);
+        }
+        private void Button_BeforePage(object sender, RoutedEventArgs e)
+        {
+
+            numberPage -= 1;
+            if (numberPage == 1)
+            {
+                bt_beforePage.Opacity = 0;
+                bt_beforePage.IsEnabled = false;
+            }
+            loadAppointmentsList(null,null);
         }
     }
 }
