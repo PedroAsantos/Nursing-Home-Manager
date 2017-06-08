@@ -1,0 +1,38 @@
+﻿<Window x:Class="Nursing_home_manager.Pages.Dialogs.Visits.DialogAddVisitor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nursing_home_manager.Pages.Dialogs.Visits"
+        mc:Ignorable="d"
+        Title="DialogAddVisitor" Height="350" Width="360">
+    <StackPanel Margin="10">
+        <!--MAIN Visitor DATA-->
+        <TextBlock Text="Add New Visitor" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Foreground="#FF464343" Text="Name:" Margin="0 15 5 0"/>
+            <TextBox x:Name="tb_name" Foreground="#FF464343" Width="433"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock  Foreground="#FF464343" Text="CC:" Margin="0 15 15 0"/>
+            <TextBox x:Name="tb_CC"  Foreground="#FF464343" PreviewTextInput="NumberValidationTextBox" Width="433"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
+            <TextBox x:Name="tb_phone"  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Foreground="#FF464343" Text="Address:" Margin="0 15 5 0"/>
+            <TextBox x:Name="tb_address" Foreground="#FF464343" Width="433"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Foreground="#FF464343" Text="Relationship:" Margin="0 15 5 0"/>
+            <TextBox x:Name="tb_relationShip" Foreground="#FF464343" Width="433"/>
+        </StackPanel>
+        <StackPanel  Orientation="Horizontal" >
+            <TextBlock Foreground="#FF464343" Text="Is Family:" Margin="0 15 5 0"/>
+            <CheckBox x:Name="cb_checkBox" IsChecked="True" Margin="2 12 0 0"/>
+        </StackPanel>
+        <Button HorizontalAlignment="Right" Margin="0 5 10 0">Add Visitor</Button>
+    </StackPanel>
+</Window>

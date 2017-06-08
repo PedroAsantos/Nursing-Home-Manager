@@ -29,7 +29,7 @@
             <Button Content="Patients" Margin="5 15 5 5" Click="Button_Patients_Click"/>
             <Button Content="Human Resources" Margin="5" Click="Button_Human_Resources_Click" />
             <Button Content="Appointments" Margin="5" Click="Button_Appointments_Click"/>
-            <Button Content="Visits" Margin="5" />
+            <Button Content="Visits" Margin="5"  Click="Button_Visits_Click"/>
         </StackPanel>
         <Frame Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
 

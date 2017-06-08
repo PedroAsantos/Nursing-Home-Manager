@@ -11,24 +11,60 @@
 
     <Grid Margin="20 10 0 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="7.9*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.20*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="0.13*" />
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" Foreground="#FF5B5757" Text="Human Resources List" Margin="15 0 10 10" FontSize="37" FontFamily="Arial Black"/>
+        </Grid>
 
-        <StackPanel Grid.Row="0">
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Left" Foreground="#FF5B5757" Text="Human Resources List" Margin="15 0 10 10" FontSize="37" FontFamily="Arial Black"/>
-                <Button Background="{DynamicResource PrimaryHueMidForegroundBrush}" Grid.Column="1" Margin="0 0 20 0"  ToolTip="Search Worker" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}" >
-                    <Canvas Width="24" Height="24">
-                        <Path Data="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.43,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.43C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,14C11.11,14 12.5,13.15 13.32,11.88C12.5,10.75 11.11,10 9.5,10C7.89,10 6.5,10.75 5.68,11.88C6.5,13.15 7.89,14 9.5,14M9.5,5A1.75,1.75 0 0,0 7.75,6.75A1.75,1.75 0 0,0 9.5,8.5A1.75,1.75 0 0,0 11.25,6.75A1.75,1.75 0 0,0 9.5,5Z" Fill="Black" />
-                    </Canvas>
-                </Button>
-            </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="20 0 0 0">
+                <TextBlock Text="Search Options:" FontSize="14" Margin="0 7 10 0" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Worker Name:" Margin="0 5 10 0" />
+                    <TextBox x:Name="tb_workerName"  KeyUp="loadHumanResourceList" Width="100" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Worker Nif:" Margin="0 5 10 0" />
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_workerNif"   KeyUp="loadHumanResourceList" Width="130" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Worker Phone:" Margin="0 5 10 0" />
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_workerPhone"   KeyUp="loadHumanResourceList" Width="130" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0 20 0 0" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Worker Address:" Margin="0 5 10 0" />
+                    <TextBox Name="tb_workerAddress"   KeyUp="loadHumanResourceList" Width="130" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Worker Type:" Margin="0 5 20 0" />
+                    <ComboBox Width="150" x:Name="cb_designation" ItemsSource="{Binding}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Height="20" FontSize="10" Margin="0 10 0 0" Click="Button_Click_ClearFields" Content="Clear All Fields"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+
+
+        <StackPanel Grid.Row="2">
             <ListView Margin="10" Name="humanResourcesList" MouseDoubleClick="listView_Click">
                 <ListView.View>
                     <GridView>
@@ -44,12 +80,15 @@
             </ListView>
         </StackPanel>
 
-        <Button Margin="0 0 20 0" Grid.Row="1" Click="Button_AddHumanResource" ToolTip="Add Human Resource" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}">
+        <Button Margin="0 0 20 0" Grid.Row="4" Click="Button_AddHumanResource" ToolTip="Add Human Resource" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFloatingActionLightButton}">
             <Canvas Width="24" Height="24">
                 <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
             </Canvas>
         </Button>
-
+        <StackPanel Margin="0 0 70 0" Grid.Row="4" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="bt_beforePage" Click="Button_BeforePage" Grid.Row="1" Width="100">Back</Button>
+            <Button x:Name="bt_nextPage" Grid.Row="1" Margin="10 0 0 0" Width="100" Click="Button_NextPage">Next</Button>
+        </StackPanel>
 
     </Grid>
 

@@ -145,10 +145,7 @@ namespace Nursing_home_manager.Pages
         {
             dp_datepicker.SelectedDate = null;
         }
-        private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            loadAppointmentsList(null, null);
-        }
+      
         private void dp_datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             loadAppointmentsList(null, null);

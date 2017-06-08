@@ -43,5 +43,10 @@ namespace Nursing_home_manager
             AppointmentsPage appointmentsPage = new AppointmentsPage();
             MainFrame.Content = appointmentsPage;
         }
+        private void Button_Visits_Click(object sender, RoutedEventArgs e)
+        {
+            VisitsPage visitsPage = new VisitsPage();
+            MainFrame.Content = visitsPage;
+        }
     }
 }

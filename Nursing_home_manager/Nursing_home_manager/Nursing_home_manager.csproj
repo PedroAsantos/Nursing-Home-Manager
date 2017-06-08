@@ -88,6 +88,7 @@
     <Compile Include="Classes\Patient.cs" />
     <Compile Include="Classes\Shedule.cs" />
     <Compile Include="Classes\Sqlconnect.cs" />
+    <Compile Include="Classes\Visit.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Pages\AppointmentsPage.xaml.cs">
       <DependentUpon>AppointmentsPage.xaml</DependentUpon>
@@ -126,11 +127,20 @@
     <Compile Include="Pages\Dialogs\Patients\DialogPatientMedicinesPage.xaml.cs">
       <DependentUpon>DialogPatientMedicinesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dialogs\Visits\DialogAddVisit.xaml.cs">
+      <DependentUpon>DialogAddVisit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\Visits\DialogAddVisitor.xaml.cs">
+      <DependentUpon>DialogAddVisitor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HumanResourcesPage.xaml.cs">
       <DependentUpon>HumanResourcesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PatientsPage.xaml.cs">
       <DependentUpon>PatientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\VisitsPage.xaml.cs">
+      <DependentUpon>VisitsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverters.cs" />
@@ -197,11 +207,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Dialogs\Visits\DialogAddVisit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\Visits\DialogAddVisitor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HumanResourcesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PatientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\VisitsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

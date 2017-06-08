@@ -48,7 +48,7 @@ namespace Nursing_home_manager.Pages
 
                 SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients(@PatientNif,@PatientName,@Sex,@authorization,@RoomNumber,@PhoneNUmber,@Checkout,@PageNumber,@RowsPage)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
-                cmd.Parameters.AddWithValue("@RowsPage", 15);
+                cmd.Parameters.AddWithValue("@RowsPage", 19);
                 if (tb_patientNif.Text != "")
                     cmd.Parameters.AddWithValue("@PatientNif", tb_patientNif.Text);
                 else
@@ -146,7 +146,7 @@ namespace Nursing_home_manager.Pages
                 //make your query
                 patientsList.ItemsSource = listPatients;
                 con.conClose();//close your connection
-                if(listPatients.Count < 15)
+                if(listPatients.Count < 19)
                 {
                     bt_nextPage.Opacity = 0;
                     bt_nextPage.IsEnabled = false;
@@ -243,5 +243,6 @@ namespace Nursing_home_manager.Pages
             e.Handled = regex.IsMatch(e.Text);
 
         }
+
     }
 }
