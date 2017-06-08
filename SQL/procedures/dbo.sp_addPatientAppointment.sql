@@ -17,24 +17,24 @@ BEGIN
 				return;
 		end
 		
-		Declare @dateClosest DateTime;
+		--Declare @dateClosest DateTime;
 		Declare @disable BIT;
 		SET @Disable = 0 ; 
-		SELECT TOP 1 @dateClosest = Date  FROM exemplo1.APPOINTMENT WHERE E_PatientNIF=@PatientNif AND exemplo1.APPOINTMENT.Date < @Date ORDER BY exemplo1.APPOINTMENT.Date DESC;
+		--SELECT TOP 1 @dateClosest = Date  FROM exemplo1.APPOINTMENT WHERE E_PatientNIF=@PatientNif AND exemplo1.APPOINTMENT.Date < @Date ORDER BY exemplo1.APPOINTMENT.Date DESC;
 		
-		if(DATEDIFF(hour, @dateClosest,@Date) < 1)
-		begin
-			INSERT INTO exemplo1.APPOINTMENT values (
-					@DoctorNif,
-					@PatientNif,
-					@Date,
-					@Speciality,
-					@Disable
-			 )
-			return 0;
-		end
-		ELSE
-		begin
+	--	if(DATEDIFF(hour, @dateClosest,@Date) < 1)
+	--	begin
+	--		INSERT INTO exemplo1.APPOINTMENT values (
+	--				@DoctorNif,
+	--				@PatientNif,
+	--				@Date,
+	--				@Speciality,
+	--				@Disable
+	--		 )
+	--		return;
+	--	end
+    --ELSE
+	--	begin
 			 INSERT INTO exemplo1.APPOINTMENT values (
 					@DoctorNif,
 					@PatientNif,
@@ -43,6 +43,6 @@ BEGIN
 					@Disable
 			 )
 
-			return 1;
-		end
+			return;
+	--	end
 end

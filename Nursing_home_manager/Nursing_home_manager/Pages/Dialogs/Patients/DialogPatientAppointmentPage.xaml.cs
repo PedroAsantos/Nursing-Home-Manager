@@ -149,7 +149,7 @@ namespace Nursing_home_manager.Pages.Dialogs.Patients
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("sp_deletePatientAppointment", con.Con);
+                    SqlCommand cmd = new SqlCommand("sp_deleteAppointment", con.Con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", appointment.ID);
                     cmd.ExecuteNonQuery();

@@ -13,11 +13,30 @@ namespace Nursing_home_manager.Classes
         private string _Speciality;
         private int _ID;
         private bool _Occurred;
+        //toAppointmentList
+        private string _PatientName;
+        private string _DoctorNif;
+        private string _PatientNif;
+
         public Appointment()
         {
 
         }
-
+        public string PatientName
+        {
+            get { return _PatientName; }
+            set { _PatientName = value; }
+        }
+        public string DoctorNif
+        {
+            get { return _DoctorNif; }
+            set { _DoctorNif = value; }
+        }
+        public string PatientNif
+        {
+            get { return _PatientNif; }
+            set { _PatientNif = value; }
+        }
         public string DoctorName
         {
             get { return _DoctorName; }

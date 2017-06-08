@@ -89,6 +89,9 @@
     <Compile Include="Classes\Shedule.cs" />
     <Compile Include="Classes\Sqlconnect.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="Pages\AppointmentsPage.xaml.cs">
+      <DependentUpon>AppointmentsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml.cs">
       <DependentUpon>DialogAddHumanResource.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AppointmentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -38,5 +38,10 @@ namespace Nursing_home_manager
             HumanResourcesPage humanResourcesPage= new HumanResourcesPage();
             MainFrame.Content = humanResourcesPage; 
         }
+        private void Button_Appointments_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage appointmentsPage = new AppointmentsPage();
+            MainFrame.Content = appointmentsPage;
+        }
     }
 }
