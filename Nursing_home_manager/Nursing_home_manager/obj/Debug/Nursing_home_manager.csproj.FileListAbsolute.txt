@@ -90,3 +90,5 @@ C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.csproj.GenerateResource.Cache
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.exe
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Nursing_home_manager.pdb
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\ManagePage.g.cs
+C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\obj\Debug\Pages\ManagePage.baml

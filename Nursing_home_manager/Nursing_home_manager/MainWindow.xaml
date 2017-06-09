@@ -30,6 +30,7 @@
             <Button Content="Human Resources" Margin="5" Click="Button_Human_Resources_Click" />
             <Button Content="Appointments" Margin="5" Click="Button_Appointments_Click"/>
             <Button Content="Visits" Margin="5"  Click="Button_Visits_Click"/>
+            <Button Content="Manage Nursing Home" Click="Button_Manage_Click" Style="{DynamicResource MaterialDesignRaisedLightButton}" Height="50" Margin="10 70 10 0"/>
         </StackPanel>
         <Frame Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
 

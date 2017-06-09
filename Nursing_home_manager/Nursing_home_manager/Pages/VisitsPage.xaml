@@ -38,7 +38,7 @@
                 <TextBlock Text="Search Options:" FontSize="14" Margin="0 7 10 0" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Patient Name:" Margin="0 5 10 0" />
-                    <TextBox x:Name="tb_patientName"  KeyUp="loadVisitsList" Width="100" />
+                    <TextBox  x:Name="tb_patientName"  KeyUp="loadVisitsList" Width="100" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Patient Nif:" Margin="0 5 10 0" />

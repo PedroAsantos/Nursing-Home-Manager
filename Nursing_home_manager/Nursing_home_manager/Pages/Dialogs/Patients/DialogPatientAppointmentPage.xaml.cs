@@ -100,10 +100,6 @@ namespace Nursing_home_manager.Pages.Dialogs.Patients
                 cb_doctor.DisplayMemberPath = "Name";
                 con.conClose();
 
-                foreach (DataRowView item in cb_doctor.Items)
-                {
-                    Console.WriteLine(item["NIF"]);
-                }
 
             }
         }

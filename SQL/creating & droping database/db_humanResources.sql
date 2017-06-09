@@ -6,6 +6,7 @@
 CREATE TABLE exemplo1.Type(
 	ID			INT 		NOT NULL	IDENTITY(1, 1),
 	Designation	VARCHAR(30)		UNIQUE,
+	Disable			BIT DEFAULT 0,
 	PRIMARY KEY (ID)
 );
 

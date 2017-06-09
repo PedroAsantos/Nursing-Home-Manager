@@ -72,12 +72,21 @@ namespace Nursing_home_manager.Pages.Dialogs.HumanResource
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@NIF", tb_NIF.Text);
                     cmd.Parameters.AddWithValue("@Name", tb_name.Text);
-                    cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
+                    if(!string.IsNullOrEmpty(tb_phone.Text))
+                        cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
+                    else
+                        cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
                     cmd.Parameters.AddWithValue("@Address", tb_address.Text);
                     DateTime startDate = DateTime.Now;
                     cmd.Parameters.AddWithValue("@Start_Date", startDate);
-                    cmd.Parameters.AddWithValue("@Salary", Int32.Parse(tb_salary.Text));
-                    cmd.Parameters.AddWithValue("@E_IDType", Convert.ToInt32(((DataRowView)cb_designation.SelectedItem)["id"].ToString()));
+                    if(!string.IsNullOrEmpty(tb_salary.Text))
+                         cmd.Parameters.AddWithValue("@Salary", Int32.Parse(tb_salary.Text));
+                    else
+                        cmd.Parameters.AddWithValue("@Salary", DBNull.Value);
+                    if(cb_designation.SelectedItem !=null)
+                         cmd.Parameters.AddWithValue("@E_IDType", Convert.ToInt32(((DataRowView)cb_designation.SelectedItem)["id"].ToString()));
+                    else
+                        cmd.Parameters.AddWithValue("@E_IDType", DBNull.Value);
                     cmd.ExecuteNonQuery();
 
                     tran.Commit();

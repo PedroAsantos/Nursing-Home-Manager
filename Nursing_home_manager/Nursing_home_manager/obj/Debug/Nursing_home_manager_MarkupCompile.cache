@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Rute\Documents\GitHub\Nursing-Home-Manager\Nursing_home_manager\Nursing_home_manager\App.xaml
-18-723547789
+19-100134400
 
-371074405509
+38-695041084
 19-1331966628
-MainWindow.xaml;Pages\AppointmentsPage.xaml;Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml;Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceFaultsPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.xaml;Pages\Dialogs\Patients\DialogAddDoctor.xaml;Pages\Dialogs\Patients\DialogAddPatient.xaml;Pages\Dialogs\Patients\DialogEditPatient.xaml;Pages\Dialogs\Patients\DialogPatientAppointmentPage.xaml;Pages\Dialogs\Patients\DialogPatientMainPage.xaml;Pages\Dialogs\Patients\DialogPatientMedicinesPage.xaml;Pages\Dialogs\Visits\DialogAddVisit.xaml;Pages\Dialogs\Visits\DialogAddVisitor.xaml;Pages\HumanResourcesPage.xaml;Pages\PatientsPage.xaml;Pages\VisitsPage.xaml;
+MainWindow.xaml;Pages\AppointmentsPage.xaml;Pages\Dialogs\HumanResource\DialogAddHumanResource.xaml;Pages\Dialogs\HumanResource\DialogEditHumanResources.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceFaultsPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceMainPage.xaml;Pages\Dialogs\HumanResource\DialogHumanResourceSchedulePage.xaml;Pages\Dialogs\Patients\DialogAddDoctor.xaml;Pages\Dialogs\Patients\DialogAddPatient.xaml;Pages\Dialogs\Patients\DialogEditPatient.xaml;Pages\Dialogs\Patients\DialogPatientAppointmentPage.xaml;Pages\Dialogs\Patients\DialogPatientMainPage.xaml;Pages\Dialogs\Patients\DialogPatientMedicinesPage.xaml;Pages\Dialogs\Visits\DialogAddVisit.xaml;Pages\Dialogs\Visits\DialogAddVisitor.xaml;Pages\HumanResourcesPage.xaml;Pages\ManagePage.xaml;Pages\PatientsPage.xaml;Pages\VisitsPage.xaml;
 
 False
 
