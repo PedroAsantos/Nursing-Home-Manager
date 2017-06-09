@@ -61,7 +61,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Date:" Margin="0 5 10 0" />
-                    <DatePicker x:Name="dp_datepicker" SelectedDateChanged="dp_datepicker_SelectedDateChanged"  />
+                    <DatePicker x:Name="dp_datepicker" SelectedDateChanged="Changed_SelectedDateChanged"  />
                     <Button Margin="70 5 0 0" Height="17" FontSize="8" Click="Button_Click_Cancel_Date">Cancel Selected Data</Button>
                 </StackPanel>
                 <StackPanel Margin="40 27 0 0" HorizontalAlignment="Left" Orientation="Horizontal">

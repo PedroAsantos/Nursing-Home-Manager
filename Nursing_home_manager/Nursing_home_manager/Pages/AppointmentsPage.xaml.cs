@@ -31,7 +31,9 @@ namespace Nursing_home_manager.Pages
         {
             InitializeComponent();
             loadAppointmentsList(null,null);
-            cb_Speciality.SelectionChanged += dp_datepicker_SelectedDateChanged;
+            cb_Speciality.SelectionChanged += Changed_SelectedDateChanged;
+            cb_order.SelectionChanged += Changed_SelectedDateChanged;
+            cb_orderBy.SelectionChanged += Changed_SelectedDateChanged;
             bt_beforePage.Opacity = 0;
             bt_beforePage.IsEnabled = false;
         }
@@ -57,9 +59,12 @@ namespace Nursing_home_manager.Pages
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT * from dbo.searchAppointments(@DoctorNif,@PatientNif,@DoctorName,@PatientName,@Date,@Speciality,@PageNumber,@RowsNumber)", con.Con);
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.searchAppointments(@DoctorNif,@PatientNif,@DoctorName,@PatientName,@Date,@Speciality,@PageNumber,@RowsNumber,@sortOrder,@sortColumn)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
-                cmd.Parameters.AddWithValue("@RowsNumber", 22);
+                cmd.Parameters.AddWithValue("@RowsNumber", 20);
+                cmd.Parameters.AddWithValue("@sortOrder", ((ComboBoxItem)cb_order.SelectedItem).Content.ToString());
+                cmd.Parameters.AddWithValue("@sortColumn", ((ComboBoxItem)cb_orderBy.SelectedItem).Content.ToString());
+
                 if (tb_doctorNif.Text != "")
                     cmd.Parameters.AddWithValue("@DoctorNif", tb_doctorNif.Text);
                 else
@@ -127,7 +132,7 @@ namespace Nursing_home_manager.Pages
                 appointmentList.ItemsSource = null;
                 appointmentList.Items.Clear();
                 appointmentList.ItemsSource = listAppointments;
-                if (listAppointments.Count < 22)
+                if (listAppointments.Count < 20)
                 {
                     bt_nextPage.Opacity = 0;
                     bt_nextPage.IsEnabled = false;
@@ -146,7 +151,7 @@ namespace Nursing_home_manager.Pages
             dp_datepicker.SelectedDate = null;
         }
       
-        private void dp_datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void Changed_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             loadAppointmentsList(null, null);
         }

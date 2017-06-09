@@ -32,8 +32,8 @@ namespace Nursing_home_manager.Pages
             InitializeComponent();
             bt_beforePage.Opacity = 0;
             bt_beforePage.IsEnabled = false;
-            cb_orderBy.SelectionChanged += dp_datepicker_SelectedDateChanged;
-            cb_orderByAsc.SelectionChanged += dp_datepicker_SelectedDateChanged;
+            cb_orderBy.SelectionChanged += Changed_SelectedDateChanged;
+            cb_orderByAsc.SelectionChanged += Changed_SelectedDateChanged;
             loadVisitsList(null, null);
         }
         private void loadVisitsList(object sender, KeyEventArgs e)
@@ -141,7 +141,7 @@ namespace Nursing_home_manager.Pages
             }
         }
 
-        private void dp_datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void Changed_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             loadVisitsList(null, null);
         }

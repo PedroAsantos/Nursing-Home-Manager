@@ -70,10 +70,9 @@
                     <CheckBox x:Name="cb_male"  IsChecked="False" Click="CheckBox_Click" />
                     <TextBlock Text="Order By:" FontSize="14" Margin="190 7 10 0" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
                     <ComboBox Width="130" x:Name="cb_orderBy" Margin="0 0 20 0">
-                        <ComboBoxItem IsSelected="True">Date</ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">Check In</ComboBoxItem>
                         <ComboBoxItem>Name</ComboBoxItem>
                         <ComboBoxItem>NIF</ComboBoxItem>
-                        <ComboBoxItem>Check In</ComboBoxItem>
                         <ComboBoxItem>Check Out</ComboBoxItem>
                         <ComboBoxItem>Room Number</ComboBoxItem>
                         <ComboBoxItem>Bed Number</ComboBoxItem>
