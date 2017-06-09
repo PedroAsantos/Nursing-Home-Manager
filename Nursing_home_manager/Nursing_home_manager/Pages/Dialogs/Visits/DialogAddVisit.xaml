@@ -33,7 +33,7 @@
             </StackPanel>
             </StackPanel>
       
-        <ListView x:Name="listView" MouseDoubleClick="listView_MouseDoubleClick" Height="300">
+        <ListView x:Name="listView" MouseDoubleClick="listView_MouseDoubleClick" Height="430">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="gridColumnName" Header="Name" Width="140"  />

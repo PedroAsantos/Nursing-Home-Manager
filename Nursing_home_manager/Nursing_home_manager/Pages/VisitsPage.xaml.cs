@@ -43,7 +43,7 @@ namespace Nursing_home_manager.Pages
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getVisits(@PatientNif,@PatientName,@VisitorName,@VisitorCC,@VisitorPhone,@Relationship,@Date,@PageNumber,@RowsPage)", con.Con);
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getVisits(@PatientNif,@PatientName,@VisitorName,@VisitorCC,@VisitorPhone,@Date,@PageNumber,@RowsPage)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
                 cmd.Parameters.AddWithValue("@RowsPage", 19);
 
@@ -71,11 +71,6 @@ namespace Nursing_home_manager.Pages
                     cmd.Parameters.AddWithValue("@VisitorPhone", tb_visitorphone.Text);
                 else
                     cmd.Parameters.AddWithValue("@VisitorPhone", DBNull.Value);
-
-                if (tb_relationship.Text != "")
-                    cmd.Parameters.AddWithValue("@Relationship", tb_relationship.Text);
-                else
-                    cmd.Parameters.AddWithValue("@Relationship", DBNull.Value);
 
                 if (dp_datepicker.SelectedDate != null)
                     cmd.Parameters.AddWithValue("@Date", dp_datepicker.SelectedDate);
@@ -105,7 +100,7 @@ namespace Nursing_home_manager.Pages
                     if (reader["KinshipDegree"] != DBNull.Value)
                         visit.KinshipDegree = reader["KinshipDegree"].ToString();
                     if (reader["Relationship"] != DBNull.Value)
-                        visit.Relationship = reader["Relationship"].ToString();
+                        visit.KinshipDegree = reader["Relationship"].ToString();
 
                     listVisits.Add(visit);
                 }

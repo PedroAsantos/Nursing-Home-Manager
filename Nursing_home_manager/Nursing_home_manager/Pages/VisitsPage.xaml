@@ -46,7 +46,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Visitor Name:" Margin="0 5 10 0" />
-                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_visitorName"   KeyUp="loadVisitsList" Width="130" />
+                    <TextBox x:Name="tb_visitorName"   KeyUp="loadVisitsList" Width="130" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Visitor CC:" Margin="0 5 10 0" />
@@ -54,14 +54,10 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="0 20 0 0" Grid.Column="1">
-              
+
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Visitor Phone:" Margin="0 5 10 0" />
                     <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_visitorphone"   KeyUp="loadVisitsList" Width="130" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="RelationShip:" Margin="0 5 10 0" />
-                    <TextBox PreviewTextInput="NumberValidationTextBox"  x:Name="tb_relationship"   KeyUp="loadVisitsList" Width="130" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Date:" Margin="0 5 10 0" />
@@ -78,12 +74,12 @@
                     <GridView>
                         <GridViewColumn Header="Patient Name" Width="140" DisplayMemberBinding="{Binding PatientName}" />
                         <GridViewColumn Header="Patient Nif" Width="140" DisplayMemberBinding="{Binding PatientNif}" />
-                        <GridViewColumn Header="Visitor Name" Width="150" DisplayMemberBinding="{Binding VisitorName}" />
-                        <GridViewColumn Header="Visitor CC" Width="140" DisplayMemberBinding="{Binding VisitorCC}" />
+                        <GridViewColumn Header="Visitor Name" Width="150" DisplayMemberBinding="{Binding VisitName}" />
+                        <GridViewColumn Header="Visitor CC" Width="140" DisplayMemberBinding="{Binding VisitCC}" />
                         <GridViewColumn Header="Date" Width="140" DisplayMemberBinding="{Binding Date}" />
-                        <GridViewColumn Header="Visitor Phone" Width="140" DisplayMemberBinding="{Binding VisitorPhone}" />
-                        <GridViewColumn Header="Visitor Address" Width="140" DisplayMemberBinding="{Binding VisitorAddress}" />
-                        <GridViewColumn Header="RelationShip" Width="140" DisplayMemberBinding="{Binding Relationship}" />
+                        <GridViewColumn Header="Visitor Phone" Width="140" DisplayMemberBinding="{Binding VisitPhone}" />
+                        <GridViewColumn Header="Visitor Address" Width="140" DisplayMemberBinding="{Binding VisitAddress}" />
+                        <GridViewColumn Header="RelationShip" Width="140" DisplayMemberBinding="{Binding KinshipDegree}" />
                     </GridView>
                 </ListView.View>
 

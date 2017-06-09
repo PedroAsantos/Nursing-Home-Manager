@@ -41,6 +41,16 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
             DialogAddVisitor dialogAddVisitor = new DialogAddVisitor();
             if (dialogAddVisitor.ShowDialog() == true)
             {
+                selectedVisit = new Visit()
+                {
+                    VisitName = dialogAddVisitor.VisitorName,
+                    VisitCC = dialogAddVisitor.VisitorCC
+                };
+                txb_visitorNameIs.Text = "Name:";
+                txb_name.Text = selectedVisit.VisitName;
+                txb_name.Opacity = 1;
+                txt_finalCC.Opacity = 1;
+                txb_CC.Text = selectedVisit.VisitCC;
                 InitializeVisitorsList(null, null);
             }
         }
@@ -119,7 +129,7 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
 
                 SqlCommand cmd = new SqlCommand("SELECT * from dbo.getVisitors(@VisitorName,@VisitorCC,@VisitorPhone,@PageNumber,@RowsPage)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
-                cmd.Parameters.AddWithValue("@RowsPage", 7);
+                cmd.Parameters.AddWithValue("@RowsPage", 11);
 
 
                 if (tb_nif.Text != "")
@@ -157,7 +167,7 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
                 //make your query
                 listView.ItemsSource = listVisitors;
                 con.conClose();//close your connection
-                if (listVisitors.Count < 7)
+                if (listVisitors.Count < 11)
                 {
                     bt_nextPage.Opacity = 0;
                     bt_nextPage.IsEnabled = false;
@@ -185,7 +195,7 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
 
                 SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients(@PatientNif,@PatientName,@Sex,@authorization,@RoomNumber,@PhoneNUmber,@Checkout,@PageNumber,@RowsPage)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
-                cmd.Parameters.AddWithValue("@RowsPage", 7);
+                cmd.Parameters.AddWithValue("@RowsPage", 11);
                 if (tb_nif.Text != "")
                     cmd.Parameters.AddWithValue("@PatientNif", tb_nif.Text);
                 else
@@ -231,7 +241,7 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
                 //make your query
                 listView.ItemsSource = listPatients;
                 con.conClose();//close your connection
-                if (listPatients.Count < 7)
+                if (listPatients.Count < 11)
                 {
                     bt_nextPage.Opacity = 0;
                     bt_nextPage.IsEnabled = false;
@@ -286,6 +296,22 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
+            if (selectedPatient == null)
+            {
+                MessageBox.Show("You must select a patient.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (selectedVisit == null)
+            {
+                MessageBox.Show("You must select a visitor.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+            }else
+            {
+                addVisit(null, null);
+            }
+        }
+
+        private void addVisit(object sender, RoutedEventArgs e)
+        {
+
             Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
             con.conOpen();//method to open the connection.
             SqlTransaction tran = con.Con.BeginTransaction();
