@@ -120,7 +120,7 @@ namespace Nursing_home_manager.Pages
                         foreach (Disease dis in tempList)
                         {
                             cmd.Parameters.Clear();
-                            cmd.CommandText = "dbo.newDiagnosed";
+                            cmd.CommandText = "dbo.sp_newDiagnosed";
                             cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
                             cmd.Parameters.AddWithValue("@E_Name", dis.Name);
                             cmd.Parameters.AddWithValue("@Seriousness", dis.Severity);
@@ -130,7 +130,7 @@ namespace Nursing_home_manager.Pages
                     }
                       
                     cmd.Parameters.Clear();
-                    cmd.CommandText = "dbo.newDependent";
+                    cmd.CommandText = "dbo.sp_newDependent";
                     cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
                     cmd.Parameters.AddWithValue("@Name", tb_dependentName.Text);
                     cmd.Parameters.AddWithValue("@CC ", Int32.Parse(tb_dependentCC.Text));
