@@ -163,7 +163,6 @@ namespace Nursing_home_manager.Pages
                     foreach (Disease inicialDis in inicialDiseaseList)
                     {
                         found = 0;
-                        Console.WriteLine(inicialDis.Name + "," + inicialDis.Severity);
                         foreach (Disease finalDis in finalDiseaseList)
                         {
                             if (inicialDis.compareName(finalDis) == 1)
@@ -172,7 +171,6 @@ namespace Nursing_home_manager.Pages
                                 Console.WriteLine(inicialDis.Name+","+inicialDis.Severity+" -- "+ finalDis.Name+""+finalDis.Severity);
                                 if (inicialDis.compareSeverity(finalDis) == 0)
                                 {
-                                    Console.WriteLine("update");
                                     cmd.Parameters.Clear();
                                     cmd.CommandText = " dbo.updateSeriousnes";
                                     cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
@@ -213,7 +211,7 @@ namespace Nursing_home_manager.Pages
                         if (found == 0)
                         {
                             cmd.Parameters.Clear();
-                            cmd.CommandText = "dbo.newDiagnosed";
+                            cmd.CommandText = "dbo.sp_newDiagnosed";
                             cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
                             cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
                             cmd.Parameters.AddWithValue("@Seriousness", finalDis.Severity);
@@ -223,18 +221,7 @@ namespace Nursing_home_manager.Pages
                         found = 0;
                     }
 
-
-                            /*    List<Disease> tempList = (List<Disease>) listView.ItemsSource;
-                                foreach (Disease dis in tempList)
-                                {
-                                    cmd.Parameters.Clear();
-                                    cmd.CommandText = "dbo.newDiagnosed";
-                                    cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_phone.Text));
-                                    cmd.Parameters.AddWithValue("@E_Name", dis.Name);
-                                    cmd.Parameters.AddWithValue("@Seriousness",dis.Severity);
-                                }*/
-
-                            tran.Commit();
+                    tran.Commit();
                 }
                 catch(SqlException ex)
                 {
