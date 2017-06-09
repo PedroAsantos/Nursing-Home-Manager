@@ -74,8 +74,8 @@
                         <ComboBoxItem>Visitor CC</ComboBoxItem>
                     </ComboBox>
                     <ComboBox Width="100" x:Name="cb_orderByAsc" Margin="20 0 20 0">
-                        <ComboBoxItem IsSelected="True">ASC</ComboBoxItem>
-                        <ComboBoxItem>DESC</ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">DESC</ComboBoxItem>
+                        <ComboBoxItem>ASC</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
