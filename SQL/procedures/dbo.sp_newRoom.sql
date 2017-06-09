@@ -4,8 +4,15 @@ begin	IF(@capacity < 0 )
 		BEGIN
 			RAISERROR('Capacity must be a number positive',16,1)
 		END
-
-		Select @NewRoomId = RoomNumber from exemplo1.BEDROOM order by RoomNumber asc
+		if(NOT EXISTS(SELECT * FROM exemplo1.BEDROOM))
+		BEGIN
+			SET @NewRoomId = 1;
+		END
+		ELSE
+		BEGIN
+			Select @NewRoomId = RoomNumber from exemplo1.BEDROOM order by RoomNumber asc
+		END
+		
 		
 		insert into exemplo1.BEDROOM (Capacity) values (@capacity);
 		

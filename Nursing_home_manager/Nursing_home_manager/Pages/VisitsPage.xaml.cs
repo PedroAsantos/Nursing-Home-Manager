@@ -47,13 +47,13 @@ namespace Nursing_home_manager.Pages
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
                 cmd.Parameters.AddWithValue("@RowsPage", 19);
 
-                if (tb_patientName.Text != "")
-                    cmd.Parameters.AddWithValue("@PatientNif", tb_patientName.Text);
+                if (tb_patientNif.Text != "")
+                    cmd.Parameters.AddWithValue("@PatientNif", tb_patientNif.Text);
                 else
                     cmd.Parameters.AddWithValue("@PatientNif", DBNull.Value);
 
-                if (tb_patientNif.Text != "")
-                    cmd.Parameters.AddWithValue("@PatientName", tb_patientNif.Text);
+                if (tb_patientName.Text != "")
+                    cmd.Parameters.AddWithValue("@PatientName", tb_patientName.Text);
                 else
                     cmd.Parameters.AddWithValue("@PatientName", DBNull.Value);
 
@@ -95,6 +95,8 @@ namespace Nursing_home_manager.Pages
                         visit.VisitPhone = reader.GetInt32(4);
                     if (reader["Date"] != DBNull.Value)
                         visit.Date = reader.GetDateTime(6);
+                    if (reader["VisitorName"] != DBNull.Value)
+                        visit.VisitName = reader.GetString(2);
                     if (reader["Address"] != DBNull.Value)
                         visit.VisitAddress = reader.GetString(5);
                     if (reader["KinshipDegree"] != DBNull.Value)
