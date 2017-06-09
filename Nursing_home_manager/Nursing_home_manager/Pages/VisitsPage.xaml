@@ -64,22 +64,36 @@
                     <DatePicker x:Name="dp_datepicker" SelectedDateChanged="dp_datepicker_SelectedDateChanged"  />
                     <Button Margin="70 5 0 0" Height="17" FontSize="8" Click="Button_Click_Cancel_Date">Cancel Selected Data</Button>
                 </StackPanel>
+                <StackPanel Margin="40 27 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <TextBlock Text="Order By:" FontSize="14" Margin="500 7 10 0" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
+                    <ComboBox Width="130" x:Name="cb_orderBy" Margin="0 0 20 0">
+                        <ComboBoxItem IsSelected="True">Date</ComboBoxItem>
+                        <ComboBoxItem>Patient Name</ComboBoxItem>
+                        <ComboBoxItem>Visitor Name</ComboBoxItem>
+                        <ComboBoxItem>Patient Nif</ComboBoxItem>
+                        <ComboBoxItem>Visitor CC</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Width="100" x:Name="cb_orderByAsc" Margin="20 0 20 0">
+                        <ComboBoxItem IsSelected="True">ASC</ComboBoxItem>
+                        <ComboBoxItem>DESC</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
         </Grid>
 
 
         <StackPanel Grid.Row="2">
-            <ListView Margin="10" Name="visitsList" MouseDoubleClick="visitsList_MouseDoubleClick" >
+            <ListView Margin="10" Name="visitsList">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Patient Name" Width="140" DisplayMemberBinding="{Binding PatientName}" />
-                        <GridViewColumn Header="Patient Nif" Width="140" DisplayMemberBinding="{Binding PatientNif}" />
+                        <GridViewColumn Header="Patient Name" Width="150" DisplayMemberBinding="{Binding PatientName}" />
+                        <GridViewColumn Header="Patient Nif" Width="150" DisplayMemberBinding="{Binding PatientNif}" />
                         <GridViewColumn Header="Visitor Name" Width="150" DisplayMemberBinding="{Binding VisitName}" />
-                        <GridViewColumn Header="Visitor CC" Width="140" DisplayMemberBinding="{Binding VisitCC}" />
-                        <GridViewColumn Header="Date" Width="140" DisplayMemberBinding="{Binding Date}" />
-                        <GridViewColumn Header="Visitor Phone" Width="140" DisplayMemberBinding="{Binding VisitPhone}" />
-                        <GridViewColumn Header="Visitor Address" Width="140" DisplayMemberBinding="{Binding VisitAddress}" />
-                        <GridViewColumn Header="RelationShip" Width="140" DisplayMemberBinding="{Binding KinshipDegree}" />
+                        <GridViewColumn Header="Visitor CC" Width="150" DisplayMemberBinding="{Binding VisitCC}" />
+                        <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding Date}" />
+                        <GridViewColumn Header="Visitor Phone" Width="150" DisplayMemberBinding="{Binding VisitPhone}" />
+                        <GridViewColumn Header="Visitor Address" Width="150" DisplayMemberBinding="{Binding VisitAddress}" />
+                        <GridViewColumn Header="RelationShip" Width="150" DisplayMemberBinding="{Binding KinshipDegree}" />
                     </GridView>
                 </ListView.View>
 

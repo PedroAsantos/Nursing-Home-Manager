@@ -30,9 +30,11 @@ namespace Nursing_home_manager.Pages
         public VisitsPage()
         {
             InitializeComponent();
-            loadVisitsList(null,null);
             bt_beforePage.Opacity = 0;
             bt_beforePage.IsEnabled = false;
+            cb_orderBy.SelectionChanged += dp_datepicker_SelectedDateChanged;
+            cb_orderByAsc.SelectionChanged += dp_datepicker_SelectedDateChanged;
+            loadVisitsList(null, null);
         }
         private void loadVisitsList(object sender, KeyEventArgs e)
         {
@@ -43,9 +45,12 @@ namespace Nursing_home_manager.Pages
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getVisits(@PatientNif,@PatientName,@VisitorName,@VisitorCC,@VisitorPhone,@Date,@PageNumber,@RowsPage)", con.Con);
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getVisits(@PatientNif,@PatientName,@VisitorName,@VisitorCC,@VisitorPhone,@Date,@PageNumber,@RowsPage,@sortOrder,@sortColumn)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
                 cmd.Parameters.AddWithValue("@RowsPage", 19);
+                cmd.Parameters.AddWithValue("@sortOrder", ((ComboBoxItem)cb_orderByAsc.SelectedItem).Content.ToString());
+                cmd.Parameters.AddWithValue("@sortColumn", ((ComboBoxItem)cb_orderBy.SelectedItem).Content.ToString());
+
 
                 if (tb_patientNif.Text != "")
                     cmd.Parameters.AddWithValue("@PatientNif", tb_patientNif.Text);
@@ -170,10 +175,6 @@ namespace Nursing_home_manager.Pages
             }
             loadVisitsList(null, null);
         }
-
-        private void visitsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+  
     }
 }

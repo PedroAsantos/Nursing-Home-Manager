@@ -1,4 +1,4 @@
-CREATE FUNCTION dbo.getVisits(@PatientNif varchar(9)=NULL,@PatientName varchar(30)=NULL,@VisitorName varchar(30)=NULL,@VisitorCC varchar(9)=NULL,@VisitorPhone INT=NULL,@Date Date=NULL,@PageNumber INT, @RowsPage INT)
+CREATE FUNCTION dbo.getVisits(@PatientNif varchar(9)=NULL,@PatientName varchar(30)=NULL,@VisitorName varchar(30)=NULL,@VisitorCC varchar(9)=NULL,@VisitorPhone INT=NULL,@Date Date=NULL,@PageNumber INT, @RowsPage INT,@sortOrder VARCHAR(30),@sortColumn VARCHAR(30))
 RETURNS TABLE
 AS
 	RETURN(
@@ -20,7 +20,47 @@ AS
 					(@PatientName IS NULL OR  exemplo1.PATIENT.Name = @PatientName)  
 				AND
 					(@Date IS NULL OR CAST(Date as DATE) = @Date) 
-				ORDER BY exemplo1.VISITOR.CC
+				ORDER BY  case
+							when @sortOrder <> 'ASC' then ''
+							when @sortColumn = 'Patient Name' then exemplo1.PATIENT.Name 
+							end ASC
+						   ,case
+							when @sortOrder <> 'ASC' then ''
+							when @sortColumn = 'Visitor Name' then exemplo1.VISITOR.Name
+							end ASC
+						   ,case
+							when @sortOrder <> 'ASC' then ''
+							when @sortColumn = 'Patient Nif' then NIF
+							end ASC
+							,case
+							when @sortOrder <> 'ASC' then ''
+							when @sortColumn = 'Visitor CC' then CC
+							end ASC
+							,case
+							when @sortOrder <> 'ASC' then ''
+							when @sortColumn = 'Date' then Date
+							end ASC
+							,case
+							when @sortOrder <> 'DESC' then ''
+							when @sortColumn = 'Patient Name' then exemplo1.PATIENT.Name 
+							end DESC
+						   ,case
+							when @sortOrder <> 'DESC' then ''
+							when @sortColumn = 'Visitor Name' then exemplo1.VISITOR.Name
+							end DESC
+						   ,case
+							when @sortOrder <> 'DESC' then ''
+							when @sortColumn = 'Patient Nif' then NIF
+							end DESC
+							,case
+							when @sortOrder <> 'DESC' then ''
+							when @sortColumn = 'Visitor CC' then CC
+							end DESC
+							,case
+							when @sortOrder <> 'DESC' then ''
+							when @sortColumn = 'Date' then Date
+							end DESC
+							
 				OFFSET ((@PageNumber - 1) * @RowsPage) ROWS FETCH NEXT @RowsPage ROWS ONLY
 		  )		
 GO
