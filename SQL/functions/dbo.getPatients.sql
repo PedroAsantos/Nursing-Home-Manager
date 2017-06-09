@@ -1,4 +1,4 @@
-CREATE FUNCTION dbo.getPatients(@PatientNif VARCHAR(9)=NULL,@PatientName VARCHAR(30)=NULL,@Sex varchar(1)=NULL, @authorization BIT=NULL,@RoomNumber INT=NULL,@PhoneNUmber INT=NULL,@Checkout BIT=NULL,@PageNumber INT, @RowsPage INT, @sortOrder VARCHAR(5),@sortColumn VARCHAR(30))
+CREATE FUNCTION dbo.getPatients(@PatientNif VARCHAR(9)=NULL,@PatientName VARCHAR(30)=NULL,@Sex varchar(1)=NULL, @authorization BIT=NULL,@RoomNumber INT=NULL,@PhoneNUmber INT=NULL,@Checkout BIT=NULL,@PageNumber INT, @RowsPage INT, @sortOrder VARCHAR(5)='DESC',@sortColumn VARCHAR(30)='Check In')
 RETURNS TABLE
 AS
 	RETURN(
@@ -27,46 +27,46 @@ AS
 							end ASC
 						   ,case
 							when @sortOrder <> 'ASC' then ''
-							when @sortColumn = 'Nif' then exemplo1.PATIENT.NIF
+							when @sortColumn = 'NIF' then exemplo1.PATIENT.NIF
 							end ASC
 						   ,case
 							when @sortOrder <> 'ASC' then ''
-							when @sortColumn = 'Check in' then Check_in
+							when @sortColumn = 'Check In' then Check_in
 							end ASC
 							,case
 							when @sortOrder <> 'ASC' then ''
-							when @sortColumn = 'Check out' then Check_out
+							when @sortColumn = 'Check Out' then Check_out
 							end ASC
 							,case
-							when @sortOrder <> 'ASC' then ''
+							when @sortOrder <> 'ASC' then 0
 							when @sortColumn = 'Room Number' then RoomNumber
 							end ASC
 							,case
-							when @sortOrder <> 'ASC' then ''
+							when @sortOrder <> 'ASC' then 0
 							when @sortColumn = 'Bed Number' then BedNumber 
-							end DESC
+							end ASC
 						   ,case
 							when @sortOrder <> 'DESC' then ''
 							when @sortColumn = 'Name' then exemplo1.PATIENT.Name 
 							end DESC
 						   ,case
 							when @sortOrder <> 'DESC' then ''
-							when @sortColumn = 'Nif' then exemplo1.PATIENT.NIF
+							when @sortColumn = 'NIF' then exemplo1.PATIENT.NIF
 							end DESC
 						   ,case
 							when @sortOrder <> 'DESC' then ''
-							when @sortColumn = 'Check in' then Check_in
+							when @sortColumn = 'Check In' then Check_in
 							end DESC
 							,case
 							when @sortOrder <> 'DESC' then ''
-							when @sortColumn = 'Check out' then Check_out
+							when @sortColumn = 'Check Out' then Check_out
 							end DESC
 							,case
-							when @sortOrder <> 'DESC' then ''
+							when @sortOrder <> 'DESC' then 0
 							when @sortColumn = 'Room Number' then RoomNumber
 							end DESC
 							,case
-							when @sortOrder <> 'DESC' then ''
+							when @sortOrder <> 'DESC' then 0
 							when @sortColumn = 'Bed Number' then BedNumber 
 							end DESC
 			OFFSET ((@PageNumber - 1) * @RowsPage) ROWS

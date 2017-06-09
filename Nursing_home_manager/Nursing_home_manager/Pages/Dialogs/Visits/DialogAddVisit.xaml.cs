@@ -193,9 +193,11 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients(@PatientNif,@PatientName,@Sex,@authorization,@RoomNumber,@PhoneNUmber,@Checkout,@PageNumber,@RowsPage)", con.Con);
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients(@PatientNif,@PatientName,@Sex,@authorization,@RoomNumber,@PhoneNUmber,@Checkout,@PageNumber,@RowsPage,@sortOrder,@sortColumn)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
                 cmd.Parameters.AddWithValue("@RowsPage", 11);
+                cmd.Parameters.AddWithValue("@sortOrder", DBNull.Value);
+                cmd.Parameters.AddWithValue("@sortColumn", DBNull.Value);
                 if (tb_nif.Text != "")
                     cmd.Parameters.AddWithValue("@PatientNif", tb_nif.Text);
                 else

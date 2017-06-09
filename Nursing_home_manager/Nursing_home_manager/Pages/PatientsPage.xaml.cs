@@ -35,6 +35,8 @@ namespace Nursing_home_manager.Pages
             InitializePatientList(null,null);
             bt_beforePage.Opacity = 0;
             bt_beforePage.IsEnabled = false;
+            cb_orderBy.SelectionChanged += comboBox_SelectedDateChanged;
+            cb_order.SelectionChanged += comboBox_SelectedDateChanged;
         }
 
         private void InitializePatientList(object sender, KeyEventArgs e)
@@ -46,9 +48,12 @@ namespace Nursing_home_manager.Pages
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients(@PatientNif,@PatientName,@Sex,@authorization,@RoomNumber,@PhoneNUmber,@Checkout,@PageNumber,@RowsPage)", con.Con);
+                SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatients(@PatientNif,@PatientName,@Sex,@authorization,@RoomNumber,@PhoneNUmber,@Checkout,@PageNumber,@RowsPage,@sortOrder,@sortColumn)", con.Con);
                 cmd.Parameters.AddWithValue("@PageNumber", numberPage);
                 cmd.Parameters.AddWithValue("@RowsPage", 19);
+                cmd.Parameters.AddWithValue("@sortOrder", ((ComboBoxItem)cb_order.SelectedItem).Content.ToString());
+                cmd.Parameters.AddWithValue("@sortColumn", ((ComboBoxItem)cb_orderBy.SelectedItem).Content.ToString());
+
                 if (tb_patientNif.Text != "")
                     cmd.Parameters.AddWithValue("@PatientNif", tb_patientNif.Text);
                 else
@@ -243,6 +248,9 @@ namespace Nursing_home_manager.Pages
             e.Handled = regex.IsMatch(e.Text);
 
         }
-
+        private void comboBox_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            InitializePatientList(null, null);
+        }
     }
 }
