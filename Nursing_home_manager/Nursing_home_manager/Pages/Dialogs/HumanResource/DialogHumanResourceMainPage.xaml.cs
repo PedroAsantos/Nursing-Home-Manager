@@ -121,8 +121,8 @@ namespace Nursing_home_manager.Pages.Dialogs.HumanResource
                         else
                             cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
                         cmd.Parameters.AddWithValue("@Address", tb_address.Text);
-                        DateTime startDate = DateTime.Now;
-                        cmd.Parameters.AddWithValue("@Start_Date", startDate);
+
+                        cmd.Parameters.AddWithValue("@Start_Date", HumanResource.StartDate);
                         if (!string.IsNullOrEmpty(tb_salary.Text))
                             cmd.Parameters.AddWithValue("@Salary", Int32.Parse(tb_salary.Text));
                         else
@@ -137,7 +137,7 @@ namespace Nursing_home_manager.Pages.Dialogs.HumanResource
                     }
                     catch (SqlException ex)
                     {
-                     //   tran.Rollback();
+             
                         MessageBox.Show("Error: " + ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     }

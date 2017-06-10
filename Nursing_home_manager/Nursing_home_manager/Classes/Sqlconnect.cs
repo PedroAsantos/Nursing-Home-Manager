@@ -12,17 +12,18 @@ namespace Nursing_home_manager.Classes
     public class Sqlconnect
     {
 
-        public SqlConnection Con { get; set; }//the object
-        private string conString { get; set; }//the string to store your connection parameters
+        public SqlConnection Con { get; set; }
+        private string conString { get; set; }
         public ConnectionState State { get; internal set; }
 
         public void conOpen()
         {
-            conString = "data source= DESKTOP-4IM9OL5\\SQLEXPRESS;integrated security=true;initial catalog=exemplo1"; //the same as you post in your post
+            //conString = "data source= DESKTOP-4IM9OL5\\SQLEXPRESS;integrated security=true;initial catalog=exemplo1"; 
+            conString = "Server= tcp: 193.136.175.33\\SQLSERVER2012,8293;Database=p1g6;User Id=p1g6; Password = passwordbd123;";
             Con = new SqlConnection(conString);//
             try
             {
-                Con.Open();//try to open the connection
+                Con.Open();
             }
             catch (Exception ex)
             {
@@ -31,7 +32,7 @@ namespace Nursing_home_manager.Classes
         }
         public void conClose()
         {
-            Con.Close();//close the connection
+            Con.Close();
         }
 
     }

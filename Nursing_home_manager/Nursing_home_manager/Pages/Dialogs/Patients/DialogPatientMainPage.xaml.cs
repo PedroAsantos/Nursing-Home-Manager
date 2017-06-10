@@ -226,8 +226,15 @@ namespace Nursing_home_manager.Pages
                         cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
 
                         cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
-                        cmd.Parameters.AddWithValue("@Entry_Date", patient.Entry_Date);
-                        cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
+                        if(patient.BedNumber != Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()))
+                        {
+                            cmd.Parameters.AddWithValue("@Entry_Date", DateTime.Now);
+                        }else
+                        {
+                            cmd.Parameters.AddWithValue("@Entry_Date", patient.Entry_Date);
+                        }
+                            
+                        cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); 
                         cmd.ExecuteNonQuery();
                         List<Disease> finalDiseaseList = (List<Disease>)listView.ItemsSource;
                         int found = 0;

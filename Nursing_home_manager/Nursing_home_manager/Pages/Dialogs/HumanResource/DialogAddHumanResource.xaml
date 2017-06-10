@@ -7,7 +7,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Nursing Home Manager" Height="865" Width="520">
+        Title="Nursing Home Manager" Height="425" Width="520">
     <StackPanel Margin="20">
         <TextBlock Text="Add Human Resource"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
         <!--MAIN Human Resource DATA-->

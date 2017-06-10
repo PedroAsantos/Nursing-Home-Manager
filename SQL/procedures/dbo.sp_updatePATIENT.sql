@@ -1,4 +1,4 @@
-CREATE PROCEDURE [dbo].[sp_updatePATIENT]
+DROP PROCEDURE [dbo].[sp_updatePATIENT]
 	@NIF	varchar(9),
 	@Name	varchar(30),
 	@Sex	varchar(1),
@@ -12,9 +12,9 @@ CREATE PROCEDURE [dbo].[sp_updatePATIENT]
 	@Exit_Date	DATE 
 AS
 BEGIN
-	BEGIN TRANSACTION;
-		BEGIN TRY
-			UPDATE exemplo1.PATIENT
+
+	
+			UPDATE LarIdosos.PATIENT
 			SET		NIF = @NIF,
 					Name = @Name,
 					Sex = @Sex,
@@ -27,20 +27,5 @@ BEGIN
 					Entry_Date = @Entry_Date,
 					Exit_Date = @Exit_Date
 			WHERE NIF=@NIF
-		END TRY
-
-		BEGIN CATCH
-		SELECT 
-			ERROR_NUMBER() AS ErrorNumber
-			,ERROR_SEVERITY() AS ErrorSeverity
-			,ERROR_STATE() AS ErrorState
-			,ERROR_PROCEDURE() AS ErrorProcedure
-			,ERROR_LINE() AS ErrorLine
-			,ERROR_MESSAGE() AS ErrorMessage;
-
-		IF @@TRANCOUNT > 0
-			ROLLBACK TRANSACTION;
-	END CATCH;
-	IF @@TRANCOUNT = 0
-		COMMIT TRANSACTION;
+		
 END
