@@ -34,50 +34,77 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
             e.Handled = regex.IsMatch(e.Text);
 
         }
+        private bool verifications()
+        {
+            if (string.IsNullOrEmpty(tb_CC.Text))
+            {
+                MessageBox.Show("The field nif can not be empty", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tb_name.Text))
+            {
+                MessageBox.Show("The field name of patient can not be empty", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_name.Text.Length > 30)
+            {
+                MessageBox.Show("The field name can not have more than 30 characters", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_CC.Text.Length != 9)
+            {
+                MessageBox.Show("The field NIF must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
-            con.conOpen();//method to open the connection.
-            SqlTransaction tran = con.Con.BeginTransaction();
-            //you should test if the connection is open or not
-            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            if (verifications())
             {
-
-                try
+                Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+                con.conOpen();//method to open the connection.
+                SqlTransaction tran = con.Con.BeginTransaction();
+                //you should test if the connection is open or not
+                if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
                 {
-                    SqlCommand cmd = new SqlCommand("sp_newVisitor", con.Con, tran);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CC", tb_CC.Text);
-                    cmd.Parameters.AddWithValue("@Name", tb_name.Text);
-                    cmd.Parameters.AddWithValue ("@Address", tb_address.Text);
-                    cmd.Parameters.AddWithValue("@Phone", tb_phone.Text);
-                    cmd.Parameters.AddWithValue("@RelationShip", tb_relationShip.Text);
-                    cmd.Parameters.AddWithValue("@Family", cb_checkBox.IsChecked);
-                    cmd.ExecuteNonQuery();
 
-                    tran.Commit();
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand("sp_newVisitor", con.Con, tran);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@CC", tb_CC.Text);
+                        cmd.Parameters.AddWithValue("@Name", tb_name.Text);
+                        cmd.Parameters.AddWithValue("@Address", tb_address.Text);
+                        cmd.Parameters.AddWithValue("@Phone", tb_phone.Text);
+                        cmd.Parameters.AddWithValue("@RelationShip", tb_relationShip.Text);
+                        cmd.Parameters.AddWithValue("@Family", cb_checkBox.IsChecked);
+                        cmd.ExecuteNonQuery();
+
+                        tran.Commit();
+
+
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Error." + ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                        tran.Rollback();
+                    }
+                    finally
+                    {
+                        con.conClose();//close connection
+                    }
 
 
                 }
-                catch (SqlException ex)
+                else
                 {
-                    MessageBox.Show("Error." + ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                    tran.Rollback();
-                }
-                finally
-                {
-                    con.conClose();//close connection
+                    MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;//close the event
                 }
 
-
+                this.DialogResult = true;
             }
-            else
-            {
-                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//close the event
-            }
-     
-            this.DialogResult = true;
         }
         public string VisitorName
         {

@@ -98,30 +98,30 @@
         <TextBlock Text="Dependente Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Name:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="463" Foreground="#FF464343" Text="{Binding DependentName}"/>
+            <TextBox x:Name="tb_dependentName" Width="463" Foreground="#FF464343" Text="{Binding DependentName}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="CC:"  PreviewTextInput="NumberValidationTextBox" Foreground="#FF464343" Margin="0 15 18 0"/>
-            <TextBox Width="467"  Foreground="#FF464343" Text="{Binding DependentCC}" />
+            <TextBox x:Name="tb_dependentCC" Width="467"  Foreground="#FF464343" Text="{Binding DependentCC}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Phone Number:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415" Text="{Binding DependentPhone}"/>
+            <TextBox  x:Name="tb_dependentPhone" PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415" Text="{Binding DependentPhone}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Address:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="450" Text="{Binding DependentAddress}"/>
+            <TextBox x:Name="tb_dependentAddress" Width="450" Text="{Binding DependentAddress}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Kinship Degree:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox Width="415" Text="{Binding DependentKinship}"/>
+            <TextBox x:Name="tb_dependentKinship" Width="415" Text="{Binding DependentKinship}"/>
         </StackPanel>
 
 
         <!--EXIT BUTTONS-->
         <StackPanel Margin="0 20 10 0" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="Button_Checkout" Click="Button_Click_Checkout" Style="{DynamicResource MaterialDesignRaisedLightButton}" Height="20" FontSize="11" Margin="0 5 230 0" Content="Checkout Patient" />
-            <Button ToolTip="Add Patient" IsCancel="True" HorizontalAlignment="Right" Margin="0 0 20 0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Click="Button_Add">
+            <Button ToolTip="Add Patient" x:Name="Bt_Add" HorizontalAlignment="Right" Margin="0 0 20 0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Click="Button_Add">
                 <Canvas Width="24" Height="24">
                     <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
                 </Canvas>

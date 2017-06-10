@@ -113,7 +113,7 @@ namespace Nursing_home_manager.Pages.Dialogs.Visits
                 bt_beforePage.Opacity = 0;
                 bt_beforePage.IsEnabled = false;
                 gridColumnName.DisplayMemberBinding = new Binding("VisitName");
-                gridColumnNif.DisplayMemberBinding = new Binding("VisitNif");
+                gridColumnNif.DisplayMemberBinding = new Binding("VisitCC");
                 gridColumnPhone.DisplayMemberBinding = new Binding("VisitPhone");
 
             }

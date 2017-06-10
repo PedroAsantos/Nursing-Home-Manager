@@ -130,6 +130,16 @@ namespace Nursing_home_manager.Pages
                 MessageBox.Show("The field CC of dependent must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+            else if (!string.IsNullOrEmpty(tb_dependentAddress.Text) && tb_dependentAddress.Text.Length > 30)
+            {
+                MessageBox.Show("The field Address can not have more than 30 characteres", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tb_dependentKinship.Text) && tb_dependentKinship.Text.Length > 30)
+            {
+                MessageBox.Show("The field Address can not have more than 30 characteres", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
             return true;
         }

@@ -126,120 +126,213 @@ namespace Nursing_home_manager.Pages
             e.Handled = regex.IsMatch(e.Text);
 
         }
-        private void Button_Add(object sender, RoutedEventArgs e)
+        private bool verifications()
         {
-            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
-            con.conOpen();//method to open the connection.
-            SqlTransaction tran = con.Con.BeginTransaction();
-            //you should test if the connection is open or not
-            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            if (string.IsNullOrEmpty(tb_NIF.Text))
             {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand("sp_updatePATIENT", con.Con, tran);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
-                    cmd.Parameters.AddWithValue("@Name", tb_name.Text);
-                    if (radioButton_Male.IsChecked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@Sex", "m");
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Sex", "f");
-                    }
-                    cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
-                    cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));  //TEMPORARIO mudar para ano
+                MessageBox.Show("The field nif can not be empty", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tb_name.Text))
+            {
+                MessageBox.Show("The field name of patient can not be empty", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_name.Text.Length > 30)
+            {
+                MessageBox.Show("The field name can not have more than 30 characters", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_NIF.Text.Length != 9)
+            {
+                MessageBox.Show("The field NIF must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_dependentName.Text.Length > 30)
+            {
+                MessageBox.Show("The field name can not have more than 30 characters", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (cb_roomNumber.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a room", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (cb_bedNumber.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a bed.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tb_dependentCC.Text) && tb_dependentCC.Text.Length != 9)
+            {
+                MessageBox.Show("The field CC of dependent must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tb_dependentAddress.Text) && tb_dependentAddress.Text.Length > 30)
+            {
+                MessageBox.Show("The field Address can not have more than 30 characteres", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tb_dependentKinship.Text) && tb_dependentKinship.Text.Length > 30)
+            {
+                MessageBox.Show("The field Address can not have more than 30 characteres", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
-                    cmd.Parameters.AddWithValue("@Check_in", patient.Check_in);
-                    cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); //TEMPORARIO
-                    cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
-                    cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
-                    cmd.Parameters.AddWithValue("@Entry_Date", patient.Entry_Date);
-                    cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
-                    cmd.ExecuteNonQuery();
-                    List<Disease> finalDiseaseList = (List<Disease>)listView.ItemsSource;
-                    int found = 0;
-                    foreach (Disease inicialDis in inicialDiseaseList)
+            return true;
+        }
+
+        private void Button_Add(object sender, RoutedEventArgs e)
+        {   
+            if (verifications())
+            {
+                AddPatient();
+            }
+        }
+
+        private void AddPatient()
+        {
+                Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+                con.conOpen();//method to open the connection.
+                SqlTransaction tran = con.Con.BeginTransaction();
+                //you should test if the connection is open or not
+                if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+                {
+                    try
                     {
+                        SqlCommand cmd = new SqlCommand("sp_updatePATIENT", con.Con, tran);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
+                        cmd.Parameters.AddWithValue("@Name", tb_name.Text);
+                        if (radioButton_Male.IsChecked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Sex", "m");
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Sex", "f");
+                        }
+                        if (!string.IsNullOrEmpty(tb_phone.Text))
+                            cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
+                        else
+                            cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
+                        if (!string.IsNullOrEmpty(tb_age.Text))
+                            cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));
+                        else
+                            cmd.Parameters.AddWithValue("@Age", DBNull.Value);  
+
+                        cmd.Parameters.AddWithValue("@Check_in", patient.Check_in);
+                        cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); 
+                        cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
+
+                        cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
+                        cmd.Parameters.AddWithValue("@Entry_Date", patient.Entry_Date);
+                        cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
+                        cmd.ExecuteNonQuery();
+                        List<Disease> finalDiseaseList = (List<Disease>)listView.ItemsSource;
+                        int found = 0;
+                        foreach (Disease inicialDis in inicialDiseaseList)
+                        {
+                            found = 0;
+                            foreach (Disease finalDis in finalDiseaseList)
+                            {
+                                if (inicialDis.compareName(finalDis) == 1)
+                                {
+                                    found = 1;
+                                    Console.WriteLine(inicialDis.Name + "," + inicialDis.Severity + " -- " + finalDis.Name + "" + finalDis.Severity);
+                                    if (inicialDis.compareSeverity(finalDis) == 0)
+                                    {
+                                        cmd.Parameters.Clear();
+                                        cmd.CommandText = " dbo.sp_updateSeriousnes";
+                                        cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
+                                        cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
+                                        cmd.Parameters.AddWithValue("@seirybesdsdf", finalDis.Severity);
+                                        cmd.ExecuteNonQuery();
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                            if (found == 0)
+                            {
+                                Console.WriteLine("delete");
+                                //delete disease
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "dbo.sp_deleteDisease";
+                                cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
+                                cmd.Parameters.AddWithValue("@E_Name", inicialDis.Name);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
                         found = 0;
                         foreach (Disease finalDis in finalDiseaseList)
                         {
-                            if (inicialDis.compareName(finalDis) == 1)
+                            found = 0;
+                            foreach (Disease inicialDis in inicialDiseaseList)
                             {
-                                found = 1;
-                                Console.WriteLine(inicialDis.Name+","+inicialDis.Severity+" -- "+ finalDis.Name+""+finalDis.Severity);
-                                if (inicialDis.compareSeverity(finalDis) == 0)
+                                if (finalDis.compareName(inicialDis) == 1)
                                 {
-                                    cmd.Parameters.Clear();
-                                    cmd.CommandText = " dbo.sp_updateSeriousnes";
-                                    cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
-                                    cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
-                                    cmd.Parameters.AddWithValue("@seirybesdsdf", finalDis.Severity);
-                                    cmd.ExecuteNonQuery();
-                                    break;
-                                }else
-                                {
+                                    found = 1;
                                     break;
                                 }
                             }
-                        }
-                        if (found == 0)
-                        {
-                            Console.WriteLine("delete");
-                            //delete disease
-                            cmd.Parameters.Clear();
-                            cmd.CommandText = "dbo.sp_deleteDisease";
-                            cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
-                            cmd.Parameters.AddWithValue("@E_Name", inicialDis.Name);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-
-                    found = 0;
-                    foreach (Disease finalDis in finalDiseaseList)
-                    {
-                        found = 0;
-                        foreach (Disease inicialDis in inicialDiseaseList)
-                        {
-                            if (finalDis.compareName(inicialDis) == 1)
+                            if (found == 0)
                             {
-                                found = 1;
-                                break;
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "dbo.sp_newDiagnosed";
+                                cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
+                                cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
+                                cmd.Parameters.AddWithValue("@Seriousness", finalDis.Severity);
+                                cmd.Parameters.AddWithValue("@Disable", false);
+                                cmd.ExecuteNonQuery();
                             }
+                            found = 0;
                         }
-                        if (found == 0)
+
+                        if (!string.IsNullOrEmpty(tb_dependentCC.Text))
                         {
                             cmd.Parameters.Clear();
-                            cmd.CommandText = "dbo.sp_newDiagnosed";
-                            cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
-                            cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
-                            cmd.Parameters.AddWithValue("@Seriousness", finalDis.Severity);
-                            cmd.Parameters.AddWithValue("@Disable", false);
+                            cmd.CommandText = "dbo.sp_updateDependent";
+
+                            cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
+                            cmd.Parameters.AddWithValue("@Name", tb_dependentName.Text);
+                            if (!string.IsNullOrEmpty(tb_dependentCC.Text))
+                                cmd.Parameters.AddWithValue("@CC ", Int32.Parse(tb_dependentCC.Text));
+                            else
+                                cmd.Parameters.AddWithValue("@CC ", DBNull.Value);
+                            if (!string.IsNullOrEmpty(tb_dependentPhone.Text))
+                                cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_dependentPhone.Text));
+                            else
+                                cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
+                            cmd.Parameters.AddWithValue("@Address", tb_dependentAddress.Text);
+                            cmd.Parameters.AddWithValue("@Relationship", tb_dependentKinship.Text);
                             cmd.ExecuteNonQuery();
                         }
-                        found = 0;
+
+                        tran.Commit();
+                    }
+                    catch (SqlException ex)
+                    {
+                        tran.Rollback();
+                        MessageBox.Show("Error: " + ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
+                    finally
+                    {
+                        con.conClose();//close connection
+                        Bt_Add.IsCancel = true;
                     }
 
-                    tran.Commit();
                 }
-                catch(SqlException ex)
+                else
                 {
-                    tran.Rollback();
-                    MessageBox.Show("Error: "+ ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                    MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;//close the event
                 }
-                finally
-                {
-                    con.conClose();//close connection
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//close the event
-            }
             
         }
         private void Button_Click_AddDisease(object sender, RoutedEventArgs e)

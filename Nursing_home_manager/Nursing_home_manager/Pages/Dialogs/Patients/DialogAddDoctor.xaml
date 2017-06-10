@@ -26,7 +26,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Text="Location:"  Foreground="#FF464343" Margin="0 15 5 0"/>
-            <TextBox x:Name="tb_location"  PreviewTextInput="NumberValidationTextBox"  Foreground="#FF464343" Width="415"/>
+            <TextBox x:Name="tb_location" Foreground="#FF464343" Width="415"/>
         </StackPanel>
         <StackPanel Margin="0 20 10 0" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button ToolTip="Add Doctor" HorizontalAlignment="Right" Margin="0 0 20 0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"  Click="Button_Add">
