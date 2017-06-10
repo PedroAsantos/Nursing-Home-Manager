@@ -20,6 +20,7 @@
     <StackPanel Margin="20">
         <TextBlock Text="Edit Patient"  FontFamily="Arial Black" Foreground="#FF5B5757" HorizontalAlignment="Center" FontSize="25"/>
         <!--MAIN PATIENT DATA-->
+
         <TextBlock Text="Main Patient Data" FontSize="20" Foreground="#FF464343" FontFamily="Segoe UI Semibold"/>
         <StackPanel Orientation="Horizontal" >
             <TextBlock Foreground="#FF464343" Text="Name:" Margin="0 15 5 0"/>
@@ -119,6 +120,7 @@
 
         <!--EXIT BUTTONS-->
         <StackPanel Margin="0 20 10 0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="Button_Checkout" Click="Button_Click_Checkout" Style="{DynamicResource MaterialDesignRaisedLightButton}" Height="20" FontSize="11" Margin="0 5 230 0" Content="Checkout Patient" />
             <Button ToolTip="Add Patient" IsCancel="True" HorizontalAlignment="Right" Margin="0 0 20 0" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Click="Button_Add">
                 <Canvas Width="24" Height="24">
                     <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />

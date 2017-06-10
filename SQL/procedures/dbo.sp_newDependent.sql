@@ -9,10 +9,14 @@ begin
 							@Address,
 							@Phone
 					)
-			INSERT INTO exemplo1.FAMILY values (
+			if(not Exists(SELECT * FROM exemplo1.FAMILY where E_CC=@CC))
+			BEGIN
+				INSERT INTO exemplo1.FAMILY values (
 					@CC,
 					@Relationship
-			)	
+			)
+			END
+				
 			INSERT INTO exemplo1.DEPENDENT values (
 					@CC,
 					@E_NIF

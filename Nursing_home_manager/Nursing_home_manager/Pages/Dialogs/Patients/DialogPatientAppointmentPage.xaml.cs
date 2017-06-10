@@ -41,7 +41,7 @@ namespace Nursing_home_manager.Pages.Dialogs.Patients
             //you should test if the connection is open or not
             if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
             {
-
+                    
                 SqlCommand cmd = new SqlCommand("SELECT * from dbo.getPatientAppointments(" + patient.Nif + ")", con.Con);
                 SqlDataReader reader = cmd.ExecuteReader();
 

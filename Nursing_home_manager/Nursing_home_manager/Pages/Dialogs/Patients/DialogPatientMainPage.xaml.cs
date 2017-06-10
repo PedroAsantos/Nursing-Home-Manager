@@ -172,7 +172,7 @@ namespace Nursing_home_manager.Pages
                                 if (inicialDis.compareSeverity(finalDis) == 0)
                                 {
                                     cmd.Parameters.Clear();
-                                    cmd.CommandText = " dbo.updateSeriousnes";
+                                    cmd.CommandText = " dbo.sp_updateSeriousnes";
                                     cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
                                     cmd.Parameters.AddWithValue("@E_Name", finalDis.Name);
                                     cmd.Parameters.AddWithValue("@seirybesdsdf", finalDis.Severity);
@@ -189,7 +189,7 @@ namespace Nursing_home_manager.Pages
                             Console.WriteLine("delete");
                             //delete disease
                             cmd.Parameters.Clear();
-                            cmd.CommandText = "dbo.deleteDisease";
+                            cmd.CommandText = "dbo.sp_deleteDisease";
                             cmd.Parameters.AddWithValue("@E_NIF", patient.Nif);
                             cmd.Parameters.AddWithValue("@E_Name", inicialDis.Name);
                             cmd.ExecuteNonQuery();
@@ -285,6 +285,44 @@ namespace Nursing_home_manager.Pages
             }
         }
 
+        private void Button_Click_Checkout(object sender, RoutedEventArgs e)
+        {
+            string messageBoxText = "Are you sure you want to checkout this patient? ";
+            string caption = "Nursing Home Manager";
+            MessageBoxButton button = MessageBoxButton.YesNoCancel;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+           
+            MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+
+            if (MessageBoxResult.Yes==result)
+            {
+                Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+                con.conOpen();//method to open the connection.
+
+                //you should test if the connection is open or not
+                if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+                {
+
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand("dbo.sp_checkoutPatient", con.Con);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@NIF", patient.Nif);
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Error." + ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    finally
+                    {
+                        con.conClose();//close connection
+                    }
+                    Button_Checkout.IsCancel = true;
+                }
+            }
+        }
     }
 
 }

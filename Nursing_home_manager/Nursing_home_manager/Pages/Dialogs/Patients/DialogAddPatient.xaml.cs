@@ -78,91 +78,165 @@ namespace Nursing_home_manager.Pages
                 return;//close the event
             }
         }
+        private bool verifications()
+        {
+            if (string.IsNullOrEmpty(tb_NIF.Text))
+            {
+                MessageBox.Show("The field nif can not be empty", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tb_name.Text))
+            {
+                MessageBox.Show("The field name of patient can not be empty", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_name.Text.Length > 30)
+            {
+                MessageBox.Show("The field name can not have more than 30 characters", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_NIF.Text.Length != 9)
+            {
+                MessageBox.Show("The field NIF must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tb_phone.Text) && tb_phone.Text.Length != 9)
+            {
+                MessageBox.Show("The field Phone must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tb_dependentPhone.Text) && tb_dependentPhone.Text.Length != 9)
+            {
+                MessageBox.Show("The field Phone of dependent must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (tb_dependentName.Text.Length > 30)
+            {
+                MessageBox.Show("The field name can not have more than 30 characters", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (cb_roomNumber.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a room", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if(cb_bedNumber.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a bed.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tb_dependentCC.Text) && tb_dependentCC.Text.Length != 9)
+            {
+                MessageBox.Show("The field CC of dependent must have 9 numbers", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
+        }
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
-            con.conOpen();//method to open the connection.
-            SqlTransaction tran = con.Con.BeginTransaction();
-            //you should test if the connection is open or not
-            if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
+            if (verifications())
             {
-
-                try
+                Sqlconnect con = new Sqlconnect();//instantiate a new object 'Con' from the class Sqlconnect.cs
+                con.conOpen();//method to open the connection.
+                SqlTransaction tran = con.Con.BeginTransaction();
+                //you should test if the connection is open or not
+                if (con != null && con.Con.State == ConnectionState.Open)//youtest if the object exist and if his state is open  && con.State == ConnectionState.Open
                 {
-                    SqlCommand cmd = new SqlCommand("sp_insertPATIENT", con.Con,tran);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
-                    cmd.Parameters.AddWithValue("@Name", tb_name.Text);
-                    if (radioButton_Male.IsChecked == true)
+
+                    try
                     {
-                        cmd.Parameters.AddWithValue("@Sex", "m");
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Sex", "f");
-                    }
-                    cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
-                    cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));  //TEMPORARIO mudar para ano
-                    DateTime myDateTime = DateTime.Now;
-                    cmd.Parameters.AddWithValue("@Check_in", myDateTime);
-                    cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); //TEMPORARIO
-                    cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
-                    cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
-                    cmd.Parameters.AddWithValue("@Entry_Date", myDateTime);
-                    Console.WriteLine(myDateTime.ToString());
-                    DateTime myDateTime3 = DateTime.Now;
-                    cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); //TEMPORARIO
-                    cmd.ExecuteNonQuery();
-                    List<Disease> tempList = (List<Disease>)listView.ItemsSource;
-                    if(tempList != null)
-                    {
-                        foreach (Disease dis in tempList)
+                        SqlCommand cmd = new SqlCommand("sp_insertPATIENT", con.Con, tran);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@NIF", Int32.Parse(tb_NIF.Text));
+                        cmd.Parameters.AddWithValue("@Name", tb_name.Text);
+                        if (radioButton_Male.IsChecked == true)
                         {
-                            cmd.Parameters.Clear();
-                            cmd.CommandText = "dbo.sp_newDiagnosed";
+                            cmd.Parameters.AddWithValue("@Sex", "m");
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Sex", "f");
+                        }
+                        if(!string.IsNullOrEmpty(tb_phone.Text))
+                             cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_phone.Text));
+                        else
+                            cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
+                        if(!string.IsNullOrEmpty(tb_age.Text))
+                            cmd.Parameters.AddWithValue("@Age", Int32.Parse(tb_age.Text));  
+                        else
+                            cmd.Parameters.AddWithValue("@Age", DBNull.Value);
+                        DateTime myDateTime = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@Check_in", myDateTime);
+                        cmd.Parameters.AddWithValue("@Check_out", DBNull.Value); 
+                        cmd.Parameters.AddWithValue("@Authorization_to_leave", checkBox_AuthorizationToLeave.IsChecked);
+                        cmd.Parameters.AddWithValue("@E_BedNumber", Convert.ToInt32(((DataRowView)cb_bedNumber.SelectedItem)["BedNumber"].ToString()));
+                        cmd.Parameters.AddWithValue("@Entry_Date", myDateTime);
+                        Console.WriteLine(myDateTime.ToString());
+                        DateTime myDateTime3 = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@Exit_Date", DBNull.Value); 
+                        cmd.ExecuteNonQuery();
+                        List<Disease> tempList = (List<Disease>)listView.ItemsSource;
+                        if (tempList != null)
+                        {
+                            foreach (Disease dis in tempList)
+                            {
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "dbo.sp_newDiagnosed";
+                                cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
+                                cmd.Parameters.AddWithValue("@E_Name", dis.Name);
+                                cmd.Parameters.AddWithValue("@Seriousness", dis.Severity);
+                                cmd.Parameters.AddWithValue("@Disable", false);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        cmd.Parameters.Clear();
+                        if (!string.IsNullOrEmpty(tb_dependentCC.Text))
+                        {
+                            cmd.CommandText = "dbo.sp_newDependent";
+
                             cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
-                            cmd.Parameters.AddWithValue("@E_Name", dis.Name);
-                            cmd.Parameters.AddWithValue("@Seriousness", dis.Severity);
-                            cmd.Parameters.AddWithValue("@Disable", false);
+                            cmd.Parameters.AddWithValue("@Name", tb_dependentName.Text);
+                            if (!string.IsNullOrEmpty(tb_dependentCC.Text))
+                                cmd.Parameters.AddWithValue("@CC ", Int32.Parse(tb_dependentCC.Text));
+                            else
+                                cmd.Parameters.AddWithValue("@CC ", DBNull.Value);
+                            if (!string.IsNullOrEmpty(tb_dependentPhone.Text))
+                                cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_dependentPhone.Text));
+                            else
+                                cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
+                            cmd.Parameters.AddWithValue("@Address", tb_dependentAddress.Text);
+                            cmd.Parameters.AddWithValue("@Relationship", tb_dependentKinship.Text);
                             cmd.ExecuteNonQuery();
                         }
+                        tran.Commit();
+
+
                     }
-                      
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = "dbo.sp_newDependent";
-                    cmd.Parameters.AddWithValue("@E_NIF", Int32.Parse(tb_NIF.Text));
-                    cmd.Parameters.AddWithValue("@Name", tb_dependentName.Text);
-                    cmd.Parameters.AddWithValue("@CC ", Int32.Parse(tb_dependentCC.Text));
-                    cmd.Parameters.AddWithValue("@Phone", Int32.Parse(tb_dependentPhone.Text));
-                    cmd.Parameters.AddWithValue("@Address", tb_dependentAddress.Text);
-                    cmd.Parameters.AddWithValue("@Relationship", tb_dependentKinship.Text);
-                    cmd.ExecuteNonQuery();
-
-                    tran.Commit();
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Error." + ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                        tran.Rollback();
+                    }
+                    finally
+                    {
+                        con.conClose();//close connection
+                    }
 
 
                 }
-                catch(SqlException ex)
+                else
                 {
-                    MessageBox.Show("Error."+ex, "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                    tran.Rollback();
+                    MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;//close the event
                 }
-                finally
-                {
-                    con.conClose();//close connection
-                }
-              
-               
-            }
-            else
-            {
-                MessageBox.Show("Database Not Open.", "Nursing Home Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//close the event
+                this.DialogResult = true;
             }
 
 
-            this.DialogResult = true;
+           
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {

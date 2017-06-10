@@ -205,8 +205,9 @@ namespace Nursing_home_manager.Pages
                
                     if(dialogEditPatient.ShowDialog() == true)
                     {
-
+                       
                     }
+                    InitializePatientList(null, null);
                 }
         }
         private void Button_AddPatient(object sender, RoutedEventArgs e)
