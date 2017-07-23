@@ -18,8 +18,8 @@ namespace Nursing_home_manager.Classes
 
         public void conOpen()
         {
-            //conString = "data source= DESKTOP-4IM9OL5\\SQLEXPRESS;integrated security=true;initial catalog=exemplo1"; 
-            conString = "Server= tcp: 193.136.175.33\\SQLSERVER2012,8293;Database=p1g6;User Id=p1g6; Password = passwordbd123;";
+            conString = "data source= DESKTOP-4IM9OL5\\SQLEXPRESS;integrated security=true;initial catalog=exemplo1"; 
+            //conString = "Server= tcp: 193.136.175.33\\SQLSERVER2012,8293;Database=p1g6;User Id=p1g6; Password = passwordbd123;";
             Con = new SqlConnection(conString);//
             try
             {
