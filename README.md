@@ -1,5 +1,7 @@
 # Nursing-Home-Manager
-Application to manage a Nursing Home. Some of main functionalities of the application are:
+Project created within the Database subject with the goal to create a database and an user interface to manage a nursing home.
+
+## Main Functionalities
   * Search & Filter patients;
   * Search & Filter patients appointments;
   * Search & Filter patients visits;
@@ -9,6 +11,6 @@ Application to manage a Nursing Home. Some of main functionalities of the applic
   * See appointments of one given patient;
   * See schedule from one given Human Resources;
   * See missed shifts from one given Human Resources;
-   
 
+## Demo
 ![Demo](https://image.ibb.co/dtPUz5/Final_Video_1.gif)
