@@ -9,8 +9,8 @@ Project created within the Database subject with the goal of creating a database
   * See Medicine Schedule from one given patient;
   * See diseases from one given patient;
   * See appointments of one given patient;
-  * See schedule from one given Human Resources;
-  * See missed shifts from one given Human Resources;
+  * See schedule from one given Human Resource;
+  * See missed shifts from one given Human Resource;
 
 ## Demo
 ![Demo](https://image.ibb.co/dtPUz5/Final_Video_1.gif)
