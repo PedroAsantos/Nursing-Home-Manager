@@ -1,5 +1,5 @@
 # Nursing-Home-Manager
-Project created within the Database subject with the goal of creating a database and an user interface to manage a nursing home.
+Project created within the Database subject with the goal of creating a database. A user interface was also developed to manage a nursing home.
 
 ## Main Functionalities
   * Search & Filter patients;
